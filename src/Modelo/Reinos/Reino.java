@@ -9,9 +9,11 @@ public abstract class Reino {
 
     public Reino() {
     }
-
+    
     public int getNivel(){
         return nivel;
     }
+
+    abstract String nombreReino();
 
 }

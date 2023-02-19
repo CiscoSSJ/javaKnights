@@ -1,7 +1,5 @@
 package Gestion;
 
-import java.time.Period;
-
 import Modelo.Reinos.Personaje;
 import Modelo.Reinos.ReinoDragon;
 
@@ -10,7 +8,9 @@ public class Main {
         ReinoDragon reinoDragon = new ReinoDragon();
         Personaje cobalk = new Personaje(true, "cobalk");
 
-        System.out.println(cobalk.getNombre());
-        System.out.println(cobalk);
+        System.out.println(reinoDragon.nombreReino());
+
+        //System.out.println(cobalk.getNombre());
+        //System.out.println(cobalk);
     }
 }
