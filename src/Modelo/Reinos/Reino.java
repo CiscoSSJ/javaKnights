@@ -1,4 +1,6 @@
-package Modelo.Reinos;
+package src.Modelo.Reinos;
+
+import Modelo.Reinos.Personaje;
 
 public abstract class Reino {
     protected String nombreReino;
@@ -14,4 +16,14 @@ public abstract class Reino {
         return nivel;
     }
 
+	abstract String nombreReino();
+
+	public void setNombreReino(String nombreReino) {
+		this.nombreReino = nombreReino;
+	}
+
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
+	}
+	
 }
