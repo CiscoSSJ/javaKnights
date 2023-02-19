@@ -1,10 +1,12 @@
-package src.Modelo.Reinos;
+package Modelo.Reinos;
+
+import Modelo.Reinos.Reino;
 
 public class ReinoDragon extends Reino {
 		
-		@Override
 		public String nombreReino() {
 			nombreReino="Reino Dragón";
+			return nombreReino;
 		}
     public ReinoDragon() {
         nivel = 1;
