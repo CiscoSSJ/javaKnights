@@ -1,4 +1,4 @@
-package Modelo;
+package Modelo.OpcionesMenu;
 
 public abstract class Menu {
     
