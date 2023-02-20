@@ -9,11 +9,25 @@ public abstract class Reino {
 
     public Reino() {
     }
-    
-    public int getNivel(){
+
+    public Reino(String nombreReino, int nivel, Personaje rey, Personaje[] subditos, Personaje protagonista) {
+        this.nombreReino = nombreReino;
+        this.nivel = nivel;
+        this.rey = rey;
+        this.subditos = subditos;
+        this.protagonista = protagonista;
+    }
+
+    public Reino(String nombreReino, int nivel) {
+        this.nombreReino = nombreReino;
+        this.nivel = nivel;
+    }
+
+    public int getNivel() {
         return nivel;
     }
 
-    abstract String nombreReino();
-
+    public String getNombreReino() {
+        return nombreReino;
+    }
 }

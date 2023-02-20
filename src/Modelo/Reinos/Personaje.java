@@ -5,12 +5,28 @@ public class Personaje extends Reino {
     protected int fuerza;
     protected int vida;
     protected int velocidad;
-    protected int expActual;
+    protected boolean isProtagonista;
     protected boolean isRey;
-    protected ReinoDragon reinoPerteneciente;
+    protected Reino reinoPerteneciente;
 
-    public Personaje(boolean isRey, String nombre) {
+    public Personaje(boolean isRey, String nombre, Reino reinoPerteneciente ) {
         if(isRey){
+            this.reinoPerteneciente = reinoPerteneciente;
+            this.nombre = nombre;
+            this.fuerza = 5+(3*reinoPerteneciente.getNivel());
+            this.vida = 5+(3*reinoPerteneciente.getNivel());
+            this.velocidad = 5+(3*reinoPerteneciente.getNivel());
+            
+        }else{
+            this.fuerza = 5*reinoPerteneciente.getNivel();
+            this.vida = 5*reinoPerteneciente.getNivel();
+            this.velocidad = 5*reinoPerteneciente.getNivel();
+        }
+    }
+
+    public Personaje(String nombre, Reino reinoPerteneciente,boolean isProtagonista ) {
+        if(isProtagonista){
+            this.reinoPerteneciente = reinoPerteneciente;
             this.nombre = nombre;
             this.fuerza = 5+(3*reinoPerteneciente.getNivel());
             this.vida = 5+(3*reinoPerteneciente.getNivel());
@@ -39,19 +55,31 @@ public class Personaje extends Reino {
         return velocidad;
     }
 
-    public ReinoDragon getReinoPerteneciente() {
+    public Reino getReinoPerteneciente() {
         return reinoPerteneciente;
+    }
+
+    public void setFuerza(int fuerza) {
+        this.fuerza = fuerza;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
     }
 
     @Override
     public String toString() {
         return "Personaje [nombre=" + nombre + ", fuerza=" + fuerza + ", vida=" + vida + ", velocidad=" + velocidad
-                + ", expActual=" + expActual + ", isRey=" + isRey + "]";
+                + ", isProtagonista=" + isProtagonista + ", isRey=" + isRey + ", reinoPerteneciente="
+                + reinoPerteneciente + "]";
     }
 
-    @Override
-    String nombreReino() {
-        // TODO Auto-generated method stub
-        return null;
+    public int cantidadFuerza(Reino reinoPerteneciente){
+        reinoPerteneciente.getNombreReino().toString();
+        return 0;
     }
 }

@@ -1,13 +1,8 @@
 package Modelo.Reinos;
 
 public class ReinoDragon extends Reino {
-    public ReinoDragon() {
-        
+    public ReinoDragon(String nombreReino, int nivel) {
+        super(nombreReino, nivel);
     }
 
-    @Override
-    public String nombreReino() {
-        nombreReino="Reino Dragon";
-        return nombreReino;
-    }
 }
