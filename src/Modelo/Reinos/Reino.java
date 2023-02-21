@@ -52,7 +52,19 @@ public abstract class Reino {
         return "Reino [nombreReino=" + nombreReino + "]";
     }
 
-    
-
+    public void setEstadisticas(Personaje personaje){
+        if(personaje.reinoPerteneciente.getNombreReino().equals(this.getNombreReino())){
+            if(personaje.isRey || personaje.isProtagonista)
+                mejoraEstadisticaAux(personaje);
+            else{
+                personaje.setVida(5);
+                personaje.setFuerza(5);
+                personaje.setVelocidad(5);
+                personaje.setInteligencia(5);
+                personaje.setMana(5);
+            }
+        }
+    }
+    public abstract void mejoraEstadisticaAux(Personaje personaje);
     
 }

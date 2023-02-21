@@ -6,4 +6,12 @@ public class ReinoGuerrero extends Reino {
         super(nombreReino, nivel);
     }
     
+    @Override
+    public void mejoraEstadisticaAux(Personaje personaje) {
+        personaje.setVida(5);
+        personaje.setFuerza((5*getNivel()));
+        personaje.setVelocidad(5);
+        personaje.setInteligencia(5);
+        personaje.setMana(5);
+    }
 }

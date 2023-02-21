@@ -36,8 +36,11 @@ public class Main {
 
         System.out.println(cobalk.getReinoPerteneciente().getNivel());
         System.out.println(maen.getReinoPerteneciente().getNivel());
+        System.out.println(maen.getVida());
         System.out.println(cobalk.getFuerza());
+        System.out.println(cobalk.getInteligencia());
         System.out.println(golem.getFuerza());
+        System.out.println(golem.getVida());
         System.out.println(reinoDragon.getRey().getNombre());
 
         while(true){
@@ -53,7 +56,7 @@ public class Main {
                 int opcion = inputInt.nextInt();
 
                 Personaje protagonista = new Personaje(false,true,nombre,reinos.get(opcion-1));
-                Personaje.protagonistaCreado = true;
+
                 System.out.println(protagonista);
             }else{
                 System.out.println("¿Quieres borrar el personaje?S/N");
@@ -79,5 +82,8 @@ public class Main {
                 }            
             }
         }
+
+        
+
     }
 }

@@ -18,28 +18,21 @@ public class Personaje extends Reino {
             this.isProtagonista = isProtagonista;
             this.reinoPerteneciente = reinoPerteneciente;
             this.nombre = nombre;
-            this.fuerza = 5+(3*reinoPerteneciente.getNivel());
-            this.vida = 5+(3*reinoPerteneciente.getNivel());
-            this.velocidad = 5+(3*reinoPerteneciente.getNivel());
-            this.mana = 5+(3*reinoPerteneciente.getNivel());
-            this.inteligencia = 5+(3*reinoPerteneciente.getNivel());
+            reinoPerteneciente.setEstadisticas(this);
             reinoPerteneciente.setRey(this);
         }else if(isProtagonista){
             this.isRey = isRey;
             this.isProtagonista = isProtagonista;
             this.reinoPerteneciente = reinoPerteneciente;
             this.nombre = nombre;
-            this.fuerza = 5+(3*reinoPerteneciente.getNivel());
-            this.vida = 5+(3*reinoPerteneciente.getNivel());
-            this.velocidad = 5+(3*reinoPerteneciente.getNivel());
+            reinoPerteneciente.setEstadisticas(this);
+            protagonistaCreado = true;
         }else{
             this.isRey = isRey;
             this.isProtagonista = isProtagonista;
             this.reinoPerteneciente = reinoPerteneciente;
             this.nombre = nombre;
-            this.fuerza = 5*reinoPerteneciente.getNivel();
-            this.vida = 5*reinoPerteneciente.getNivel();
-            this.velocidad = 5*reinoPerteneciente.getNivel();
+            reinoPerteneciente.setEstadisticas(this);
         }
     }
 
@@ -59,6 +52,26 @@ public class Personaje extends Reino {
         return velocidad;
     }
 
+    public int getMana() {
+        return mana;
+    }
+
+    public int getInteligencia() {
+        return inteligencia;
+    }
+
+    public boolean isProtagonista() {
+        return isProtagonista;
+    }
+
+    public boolean isRey() {
+        return isRey;
+    }
+
+    public static boolean isProtagonistaCreado() {
+        return protagonistaCreado;
+    }
+
     public Reino getReinoPerteneciente() {
         return reinoPerteneciente;
     }
@@ -73,6 +86,40 @@ public class Personaje extends Reino {
 
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public void setInteligencia(int inteligencia) {
+        this.inteligencia = inteligencia;
+    }
+
+    public void setProtagonista(boolean isProtagonista) {
+        this.isProtagonista = isProtagonista;
+    }
+
+    public void setRey(boolean isRey) {
+        this.isRey = isRey;
+    }
+
+    public void setReinoPerteneciente(Reino reinoPerteneciente) {
+        this.reinoPerteneciente = reinoPerteneciente;
+    }
+
+    public static void setProtagonistaCreado(boolean protagonistaCreado) {
+        Personaje.protagonistaCreado = protagonistaCreado;
+    }
+
+    
+
+    @Override
+    public void mejoraEstadisticaAux(Personaje personaje) {
     }
 
     @Override
