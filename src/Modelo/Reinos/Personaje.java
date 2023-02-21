@@ -21,6 +21,8 @@ public class Personaje extends Reino {
             this.fuerza = 5+(3*reinoPerteneciente.getNivel());
             this.vida = 5+(3*reinoPerteneciente.getNivel());
             this.velocidad = 5+(3*reinoPerteneciente.getNivel());
+            this.mana = 5+(3*reinoPerteneciente.getNivel());
+            this.inteligencia = 5+(3*reinoPerteneciente.getNivel());
             reinoPerteneciente.setRey(this);
         }else if(isProtagonista){
             this.isRey = isRey;

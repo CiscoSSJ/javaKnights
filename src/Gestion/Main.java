@@ -13,7 +13,8 @@ import Modelo.Reinos.ReinoNinja;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        Scanner inputInt = new Scanner(System.in);
+        Scanner inputString = new Scanner(System.in);
 
         ReinoDragon reinoDragon = new ReinoDragon("Reino Dragon",1);
         ReinoGigante reinoGigante = new ReinoGigante("Reino Gigante",2);
@@ -42,33 +43,33 @@ public class Main {
         while(true){
             if(!Personaje.protagonistaCreado){
                 System.out.println("Introduce el nombre de tu pj");
-                String nombre = input.nextLine();
+                String nombre = inputString.nextLine();
                 System.out.println("Ahora elige cual es tu reino origen");
                 System.out.println("\t1.- Reino Dragon --> + Inteligenicia\n" +
                 "\t2.- Reino Gigante --> + Vida\n" +
                 "\t3.- Reino Guerrero --> + Fuerza\n" +
                 "\t4.- Reino Hielo --> + Mana\n" + 
                 "\t5.- Reino Ninja --> + Velocidad");
-                int opcion = input.nextInt();
+                int opcion = inputInt.nextInt();
 
                 Personaje protagonista = new Personaje(false,true,nombre,reinos.get(opcion-1));
                 Personaje.protagonistaCreado = true;
                 System.out.println(protagonista);
             }else{
                 System.out.println("¿Quieres borrar el personaje?S/N");
-                String opcionString = input.nextLine().toLowerCase();
+                String opcionString = inputString.nextLine().toLowerCase();
                 if(opcionString.equals("s")){
                     Personaje.protagonistaCreado = false;
                     System.out.println(Personaje.protagonistaCreado);
                     System.out.println("Introduce el nombre de tu pj");
-                    String nombre = input.nextLine();
+                    String nombre = inputString.nextLine();
                     System.out.println("Ahora elige cual es tu reino origen");
                     System.out.println("\t1.- Reino Dragon --> + Inteligenicia\n" +
                     "\t2.- Reino Gigante --> + Vida\n" +
                     "\t3.- Reino Guerrero --> + Fuerza\n" +
                     "\t4.- Reino Hielo --> + Mana\n" + 
                     "\t5.- Reino Ninja --> + Velocidad");
-                    int opcion = input.nextInt();
+                    int opcion = inputInt.nextInt();
 
                     Personaje protagonista = new Personaje(false,true,nombre,reinos.get(opcion-1));
                     Personaje.protagonistaCreado = true;
@@ -78,7 +79,5 @@ public class Main {
                 }            
             }
         }
-        //System.out.println(cobalk.getNombre());
-        //System.out.println(cobalk);
     }
 }
