@@ -30,4 +30,29 @@ public abstract class Reino {
     public String getNombreReino() {
         return nombreReino;
     }
+
+    public Personaje getRey() {
+        return rey;
+    }
+
+    public Personaje[] getSubditos() {
+        return subditos;
+    }
+
+    public Personaje getProtagonista() {
+        return protagonista;
+    }
+
+    public void setRey(Personaje rey) {
+        this.rey = rey;
+    }
+
+    @Override
+    public String toString() {
+        return "Reino [nombreReino=" + nombreReino + "]";
+    }
+
+    
+
+    
 }

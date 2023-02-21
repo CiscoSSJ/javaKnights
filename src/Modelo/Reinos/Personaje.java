@@ -5,34 +5,36 @@ public class Personaje extends Reino {
     protected int fuerza;
     protected int vida;
     protected int velocidad;
+    protected int mana;
+    protected int inteligencia;
     protected boolean isProtagonista;
     protected boolean isRey;
     protected Reino reinoPerteneciente;
+    public static boolean protagonistaCreado = false;
 
-    public Personaje(boolean isRey, String nombre, Reino reinoPerteneciente ) {
+    public Personaje(boolean isRey, boolean isProtagonista, String nombre, Reino reinoPerteneciente) {
         if(isRey){
+            this.isRey = isRey;
+            this.isProtagonista = isProtagonista;
             this.reinoPerteneciente = reinoPerteneciente;
             this.nombre = nombre;
             this.fuerza = 5+(3*reinoPerteneciente.getNivel());
             this.vida = 5+(3*reinoPerteneciente.getNivel());
             this.velocidad = 5+(3*reinoPerteneciente.getNivel());
-            
-        }else{
-            this.fuerza = 5*reinoPerteneciente.getNivel();
-            this.vida = 5*reinoPerteneciente.getNivel();
-            this.velocidad = 5*reinoPerteneciente.getNivel();
-        }
-    }
-
-    public Personaje(String nombre, Reino reinoPerteneciente,boolean isProtagonista ) {
-        if(isProtagonista){
+            reinoPerteneciente.setRey(this);
+        }else if(isProtagonista){
+            this.isRey = isRey;
+            this.isProtagonista = isProtagonista;
             this.reinoPerteneciente = reinoPerteneciente;
             this.nombre = nombre;
             this.fuerza = 5+(3*reinoPerteneciente.getNivel());
             this.vida = 5+(3*reinoPerteneciente.getNivel());
             this.velocidad = 5+(3*reinoPerteneciente.getNivel());
-            
         }else{
+            this.isRey = isRey;
+            this.isProtagonista = isProtagonista;
+            this.reinoPerteneciente = reinoPerteneciente;
+            this.nombre = nombre;
             this.fuerza = 5*reinoPerteneciente.getNivel();
             this.vida = 5*reinoPerteneciente.getNivel();
             this.velocidad = 5*reinoPerteneciente.getNivel();
@@ -74,12 +76,10 @@ public class Personaje extends Reino {
     @Override
     public String toString() {
         return "Personaje [nombre=" + nombre + ", fuerza=" + fuerza + ", vida=" + vida + ", velocidad=" + velocidad
-                + ", isProtagonista=" + isProtagonista + ", isRey=" + isRey + ", reinoPerteneciente="
-                + reinoPerteneciente + "]";
+                + ", mana=" + mana + ", inteligencia=" + inteligencia + ", isProtagonista=" + isProtagonista
+                + ", isRey=" + isRey + ", reinoPerteneciente=" + reinoPerteneciente + "]";
     }
 
-    public int cantidadFuerza(Reino reinoPerteneciente){
-        reinoPerteneciente.getNombreReino().toString();
-        return 0;
-    }
+
+
 }
