@@ -1,6 +1,6 @@
 package Modelo.Reinos;
 
-public class Personaje extends Reino {
+public class Personaje{
     protected String nombre;
     protected int fuerza;
     protected int vida;
@@ -115,13 +115,7 @@ public class Personaje extends Reino {
     public static void setProtagonistaCreado(boolean protagonistaCreado) {
         Personaje.protagonistaCreado = protagonistaCreado;
     }
-
     
-
-    @Override
-    public void mejoraEstadisticaAux(Personaje personaje) {
-    }
-
     @Override
     public String toString() {
         return "Personaje [nombre=" + nombre + ", fuerza=" + fuerza + ", vida=" + vida + ", velocidad=" + velocidad
