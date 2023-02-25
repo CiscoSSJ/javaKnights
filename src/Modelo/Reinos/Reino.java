@@ -7,9 +7,23 @@ import Modelo.Personaje.Rey;
 import Modelo.Personaje.Subditos;
 
 public abstract class Reino {
-    protected String nombreReino;
+    protected static String nombreReino;
     private static int nivel;
-    
+	protected Rey rey;
+    protected Subditos subditos[];
+    protected Protagonista protagonista;
+    /*
+     * Métodos de acción 
+     */
+    abstract public void atacar();
+    abstract public void defender();
+    abstract public void curar();
+    abstract String nombreReino();
+
+    public Reino(String nombreReino, int nivel) {
+        Reino.nombreReino = nombreReino;
+        Reino.setNivel(nivel);
+    }
     
     
     
@@ -18,7 +32,7 @@ public abstract class Reino {
 		return nombreReino;
 	}
 	public void setNombreReino(String nombreReino) {
-		this.nombreReino = nombreReino;
+		Reino.nombreReino = nombreReino;
 	}
 	public Rey getRey() {
 		return rey;
@@ -38,24 +52,11 @@ public abstract class Reino {
 	public void setProtagonista(Protagonista protagonista) {
 		this.protagonista = protagonista;
 	}
-	protected Rey rey;
-    protected Subditos subditos[];
-    protected Protagonista protagonista;
-    
+
   
-    /*
-     * Métodos de acción 
-     */
-    abstract public void atacar();
-    abstract public void defender();
-    abstract public void curar();
-    abstract String nombreReino();
 
  
-    public Reino(String nombreReino, int nivel) {
-        this.nombreReino = nombreReino;
-        this.setNivel(nivel);
-    }
+   
 
 
     @Override
@@ -89,6 +90,10 @@ public abstract class Reino {
 	 */
 	public static void setNivel(int nivel) {
 		Reino.nivel = nivel;
+	}
+	public void setSubditos() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

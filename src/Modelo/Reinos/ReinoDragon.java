@@ -1,18 +1,35 @@
 package Modelo.Reinos;
 
+import java.util.Iterator;
 
+import Modelo.Personaje.Subditos;
 
 public class ReinoDragon extends Reino {
-    public ReinoDragon(String nombreReino, int nivel) {
+    
+	
+	public ReinoDragon(String nombreReino, int nivel) {
         super(nombreReino, nivel);
         nombreReino="Reino Dragón";
         nivel=1;
     }
 
-
+	
 		
     
     
+
+
+@Override
+@Override
+	public void setSubditos() {
+		
+		
+	}
+
+
+
+
+
 
 
 @Override
