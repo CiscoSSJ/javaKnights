@@ -1,9 +1,11 @@
 package Gestion;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
-import Modelo.Reinos.Personaje;
+
+
+import Modelo.Personaje.Protagonista;
+import Modelo.Personaje.Rey;
 import Modelo.Reinos.Reino;
 import Modelo.Reinos.ReinoDragon;
 import Modelo.Reinos.ReinoGigante;
@@ -13,8 +15,7 @@ import Modelo.Reinos.ReinoNinja;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner inputInt = new Scanner(System.in);
-        Scanner inputString = new Scanner(System.in);
+        
 
         ReinoDragon reinoDragon = new ReinoDragon("Reino Dragon",1);
         ReinoGigante reinoGigante = new ReinoGigante("Reino Gigante",2);
@@ -29,22 +30,26 @@ public class Main {
         reinos.add(reinoHielo);
         reinos.add(reinoNinja);
         
-        Personaje cobalk = new Personaje(true,false, "cobalk",reinoDragon);
-        Personaje maen = new Personaje(true,false,"Maen",reinoGigante);
-        Personaje golem = new Personaje(false,false,"Golem", reinoGigante);
+        Protagonista cobalk = new Protagonista("cobalk",reinoDragon);
+        Protagonista maen = new Protagonista("Maen",reinoGigante);
+        Protagonista golem = new Protagonista("Golem", reinoGigante);
         
+        Rey shrek=new Rey("shrek", 0, 0, 0, 0, 0, reinoNinja);
 
-        System.out.println(cobalk.getReinoPerteneciente().getNivel());
-        System.out.println(maen.getReinoPerteneciente().getNivel());
+       
         System.out.println(maen.getVida());
         System.out.println(cobalk.getFuerza());
-        System.out.println(cobalk.getInteligencia());
+        System.out.println(cobalk.getVida());
         System.out.println(golem.getFuerza());
         System.out.println(golem.getVida());
-        System.out.println(reinoDragon.getRey().getNombre());
-
-        while(true){
-            if(!Personaje.protagonistaCreado){
+        System.out.println(ReinoHielo.getNivel());
+        System.out.println(shrek.getNombre());
+       
+         /*
+        
+            	do {
+            		eleccion=
+            		//switch(eleccion) {
                 System.out.println("Introduce el nombre de tu pj");
                 String nombre = inputString.nextLine();
                 System.out.println("Ahora elige cual es tu reino origen");
@@ -58,7 +63,7 @@ public class Main {
                 Personaje protagonista = new Personaje(false,true,nombre,reinos.get(opcion-1));
 
                 System.out.println(protagonista);
-            }else{
+            
                 System.out.println("¿Quieres borrar el personaje?S/N");
                 String opcionString = inputString.nextLine().toLowerCase();
                 if(opcionString.equals("s")){
@@ -83,7 +88,7 @@ public class Main {
             }
         }
 
-        
+        */
 
     }
 }

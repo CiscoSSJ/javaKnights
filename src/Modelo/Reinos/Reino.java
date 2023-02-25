@@ -1,69 +1,68 @@
 package Modelo.Reinos;
 
-import Modelo.Reinos.Personaje;
+import java.util.Arrays;
+
+import Modelo.Personaje.Protagonista;
+import Modelo.Personaje.Rey;
+import Modelo.Personaje.Subditos;
 
 public abstract class Reino {
     protected String nombreReino;
-    protected int nivel;
-    protected Personaje rey;
-    protected Personaje subditos[];
-    protected Personaje protagonista;
-
-    public Reino() {
-    }
-
-    public Reino(String nombreReino, int nivel, Personaje rey, Personaje[] subditos, Personaje protagonista) {
-        this.nombreReino = nombreReino;
-        this.nivel = nivel;
-        this.rey = rey;
-        this.subditos = subditos;
-        this.protagonista = protagonista;
-    }
-
-    public Reino(String nombreReino, int nivel) {
-        this.nombreReino = nombreReino;
-        this.nivel = nivel;
-    }
-
-    public int getNivel() {
-        return nivel;
-    }
-
-	abstract String nombreReino();
-
+    private static int nivel;
+    
+    
+    
+    
+    
+    public String getNombreReino() {
+		return nombreReino;
+	}
 	public void setNombreReino(String nombreReino) {
 		this.nombreReino = nombreReino;
 	}
-
-	public void setNivel(int nivel) {
-		this.nivel = nivel;
+	public Rey getRey() {
+		return rey;
 	}
-	
-    public String getNombreReino() {
-        return nombreReino;
+	public void setRey(Rey rey) {
+		this.rey = rey;
+	}
+	public String getSubditos(Subditos subditos []) {
+		return Arrays.toString(subditos);
+	}
+	public void setSubditos(Subditos[] subditos) {
+		this.subditos = subditos;
+	}
+	public Protagonista getProtagonista() {
+		return protagonista;
+	}
+	public void setProtagonista(Protagonista protagonista) {
+		this.protagonista = protagonista;
+	}
+	protected Rey rey;
+    protected Subditos subditos[];
+    protected Protagonista protagonista;
+    
+  
+    /*
+     * Métodos de acción 
+     */
+    abstract public void atacar();
+    abstract public void defender();
+    abstract public void curar();
+    abstract String nombreReino();
+
+ 
+    public Reino(String nombreReino, int nivel) {
+        this.nombreReino = nombreReino;
+        this.setNivel(nivel);
     }
 
-    public Personaje getRey() {
-        return rey;
-    }
-
-    public Personaje[] getSubditos() {
-        return subditos;
-    }
-
-    public Personaje getProtagonista() {
-        return protagonista;
-    }
-
-    public void setRey(Personaje rey) {
-        this.rey = rey;
-    }
 
     @Override
     public String toString() {
         return "Reino [nombreReino=" + nombreReino + "]";
     }
-
+   /*
     public void setEstadisticas(Personaje personaje){
         if(personaje.reinoPerteneciente.getNombreReino().equals(this.getNombreReino())){
             if(personaje.isRey || personaje.isProtagonista)
@@ -77,6 +76,21 @@ public abstract class Reino {
             }
         }
     }
-    public abstract void mejoraEstadisticaAux(Personaje personaje);
+    */
+    
+	/**
+	 * @return the nivel
+	 */
+	public static int getNivel() {
+		return nivel;
+	}
+	/**
+	 * @param nivel the nivel to set
+	 */
+	public static void setNivel(int nivel) {
+		Reino.nivel = nivel;
+	}
+
+}
     
 

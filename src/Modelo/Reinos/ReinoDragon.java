@@ -1,31 +1,19 @@
 package Modelo.Reinos;
 
 
-import Modelo.Reinos.Reino;
 
 public class ReinoDragon extends Reino {
     public ReinoDragon(String nombreReino, int nivel) {
         super(nombreReino, nivel);
+        nombreReino="Reino Dragón";
+        nivel=1;
     }
 
-public class ReinoDragon extends Reino {
+
 		
-	
-    public ReinoDragon() {
-        nivel = getNivel();
-        nombreReino = "Reino Dragon";
-    }
-    @Override
-    public void mejoraEstadisticaAux(Personaje personaje) {
-        personaje.setVida(5);
-        personaje.setFuerza(5);
-        personaje.setVelocidad(5);
-        personaje.setInteligencia((5+1));
-        personaje.setMana(5);
-
-    }
     
-}
+    
+
 
 @Override
 String nombreReino() {
@@ -34,7 +22,20 @@ String nombreReino() {
 }
 
 @Override
-public void mejoraEstadisticaAux(Personaje personaje) {
+public void atacar() {
 	// TODO Auto-generated method stub
 	
+}
+
+@Override
+public void defender() {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void curar() {
+	// TODO Auto-generated method stub
+	
+}
 }
