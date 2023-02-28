@@ -4,25 +4,22 @@ import Modelo.Personaje.Rey;
 import Modelo.Personaje.Subditos;
 
 public class ReinoGigante extends Reino {
-		private static  Rey reyGigante;
-		private static Subditos[] subditosGigante;
+		
 	public ReinoGigante() {
-		super("Reino Gigante", 4, reyGigante, subditosGigante);
+		super("Reino Gigante", 4, reyGigante, subditosGigantes);
 		super.nombreReino="Reino Gigante";
 		super.nivel=4;
-		super.rey=reyGigante;
-		Rey reyGigante = new Rey(nombreReino, super.getNivel(), super.getNivel(), super.getNivel(),
-				super.getNivel(), super.getNivel());
-		
-		
-		Subditos subditosGigante = new Subditos(super.getNombreReino(), super.getNivel(), super.getNivel(),
-				super.getNivel(), super.getNivel(), super.getNivel());
-		Subditos[] subditosGigantes = new Subditos[8];
+		super.rey=reyGigante=new Rey(nombreReino, super.getNivel(), super.getNivel(), super.getNivel(),
+				super.getNivel(), super.getNivel(),getNombreReino());
+		super.subditos = new Subditos[8];
+		for (int i = 0; i < subditos.length; i++) {
+			subditos[i] = new Subditos(super.getNombreReino(), super.getNivel(), super.getNivel(),
+					super.getNivel(), super.getNivel(), super.getNivel());
+		}
 	}
 	
 	@Override
 	public void atacar() {
-		// TODO Auto-generated method stub
 
 	}
 

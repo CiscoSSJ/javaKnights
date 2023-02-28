@@ -16,6 +16,7 @@ public class MainPrueba {
 		System.out.println(uno.getNivel());
 		System.out.println(uno.getNombreReino());
 		System.out.println(uno.getNombreRey());
+		System.out.println(uno.getSubditos());
 	}
 
 }
