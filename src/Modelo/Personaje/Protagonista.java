@@ -4,7 +4,7 @@ import Modelo.Reinos.Reino;
 
 public class Protagonista extends Personaje {
 
-	public Protagonista( String nombre, Reino reinoPerteneciente) {
+	public Protagonista( Reino nombre, Reino reinoPerteneciente) {
 		super( nombre, reinoPerteneciente);
 	}
 	

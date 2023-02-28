@@ -1,58 +1,38 @@
 package Modelo.Reinos;
 
-import java.util.Iterator;
-
+import Modelo.Personaje.Rey;
 import Modelo.Personaje.Subditos;
 
 public class ReinoDragon extends Reino {
-    
-	
-	public ReinoDragon(String nombreReino, int nivel) {
-        super(nombreReino, nivel);
-        nombreReino="Reino Dragón";
-        nivel=1;
+
+    public ReinoDragon() {
+        super("Reino Dragón", 1);
+        Rey reyDragon = new Rey(getNombreReino(), getNivel(), getNivel(), getNivel(),
+                getNivel(), getNivel() * getNivel());
+        Subditos subditosDragon = new Subditos(getNombreReino(), getNivel(), getNivel(),
+                getNivel(), getNivel(), getNivel());
+        Subditos[] subditosDragones = new Subditos[2];
     }
-
-	
-		
-    
     
 
 
-@Override
-@Override
-	public void setSubditos() {
-		
-		
+
+	@Override
+	public void atacar() {
+		// TODO Auto-generated method stub
+
 	}
 
+	@Override
+	public void defender() {
+		// TODO Auto-generated method stub
 
+	}
 
+	@Override
+	public void curar() {
+		// TODO Auto-generated method stub
 
+	}
 
-
-
-@Override
-String nombreReino() {
-	// TODO Auto-generated method stub
-	return "Reino Dragón";
-}
-
-@Override
-public void atacar() {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void defender() {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void curar() {
-	// TODO Auto-generated method stub
-	
-}
-}
+	}
