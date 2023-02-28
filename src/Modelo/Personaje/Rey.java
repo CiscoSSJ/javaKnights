@@ -4,6 +4,7 @@ package Modelo.Personaje;
 
 public class Rey extends Personaje {
 	String nombreReino;
+
 	public Rey(String nombre, int fuerza, int vida, int velocidad, int mana, int inteligencia,String nombreReino) {
 		super(nombre, fuerza, vida, velocidad, mana, inteligencia);
 		this.nombreReino=nombreReino;

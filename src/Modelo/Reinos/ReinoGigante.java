@@ -6,14 +6,15 @@ import Modelo.Personaje.Subditos;
 public class ReinoGigante extends Reino {
 		
 	public ReinoGigante() {
-		super("Reino Gigante", 4, reyGigante, subditosGigantes);
+		super("Reino Gigante", 4, null, null);
 		super.nombreReino="Reino Gigante";
 		super.nivel=4;
-		super.rey=reyGigante=new Rey(nombreReino, super.getNivel(), super.getNivel(), super.getNivel(),
+		super.rey=new Rey(nombreReino, super.getNivel(), super.getNivel(), super.getNivel(),
 				super.getNivel(), super.getNivel(),getNombreReino());
 		super.subditos = new Subditos[8];
+		super.subditos.nombre= {"Grog","Hilda","Thorgrim","Ulfgar","Brunhilda","Farkas","Gunnar","Helga"};
 		for (int i = 0; i < subditos.length; i++) {
-			subditos[i] = new Subditos(super.getNombreReino(), super.getNivel(), super.getNivel(),
+			subditos[i] =  new Subditos(nombreSubditos, super.getNivel(), super.getNivel(),
 					super.getNivel(), super.getNivel(), super.getNivel());
 		}
 	}
