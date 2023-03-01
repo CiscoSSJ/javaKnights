@@ -15,7 +15,12 @@ public class Subditos extends Personaje {
 		super.vida=vida*2;
 	}
 
-	public String getNombreSubditos() {
+	public String getNombreReino() {
+		return this.nombreReino;
+	}
+	
+
+    public String getNombreSubditos() {
 		return this.nombre;
 	}
 	public int getVidaSubditos() {
