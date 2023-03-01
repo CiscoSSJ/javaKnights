@@ -13,9 +13,10 @@ public abstract class Personaje {
 	protected Subditos subditos[];
 	protected Protagonista protagonista;
 
-	public Personaje(String nombre, int fuerza, int vida, int velocidad, int mana, int inteligencia) {
+	public Personaje(String[] nombreSubditos, String nombre, int fuerza, int vida, int velocidad, int mana, int inteligencia) {
 	
 	}
+	
 
 	
 

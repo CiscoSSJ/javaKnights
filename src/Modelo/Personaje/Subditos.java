@@ -5,10 +5,10 @@ package Modelo.Personaje;
 public class Subditos extends Personaje {
 	String nombreReino;
 	String [] nombreSubditos;
-	public Subditos(String nombreReino, int fuerza, int vida, int velocidad, int mana, int inteligencia,String[]nombreSubditos) {
-		super(nombreReino, fuerza, vida, velocidad, mana, inteligencia);
+	public Subditos(String[]nombreSubditos,String nombreReino, int fuerza, int vida, int velocidad, int mana, int inteligencia) {
+		super(nombreSubditos,nombreReino, fuerza, vida, velocidad, mana, inteligencia);
 		this.nombreReino=nombreReino;
-		super.nombreSubditos=nombreSubditos[];
+		this.nombreSubditos=nombreSubditos;
 		super.fuerza=fuerza*2;
 		super.inteligencia=inteligencia*2;
 		super.mana=mana*2;

@@ -6,7 +6,7 @@ public class Rey extends Personaje {
 	String nombreReino;
 
 	public Rey(String nombre, int fuerza, int vida, int velocidad, int mana, int inteligencia,String nombreReino) {
-		super(nombre, fuerza, vida, velocidad, mana, inteligencia);
+		super(nombre, fuerza, vida, velocidad, mana, inteligencia,nombreReino);
 		this.nombreReino=nombreReino;
 		super.nombre="Rey del "+nombreReino;
 		super.fuerza=fuerza*2;
