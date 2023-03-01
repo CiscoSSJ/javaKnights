@@ -11,11 +11,13 @@ public abstract class Personaje {
 	protected int inteligencia;
 	
 
-	public Personaje(String[] nombreSubditos, String nombre, int fuerza, int vida, int velocidad, int mana, int inteligencia) {
-	
+	public Personaje( String nombre, int fuerza, int vida, int velocidad, int mana,
+			int inteligencia) {
+		this.nombre = nombre;
+		this.fuerza = fuerza;
+		this.vida = vida;
+		this.velocidad = velocidad;
+		this.mana = mana;
+		this.inteligencia = inteligencia;
 	}
-	
-
-	
-
 }

@@ -1,13 +1,14 @@
 package Modelo.Reinos;
 
 import Modelo.Personaje.Rey;
-import Modelo.Personaje.Subditos;
+import Modelo.Personaje.Subdito;
 
 public abstract class Reino {
 	protected String nombreReino;
+	protected String[] nombreSubditos;
 	protected int nivel;
 	protected Rey rey;
-	protected Subditos subditos[];
+	protected Subdito [] subditos;
 	
 
 	/*
@@ -19,8 +20,13 @@ public abstract class Reino {
 
 	abstract public void curar();
 
-	public Reino(String nombreReino, int nivel, Rey rey, Subditos[] subditos) {
-
+	public Reino(String nombreReino,String nombreSubditos[], int nivel, Rey rey, Subdito [] subditos) {
+		this.nivel=nivel;
+		this.nombreReino=nombreReino;
+		this.nombreSubditos=nombreSubditos;
+		this.subditos=subditos;
+		this.rey=new Rey(nombreSubditos, this.nombreReino, this.nivel, this.nivel, this.nivel,
+		this.nivel, this.nivel,this.nombreReino);
 	}
 
 	public int getNivel() {
