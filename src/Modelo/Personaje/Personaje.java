@@ -9,9 +9,7 @@ public abstract class Personaje {
 	protected int velocidad;
 	protected int mana;
 	protected int inteligencia;
-	private Rey rey;
-	protected Subditos subditos[];
-	protected Protagonista protagonista;
+	
 
 	public Personaje(String[] nombreSubditos, String nombre, int fuerza, int vida, int velocidad, int mana, int inteligencia) {
 	

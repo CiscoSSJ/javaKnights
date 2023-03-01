@@ -8,7 +8,7 @@ public abstract class Reino {
 	protected int nivel;
 	protected Rey rey;
 	protected Subditos subditos[];
-	protected Subditos subditoss;
+	
 
 	/*
 	 * M�todos de acci�n
@@ -66,13 +66,10 @@ public abstract class Reino {
 	 * 
 	 * @return
 	 */
-	public String getNombreSubditoss() {
-		return getNombreSubditos();
 
-	}
 
-	public Subditos[] getSubditos() {
-		return subditos;
+	public String getSubditos() {
+		return subditos.getNombreSubditos();
 	}
 
 }
