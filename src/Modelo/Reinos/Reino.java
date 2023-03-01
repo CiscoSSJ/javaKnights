@@ -8,9 +8,10 @@ public abstract class Reino {
 	protected int nivel;
 	protected Rey rey;
 	protected Subditos subditos[];
+	protected Subditos subditoss;
 
 	/*
-	 * Métodos de acción
+	 * Mï¿½todos de acciï¿½n
 	 */
 	abstract public void atacar();
 
@@ -61,12 +62,12 @@ public abstract class Reino {
 	}
 
 	/**
-	 * Getters de los atributos de los súbditos
+	 * Getters de los atributos de los sï¿½bditos
 	 * 
 	 * @return
 	 */
-	public String getNombreSubditos() {
-		return nombreReino;
+	public String getNombreSubditoss() {
+		return getNombreSubditos();
 
 	}
 
