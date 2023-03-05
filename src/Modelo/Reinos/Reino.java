@@ -25,7 +25,7 @@ public abstract class Reino {
 		this.nombreSubditos = nombreSubditos;
 		this.nombreReino = nombreReino;
 		this.nivel = nivel;
-		Protagonista.isCreado=isCreado;
+		Protagonista.isCreado=isCreado;a
 		this.subditos = new Subdito[nombreSubditos.length];
 		for (int i = 0; i < nombreSubditos.length; i++) {
 			for (int j = 0; j < nombreSubditos.length; j++) {
