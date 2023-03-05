@@ -1,19 +1,20 @@
 package Modelo.Reinos;
 
+import Modelo.Personaje.Protagonista;
 import Modelo.Personaje.Rey;
-import Modelo.Personaje.Subditos;
+import Modelo.Personaje.Subdito;
+
 
 public class ReinoNinja extends Reino {
-
+	protected static Rey reyNinja;
+	protected static String nombreRey="NinjaGayden";
+	protected static Subdito []subditosNinjas;
+	protected static String []nombreSubditos= {"Hattori Hanzo", "Goemon Ishikawa", "Saizo Kirigakure"};
+	protected static Protagonista protagonistaNinja;
 	public ReinoNinja() {
-		ReinoNinja.nombreReino = "Reino Ninja";
-		ReinoNinja.nivel = 5;
-		Rey reyNinja = new Rey(ReinoNinja.nombreReino, ReinoNinja.nivel, ReinoNinja.nivel,
-				ReinoNinja.nivel * ReinoNinja.nivel, ReinoNinja.nivel, ReinoNinja.nivel);
-		Subditos subditosNinja = new Subditos(ReinoNinja.nombreReino, ReinoNinja.nivel * ReinoGuerrero.nivel,
-				ReinoGuerrero.nivel, ReinoGuerrero.nivel, ReinoGuerrero.nivel, ReinoGuerrero.nivel);
-		Subditos[] subditosNinjas = new Subditos[8];
+		super(nombreRey,nombreSubditos,"Reino Dragon", 5, reyNinja, subditosNinjas,protagonistaNinja);
 	}
+
 
 	@Override
 	public void atacar() {
@@ -31,6 +32,13 @@ public class ReinoNinja extends Reino {
 	public void curar() {
 		// TODO Auto-generated method stub
 
+	}
+
+
+	@Override
+	protected boolean protagonista(Object object) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

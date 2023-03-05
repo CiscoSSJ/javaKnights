@@ -1,35 +1,15 @@
 package Modelo.Reinos;
 
 import Modelo.Personaje.Rey;
-import Modelo.Personaje.Subditos;
+import Modelo.Personaje.Subdito;
 
 public class ReinoGuerrero extends Reino {
+	protected static Rey reyGuerrero;
+	protected static Subdito[] subditosGuerreros;
+	protected static String[] nombreSubditos = { "Jon Nieve", "Jaime Lannister", "Brienne de Tarth" };
 
-	public ReinoGuerrero() {
-		super();
-		ReinoGuerrero.nombreReino = "Reino Guerrero";
-		ReinoGuerrero.nivel = 3;
-		Rey reyGuerrero = new Rey(ReinoGuerrero.nombreReino, ReinoGuerrero.nivel * ReinoGuerrero.nivel,
-				ReinoGuerrero.nivel, ReinoGuerrero.nivel, ReinoGuerrero.nivel, ReinoGuerrero.nivel);
-		Subditos subditosGuerrero = new Subditos(ReinoGuerrero.nombreReino, ReinoGuerrero.nivel * ReinoGuerrero.nivel,
-				ReinoGuerrero.nivel, ReinoGuerrero.nivel, ReinoGuerrero.nivel, ReinoGuerrero.nivel);
-		Subditos[] subditosGuerreros = new Subditos[6];
-	}
-
-	@Override
-	public void atacar() {
-
-	}
-
-	@Override
-	public void defender() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void curar() {
-		// TODO Auto-generated method stub
+	public ReinoGuerrero(boolean isCreado) {
+		super("Alejandro Magno", nombreSubditos, "Reino Guerrero", 3, reyGuerrero, subditosGuerreros, isCreado);
 
 	}
 

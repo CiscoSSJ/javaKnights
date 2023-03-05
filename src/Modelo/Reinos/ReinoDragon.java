@@ -1,38 +1,17 @@
 package Modelo.Reinos;
 
+
 import Modelo.Personaje.Rey;
-import Modelo.Personaje.Subditos;
+import Modelo.Personaje.Subdito;
 
 public class ReinoDragon extends Reino {
+	protected static Rey reyDragon;
+	protected static Subdito[] subditosDragones;
+	protected static String[] nombreSubditos = { "Droghon", "Raeghal", "Viserion" };
 
-    public ReinoDragon() {
-        super("Reino Dragón", 1);
-        Rey reyDragon = new Rey(getNombreReino(), getNivel(), getNivel(), getNivel(),
-                getNivel(), getNivel() * getNivel());
-        Subditos subditosDragon = new Subditos(getNombreReino(), getNivel(), getNivel(),
-                getNivel(), getNivel(), getNivel());
-        Subditos[] subditosDragones = new Subditos[2];
-    }
-    
-
-
-
-	@Override
-	public void atacar() {
-		// TODO Auto-generated method stub
+	public ReinoDragon(boolean isCreado) {
+		super("Veighar", nombreSubditos, "Reino Dragon", 1, reyDragon, subditosDragones, isCreado);
 
 	}
 
-	@Override
-	public void defender() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void curar() {
-		// TODO Auto-generated method stub
-
-	}
-
-	}
+}
