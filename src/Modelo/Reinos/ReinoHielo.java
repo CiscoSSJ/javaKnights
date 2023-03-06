@@ -1,36 +1,16 @@
 package Modelo.Reinos;
 
+
 import Modelo.Personaje.Rey;
-import Modelo.Personaje.Subditos;
+import Modelo.Personaje.Subdito;
 
 public class ReinoHielo extends Reino {
+	protected static Rey reyHielo;
+	protected static Subdito[] subditosHielo;
+	protected static String[] nombreSubditos = { "Elsa de Frozen", "Caminante Blanco", "Gared Tollett" };
 
-    public ReinoHielo() {
-        ReinoHielo.nombreReino="Reino Guerrero";
-        ReinoHielo.nivel=2;
-        Rey reyHielo=new Rey(ReinoHielo.nombreReino, ReinoHielo.nivel, ReinoHielo.nivel, ReinoHielo.nivel, ReinoHielo.nivel, ReinoHielo.nivel);
-        Subditos subditosHielo=new Subditos(ReinoHielo.nombreReino, ReinoHielo.nivel, ReinoHielo.nivel, ReinoHielo.nivel, ReinoHielo.nivel, ReinoHielo.nivel);
-        Subditos []subditosHielos=new Subditos[4];
-    }
-    
- 
-	@Override
-	public void atacar() {
-		// TODO Auto-generated method stub
-		
+	public ReinoHielo(boolean isCreado) {
+		super("Rey de la noche", nombreSubditos, "Reino Dragon", 4, reyHielo, subditosHielo, isCreado);
 	}
 
-	@Override
-	public void defender() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void curar() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 }

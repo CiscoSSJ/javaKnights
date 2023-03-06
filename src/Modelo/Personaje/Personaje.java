@@ -1,23 +1,32 @@
 package Modelo.Personaje;
 
-import Modelo.Reinos.Reino;
-
 public abstract class Personaje {
 	protected String nombre;
+	protected String nombreReino;
 	protected int fuerza;
 	protected int vida;
 	protected int velocidad;
-	protected int mana;
-	protected int inteligencia;
-	
 
-	public Personaje( String nombre, int fuerza, int vida, int velocidad, int mana,
-			int inteligencia) {
+	public Personaje(String nombre, String nombreReino, int fuerza, int vida, int velocidad) {
 		this.nombre = nombre;
+		this.nombreReino = nombreReino;
 		this.fuerza = fuerza;
 		this.vida = vida;
 		this.velocidad = velocidad;
-		this.mana = mana;
-		this.inteligencia = inteligencia;
+
 	}
+
+	public String getNombreReino() {
+		return nombreReino;
+	}
+
+	public void debilidad() {
+		this.vida = 0;
+	}
+
+	abstract public void atacar();
+
+	abstract public void defender();
+
+	abstract public void curar();
 }

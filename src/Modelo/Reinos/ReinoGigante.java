@@ -1,35 +1,16 @@
 package Modelo.Reinos;
 
 import Modelo.Personaje.Rey;
-import Modelo.Personaje.Subditos;
+import Modelo.Personaje.Subdito;
 
 public class ReinoGigante extends Reino {
-		
-	public ReinoGigante() {
-		super("Reino Gigante", 4, , null);
-		super.rey=new Rey(nombreReino, super.getNivel(), super.getNivel(), super.getNivel(),
-		super.getNivel(), super.getNivel(),getNombreReino());
-		super.subditos=new Subditos[8];
-		
-		for (int i = 0; i < subditos.length; i++) {
-			subditos[i] =  new Subdito(nombreSubditos[i],nombreReino, super.getNivel(), super.getNivel(),
-					super.getNivel(), super.getNivel(), super.getNivel());
-		}
-	}
-	
-	@Override
-	public void atacar() {
+	protected static Rey reyGigante;
+	protected static String nombreReyGigante = "Gigante de hierro";
+	protected static Subdito[] subditosGigantes;
+	protected static String[] nombreSubditos = { "Mag el Poderoso", "Wun Weg Wun Dar Wun", "Dongo el gigante" };
+
+	public ReinoGigante(boolean isCreado) {
+		super(nombreReyGigante, nombreSubditos, "Reino Gigante", 2, reyGigante, subditosGigantes, isCreado);
 
 	}
-
-	@Override
-	public void defender() {
-
-	}
-
-	@Override
-	public void curar() {
-
-	}
-
 }

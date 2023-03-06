@@ -1,34 +1,45 @@
 package Modelo.Reinos;
 
+import Modelo.Personaje.Protagonista;
 import Modelo.Personaje.Rey;
 import Modelo.Personaje.Subdito;
-
+import java.util.ArrayList;
 public abstract class Reino {
 	protected String nombreReino;
+	protected String nombreRey;
+	protected String nombresSubditos="";
 	protected String[] nombreSubditos;
 	protected int nivel;
 	protected Rey rey;
-	protected Subdito [] subditos;
-	
+	protected Subdito[] subditos;
+	protected Protagonista protagonista;
 
 	/*
 	 * M�todos de acci�n
 	 */
-	abstract public void atacar();
 
-	abstract public void defender();
 
-	abstract public void curar();
-
-	public Reino(String nombreReino,String nombreSubditos[], int nivel, Rey rey, Subdito [] subditos) {
-		this.nivel=nivel;
-		this.nombreReino=nombreReino;
-		this.nombreSubditos=nombreSubditos;
-		this.subditos=subditos;
-		this.rey=new Rey(nombreSubditos, this.nombreReino, this.nivel, this.nivel, this.nivel,
-		this.nivel, this.nivel,this.nombreReino);
+	public Reino(String nombreRey, String nombreSubditos[], String nombreReino, int nivel, Rey rey, Subdito[] subditos,
+			boolean isCreado) {
+		this.nombreRey = nombreRey;
+		this.nombreSubditos = nombreSubditos;
+		this.nombreReino = nombreReino;
+		this.nivel = nivel;
+		Protagonista.isCreado=isCreado;a
+		this.subditos = new Subdito[nombreSubditos.length];
+		for (int i = 0; i < nombreSubditos.length; i++) {
+			for (int j = 0; j < nombreSubditos.length; j++) {
+				this.subditos[i] = new Subdito(nombreSubditos[i], nombreReino, nivel, nivel, nivel);
+				
+			}
+		}
+		this.rey = new Rey(nombreRey, nombreReino, nivel, nivel, nivel);
+		if (!Protagonista.isCreado) {
+			this.protagonista = new Protagonista(nombreProtagonista, nombreReino, nivel, nivel, nivel);
+		}
 	}
 
+	
 	public int getNivel() {
 		return this.nivel;
 	}
@@ -48,24 +59,24 @@ public abstract class Reino {
 	}
 
 	public String getNombreRey() {
-		return rey.getNombreRey();
+		return this.rey.getNombreRey();
 	}
 
 	public int getVidaRey() {
-		return rey.getVidaRey();
+		return this.rey.getVidaRey();
 	}
 
 	public int getFuerzaRey() {
 		return rey.getFuerzaRey();
 	}
 
-	public int getInteligenciaRey() {
-		return rey.getInteligenciaRey();
-	}
+	/**
+	 * @return the nombreSubditos
+	 */
 
-	public int getManaRey() {
-		return rey.getManaRey();
-	}
+	/**
+	 * @param nombreSubditos the nombreSubditos to set
+	 */
 
 	/**
 	 * Getters de los atributos de los s�bditos
@@ -73,9 +84,20 @@ public abstract class Reino {
 	 * @return
 	 */
 
-
-	public String getSubditos() {
-		return subditos.getNombreSubditos();
+	public String getNombreSubditos() {
+		for (int j = 0; j < this.nombreSubditos.length; j++) {
+			nombresSubditos+=this.nombreSubditos[j]+",";
+			
+		}
+		return nombresSubditos;
 	}
 
+	/**
+	 * Getters de los atributos del protagonista
+	 */
+	public String getNombreProtagonista() {
+		return protagonista.getNombreProtagonista();
+	}
+	
+	
 }
