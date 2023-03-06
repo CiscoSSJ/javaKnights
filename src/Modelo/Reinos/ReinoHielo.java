@@ -9,8 +9,8 @@ public class ReinoHielo extends Reino {
 	protected static Subdito[] subditosHielo;
 	protected static String[] nombreSubditos = { "Elsa de Frozen", "Caminante Blanco", "Gared Tollett" };
 
-	public ReinoHielo(boolean isCreado) {
-		super("Rey de la noche", nombreSubditos, "Reino Dragon", 4, reyHielo, subditosHielo, isCreado);
+	public ReinoHielo() {
+		super("Rey de la noche", nombreSubditos, "Reino Dragon", 4, reyHielo, subditosHielo);
 	}
 
 }

@@ -8,8 +8,8 @@ public class ReinoGuerrero extends Reino {
 	protected static Subdito[] subditosGuerreros;
 	protected static String[] nombreSubditos = { "Jon Nieve", "Jaime Lannister", "Brienne de Tarth" };
 
-	public ReinoGuerrero(boolean isCreado) {
-		super("Alejandro Magno", nombreSubditos, "Reino Guerrero", 3, reyGuerrero, subditosGuerreros, isCreado);
+	public ReinoGuerrero() {
+		super("Alejandro Magno", nombreSubditos, "Reino Guerrero", 3, reyGuerrero, subditosGuerreros);
 
 	}
 

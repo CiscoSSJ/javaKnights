@@ -19,24 +19,18 @@ public abstract class Reino {
 	 */
 
 
-	public Reino(String nombreRey, String nombreSubditos[], String nombreReino, int nivel, Rey rey, Subdito[] subditos,
-			boolean isCreado) {
+	public Reino(String nombreRey, String nombreSubditos[], String nombreReino, int nivel, Rey rey, Subdito[] subditos) {
 		this.nombreRey = nombreRey;
 		this.nombreSubditos = nombreSubditos;
 		this.nombreReino = nombreReino;
 		this.nivel = nivel;
-		Protagonista.isCreado=isCreado;a
 		this.subditos = new Subdito[nombreSubditos.length];
 		for (int i = 0; i < nombreSubditos.length; i++) {
 			for (int j = 0; j < nombreSubditos.length; j++) {
 				this.subditos[i] = new Subdito(nombreSubditos[i], nombreReino, nivel, nivel, nivel);
-				
 			}
 		}
 		this.rey = new Rey(nombreRey, nombreReino, nivel, nivel, nivel);
-		if (!Protagonista.isCreado) {
-			this.protagonista = new Protagonista(nombreProtagonista, nombreReino, nivel, nivel, nivel);
-		}
 	}
 
 	
@@ -45,7 +39,6 @@ public abstract class Reino {
 	}
 
 	public String getNombreReino() {
-		// TODO Auto-generated method stub
 		return this.nombreReino;
 	}
 
@@ -99,5 +92,10 @@ public abstract class Reino {
 		return protagonista.getNombreProtagonista();
 	}
 	
+	public void setProtagonista(Protagonista protagonista){
+		if(protagonista.equals(null)){
+			this.protagonista = protagonista;
+		}
+	}
 	
 }

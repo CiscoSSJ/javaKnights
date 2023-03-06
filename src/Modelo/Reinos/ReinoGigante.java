@@ -9,8 +9,8 @@ public class ReinoGigante extends Reino {
 	protected static Subdito[] subditosGigantes;
 	protected static String[] nombreSubditos = { "Mag el Poderoso", "Wun Weg Wun Dar Wun", "Dongo el gigante" };
 
-	public ReinoGigante(boolean isCreado) {
-		super(nombreReyGigante, nombreSubditos, "Reino Gigante", 2, reyGigante, subditosGigantes, isCreado);
+	public ReinoGigante() {
+		super(nombreReyGigante, nombreSubditos, "Reino Gigante", 2, reyGigante, subditosGigantes);
 
 	}
 }

@@ -13,13 +13,16 @@ import Modelo.Reinos.ReinoHielo;
 import Modelo.Reinos.ReinoNinja;
 
 public class MainPrueba {
-
+	public static ReinoDragon reinoDragon = new ReinoDragon();
+	public static ReinoGigante reinoGigante = new ReinoGigante();
+	public static ReinoGuerrero reinoGuerrero = new ReinoGuerrero();
+	public static ReinoHielo reinoHielo = new ReinoHielo();
+	public static ReinoNinja reinoNinja = new ReinoNinja();
 	public static void main(String[] args) {
 
-		String nombreProtagonista = "";
-		Protagonista.nombreProtagonista = nombreProtagonista;
-		String reinoPerteneciente;
-		boolean salir = false;
+		
+
+		
 
 		/**
 		 * ReinoGigante dos=new ReinoGigante(); System.out.println(dos.getNombreRey());
@@ -36,60 +39,62 @@ public class MainPrueba {
 		 * System.out.println(uno.getNombreSubditos());
 		 * System.out.println(uno.getVidaRey());
 		 */
-		try {
+		menuPersonaje();
+	}
+
+
+
+
+	public static void menuPersonaje(){
+		String nombreProtagonista = "";
+		Protagonista.nombreProtagonista = nombreProtagonista;
+		int reinoPerteneciente = 0;
+		boolean salir = false;
+		boolean continuarExcepcion = false;
+
+		do {
+			nombreProtagonista = JOptionPane.showInputDialog(null, "Como te llamas");
 			do {
-
-				nombreProtagonista = JOptionPane.showInputDialog(null, "Como te llamas");
-				reinoPerteneciente = JOptionPane.showInputDialog(null,
-						"¿A qué reino quieres pertenecer?" + "\n" + "1.Dragon");
-				switch (reinoPerteneciente) {
-				case "1": {
-					ReinoDragon reinoDragon = new ReinoDragon(true);
-					Protagonista.isCreado = false;
-					System.out.println(Protagonista.getNombreProtagonista());
-
+				try {
+					reinoPerteneciente = Integer.parseInt(JOptionPane.showInputDialog(null,
+						"ï¿½A quï¿½ reino quieres pertenecer?" + "\n" + "1.Dragon"));
+					continuarExcepcion = true;
+				} catch (NumberFormatException reino) {
+					JOptionPane.showMessageDialog(null, "Has metido mal el dato gilipola");
+				} 
+			} while (!continuarExcepcion);
+			switch (reinoPerteneciente) {
+				case 1: {
+					Protagonista jugador = new Protagonista(nombreProtagonista, reinoDragon.getNombreReino(),
+					reinoDragon.getNivel(), reinoDragon.getNivel(), reinoDragon.getNivel());
+					reinoDragon.setProtagonista(jugador);
 				}
 					break;
-				case "2": {
-					ReinoGigante reinoGigante = new ReinoGigante(true);
-					Protagonista.isCreado = false;
+				case 2: {
+					Protagonista jugador = new Protagonista(nombreProtagonista, reinoDragon.getNombreReino(),
+					reinoDragon.getNivel(), reinoDragon.getNivel(), reinoDragon.getNivel());
+					reinoDragon.setProtagonista(jugador);
 				}
 					break;
-				case "3": {
-					ReinoGuerrero reinoGuerrero = new ReinoGuerrero(true);
-					Protagonista.isCreado = false;
+				case 3: {
+					Protagonista jugador = new Protagonista(nombreProtagonista, reinoDragon.getNombreReino(),
+					reinoDragon.getNivel(), reinoDragon.getNivel(), reinoDragon.getNivel());
+					reinoDragon.setProtagonista(jugador);
 				}
 					break;
-				case "4": {
-					ReinoHielo reinoHielo = new ReinoHielo(true);
-					Protagonista.isCreado = false;
+				case 4: {
+					Protagonista jugador = new Protagonista(nombreProtagonista, reinoDragon.getNombreReino(),
+					reinoDragon.getNivel(), reinoDragon.getNivel(), reinoDragon.getNivel());
+					reinoDragon.setProtagonista(jugador);
 				}
 					break;
-				case "5": {
-					ReinoGigante reinoGigante = new ReinoGigante(true);
-					Protagonista.isCreado = false;
+				case 5: {
+					Protagonista jugador = new Protagonista(nombreProtagonista, reinoDragon.getNombreReino(),
+					reinoDragon.getNivel(), reinoDragon.getNivel(), reinoDragon.getNivel());
+					reinoDragon.setProtagonista(jugador);
 				}
 					break;
-				}
-			} while (salir);
-		} catch (Exception e) {
-
-		} finally {
-			ListaReinosNoCreados listaReinosNoCreados = new ListaReinosNoCreados();
-			System.out.println(listaReinosNoCreados.getReinosNoCreados());
-
-		}
-
-		do
-
-			try {
-				do {
-
-				} while (salir);
-			} catch (Exception e) {
-				// TODO: handle exception
 			}
-		while (!salir);
-
+		} while (salir);
 	}
 }
