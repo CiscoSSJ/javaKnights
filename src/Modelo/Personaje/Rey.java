@@ -3,11 +3,11 @@ package Modelo.Personaje;
 import Modelo.Reinos.Reino;
 
 public class Rey extends Personaje {
-	String nombreReino;
-
-	public Rey( String nombre, int fuerza, int vida, int velocidad, int mana,
+	Reino reino;
+	
+	public Rey( Reino reino,String nombre, int fuerza, int vida, int velocidad, int mana,
 			int inteligencia) {
-				super(nombre, fuerza*, vida*2, velocidad*Reino.getNivel(), mana, inteligencia);
+				super(nombre, fuerza*reino.getNivel(), vida*2, velocidad*Reino.getNivel(), mana, inteligencia);
 	}
 
 }

@@ -6,7 +6,7 @@ import Modelo.Personaje.Subditos;
 public class ReinoGigante extends Reino {
 		
 	public ReinoGigante() {
-		super("Reino Gigante", 4, reyGigante, null);
+		super("Reino Gigante", 4, , null);
 		super.rey=new Rey(nombreReino, super.getNivel(), super.getNivel(), super.getNivel(),
 		super.getNivel(), super.getNivel(),getNombreReino());
 		super.subditos=new Subditos[8];
