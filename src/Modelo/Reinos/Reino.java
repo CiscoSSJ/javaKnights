@@ -98,5 +98,4 @@ public abstract class Reino {
 			System.out.println(getNombreReino() + ", " + getNombreProtagonista());
 		}
 	}
-	
 }

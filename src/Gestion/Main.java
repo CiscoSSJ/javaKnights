@@ -1,4 +1,18 @@
+
 package Gestion;
+
+import javax.swing.JOptionPane;
+
+import Modelo.OpcionesMenu.Partida;
+import Modelo.Personaje.Protagonista;
+import Modelo.Personaje.Rey;
+import Modelo.Reinos.ListaReinosNoCreados;
+import Modelo.Reinos.Reino;
+import Modelo.Reinos.ReinoDragon;
+import Modelo.Reinos.ReinoGigante;
+import Modelo.Reinos.ReinoGuerrero;
+import Modelo.Reinos.ReinoHielo;
+import Modelo.Reinos.ReinoNinja;
 
 /*
 Este código es un ejemplo básico de cómo crear una ventana de Java Swing y manejar eventos de botón en Java.
@@ -18,6 +32,7 @@ En cada método de acción, en un principio simplemente imprime un mensaje en la
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 
 class Main extends JFrame implements ActionListener {
 
@@ -51,7 +66,7 @@ class Main extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == botonIniciar) {
-            dispose(); 
+            dispose();
             new MenuPrincipal().setVisible(true);
         }
     }
@@ -103,7 +118,8 @@ class MenuPrincipal extends JFrame implements ActionListener {
 }
 
 class MenuIniciarPartida extends JFrame implements ActionListener {
-	
+
+
 	JButton botonNuevaPartida, botonCargarPartida;
     JLabel etiquetaTitulo;
     JPanel panel;
@@ -134,20 +150,24 @@ class MenuIniciarPartida extends JFrame implements ActionListener {
         dispose();
         if (e.getSource() == botonNuevaPartida) {
             new MenuNuevaPartida().setVisible(true);
-        } else if (e.getSource() == botonCargarPartida) {
+        } else if (e.getSource() == botonCargarPartida && Partida.partida) {
             System.out.println("Cargando partida...");
+        } else {
+            System.out.println("No hay partida cargada");
         }
     }
 }
 
 class MenuNuevaPartida extends JFrame implements ActionListener {
 	
+    static Partida partida = new Partida();
+
 	JButton facil, medio, dificil;
     JButton iniciar;
     String dificultadSeleccionada;
 
     public MenuNuevaPartida() {
-    	
+
     	// Configurar la ventana
         setTitle("Menú nueva partida");
         setSize(400, 300);
@@ -215,9 +235,8 @@ class MenuNuevaPartida extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "Iniciando partida en modo " + dificultadSeleccionada + "...");
             dispose(); // cierra la ventana principal
             JOptionPane.getRootFrame().dispose(); // cierra el mensaje de diálogo
+            partida.menuPersonaje(dificultadSeleccionada);
         }
     }
-}while(true);
 }
 
-}
