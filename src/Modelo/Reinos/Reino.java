@@ -89,12 +89,13 @@ public abstract class Reino {
 	 * Getters de los atributos del protagonista
 	 */
 	public String getNombreProtagonista() {
-		return protagonista.getNombreProtagonista();
+		return protagonista.getNombre();
 	}
 	
 	public void setProtagonista(Protagonista protagonista){
-		if(protagonista.equals(null)){
+		if(!protagonista.equals(null)){
 			this.protagonista = protagonista;
+			System.out.println(getNombreReino() + ", " + getNombreProtagonista());
 		}
 	}
 	

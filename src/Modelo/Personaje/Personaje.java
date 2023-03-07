@@ -13,12 +13,69 @@ public abstract class Personaje {
 		this.fuerza = fuerza;
 		this.vida = vida;
 		this.velocidad = velocidad;
-
 	}
+
+	
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
 
 	public String getNombreReino() {
 		return nombreReino;
 	}
+
+
+
+	public void setNombreReino(String nombreReino) {
+		this.nombreReino = nombreReino;
+	}
+
+
+
+	public int getFuerza() {
+		return fuerza;
+	}
+
+
+
+	public void setFuerza(int fuerza) {
+		this.fuerza = fuerza;
+	}
+
+
+
+	public int getVida() {
+		return vida;
+	}
+
+
+
+	public void setVida(int vida) {
+		this.vida = vida;
+	}
+
+
+
+	public int getVelocidad() {
+		return velocidad;
+	}
+
+
+
+	public void setVelocidad(int velocidad) {
+		this.velocidad = velocidad;
+	}
+
+
 
 	public void debilidad() {
 		this.vida = 0;

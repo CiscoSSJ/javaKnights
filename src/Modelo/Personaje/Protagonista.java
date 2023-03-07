@@ -3,15 +3,10 @@ package Modelo.Personaje;
 
 
 public class Protagonista extends Personaje {
-	public static String nombreProtagonista;
-	
-	public Protagonista (String nombre,String nombreReino, int fuerza, int vida, int velocidad) {
-		super(nombreProtagonista+"I del "+nombreReino,nombreReino, fuerza, vida, velocidad);
+
+	public Protagonista (String nombreProtagonista,String nombreReino, int fuerza, int vida, int velocidad) {
+		super(nombreProtagonista,nombreReino, fuerza, vida, velocidad);
 		
-	}
-	
-	public static String getNombreProtagonista() {
-		return nombreProtagonista;
 	}
 
 	public int getVida() {

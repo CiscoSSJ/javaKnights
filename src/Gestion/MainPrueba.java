@@ -47,21 +47,32 @@ public class MainPrueba {
 
 	public static void menuPersonaje(){
 		String nombreProtagonista = "";
-		Protagonista.nombreProtagonista = nombreProtagonista;
 		int reinoPerteneciente = 0;
 		boolean salir = false;
 		boolean continuarExcepcion = false;
 
 		do {
-			nombreProtagonista = JOptionPane.showInputDialog(null, "Como te llamas");
 			do {
 				try {
+					if (nombreProtagonista.equals("")){
+						nombreProtagonista = JOptionPane.showInputDialog(null, "Como te llamas");
+						if (nombreProtagonista.length() <= 0){
+							throw EStringVacio();
+						}
+					}
 					reinoPerteneciente = Integer.parseInt(JOptionPane.showInputDialog(null,
-						"�A qu� reino quieres pertenecer?" + "\n" + "1.Dragon"));
+						"¿A qué reino quieres pertenecer?\n" 
+							+ "1. Dragon\n"
+							+ "2. Gigante\n"
+							+ "3. Guerrero\n"
+							+ "4. Hielo\n"
+							+ "5. Ninja\n"));
 					continuarExcepcion = true;
 				} catch (NumberFormatException reino) {
-					JOptionPane.showMessageDialog(null, "Has metido mal el dato gilipola");
-				} 
+					JOptionPane.showMessageDialog(null, "Introduce uno de los 5 reinos");
+				} catch (Exception vacio){
+					JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio");
+				}
 			} while (!continuarExcepcion);
 			switch (reinoPerteneciente) {
 				case 1: {
@@ -71,30 +82,36 @@ public class MainPrueba {
 				}
 					break;
 				case 2: {
-					Protagonista jugador = new Protagonista(nombreProtagonista, reinoDragon.getNombreReino(),
-					reinoDragon.getNivel(), reinoDragon.getNivel(), reinoDragon.getNivel());
-					reinoDragon.setProtagonista(jugador);
+					Protagonista jugador = new Protagonista(nombreProtagonista, reinoGigante.getNombreReino(),
+					reinoGigante.getNivel(), reinoGigante.getNivel(), reinoGigante.getNivel());
+					reinoGigante.setProtagonista(jugador);
 				}
 					break;
 				case 3: {
-					Protagonista jugador = new Protagonista(nombreProtagonista, reinoDragon.getNombreReino(),
-					reinoDragon.getNivel(), reinoDragon.getNivel(), reinoDragon.getNivel());
-					reinoDragon.setProtagonista(jugador);
+					Protagonista jugador = new Protagonista(nombreProtagonista, reinoGuerrero.getNombreReino(),
+					reinoGuerrero.getNivel(), reinoGuerrero.getNivel(), reinoGuerrero.getNivel());
+					reinoGuerrero.setProtagonista(jugador);
 				}
 					break;
 				case 4: {
-					Protagonista jugador = new Protagonista(nombreProtagonista, reinoDragon.getNombreReino(),
-					reinoDragon.getNivel(), reinoDragon.getNivel(), reinoDragon.getNivel());
-					reinoDragon.setProtagonista(jugador);
+					Protagonista jugador = new Protagonista(nombreProtagonista, reinoHielo.getNombreReino(),
+					reinoHielo.getNivel(), reinoHielo.getNivel(), reinoHielo.getNivel());
+					reinoHielo.setProtagonista(jugador);
 				}
 					break;
 				case 5: {
-					Protagonista jugador = new Protagonista(nombreProtagonista, reinoDragon.getNombreReino(),
-					reinoDragon.getNivel(), reinoDragon.getNivel(), reinoDragon.getNivel());
-					reinoDragon.setProtagonista(jugador);
+					Protagonista jugador = new Protagonista(nombreProtagonista, reinoNinja.getNombreReino(),
+					reinoNinja.getNivel(), reinoNinja.getNivel(), reinoNinja.getNivel());
+					reinoNinja.setProtagonista(jugador);
 				}
 					break;
 			}
 		} while (salir);
+	}
+
+
+
+	private static Exception EStringVacio() {
+		return null;
 	}
 }
