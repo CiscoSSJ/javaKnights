@@ -1,146 +1,221 @@
 package Gestion;
 
-import java.util.ArrayList;
+/*
+Este código es un ejemplo básico de cómo crear una ventana de Java Swing y manejar eventos de botón en Java.
+La clase Main es la clase principal que extiende la clase JFrame, lo que significa que es una ventana.
+La ventana tiene una etiqueta de título y un botón de inicio que se
+configura para llamar a un método de acción cuando se hace clic.
+Cuando se hace clic en el botón de inicio, la ventana actual
+se cierra y se abre una nueva ventana de menú principal.
 
-import javax.swing.JOptionPane;
+La clase MenuPrincipal es la segunda ventana que se abre cuando se hace clic en el botón de inicio.
+La ventana tiene tres botones: uno para iniciar una partida,
+otro para iniciar un tutorial y otro para abrir una ventana de configuración.
+Cada botón se configura para llamar a un método de acción diferente cuando se hace clic.
+En cada método de acción, en un principio simplemente imprime un mensaje en la consola que indica lo que está sucediendo.
+*/
 
-import Modelo.Personaje.Protagonista;
-import Modelo.Personaje.Rey;
-import Modelo.Reinos.Reino;
-import Modelo.Reinos.ReinoDragon;
-import Modelo.Reinos.ReinoGigante;
-import Modelo.Reinos.ReinoGuerrero;
-import Modelo.Reinos.ReinoHielo;
-import Modelo.Reinos.ReinoNinja;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-public class Main {
-	public static void main(String[] args) {
-        /*
+class Main extends JFrame implements ActionListener {
 
+    JButton botonIniciar;
+    JLabel etiquetaTitulo;
+    JPanel panel;
+
+    public Main() {
+        // Configurar la ventana
+        setTitle("Mi juego");
+        setSize(400, 300);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        etiquetaTitulo = new JLabel("Bienvenido al juego");
+        botonIniciar = new JButton("Iniciar");
+        botonIniciar.addActionListener(this);
+
+        panel = new JPanel(new BorderLayout());
+        panel.add(etiquetaTitulo, BorderLayout.CENTER);
+        panel.add(botonIniciar, BorderLayout.SOUTH);
+
+        getContentPane().add(panel);
+        setVisible(true);  
+    }
+
+    public static void main(String[] args) {
+        new Main();
+        System.out.println("Iniciando juego...");
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == botonIniciar) {
+            dispose(); 
+            new MenuPrincipal().setVisible(true);
+        }
+    }
+}
+
+class MenuPrincipal extends JFrame implements ActionListener {
+
+    JButton botonIniciarPartida, botonIniciarTutorial, botonConfiguracion;
+    JLabel etiquetaTitulo;
+    JPanel panel;
+
+    public MenuPrincipal() {
+        // Configurar la ventana
+        setTitle("Menú principal");
+        setSize(400, 300);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        // Crear componentes
+        etiquetaTitulo = new JLabel("Menú principal");
+        botonIniciarPartida = new JButton("Iniciar partida");
+        botonIniciarTutorial = new JButton("Iniciar tutorial");
+        botonConfiguracion = new JButton("Configuración");
+
+        botonIniciarPartida.addActionListener(this);
+        botonIniciarTutorial.addActionListener(this);
+        botonConfiguracion.addActionListener(this);
+
+        panel = new JPanel(new GridLayout(4, 1));
+        panel.add(etiquetaTitulo);
+        panel.add(botonIniciarPartida);
+        panel.add(botonIniciarTutorial);
+        panel.add(botonConfiguracion);
+
+        getContentPane().add(panel);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        dispose();
+        if (e.getSource() == botonIniciarPartida) {
+            new MenuIniciarPartida().setVisible(true);
+        } else if (e.getSource() == botonIniciarTutorial) {
+            System.out.println("Iniciando tutorial...");
+        } else if (e.getSource() == botonConfiguracion) {
+            System.out.println("Abriendo configuración...");
+        }
+    }
+}
+
+class MenuIniciarPartida extends JFrame implements ActionListener {
+	
+	JButton botonNuevaPartida, botonCargarPartida;
+    JLabel etiquetaTitulo;
+    JPanel panel;
+
+    public MenuIniciarPartida() {
+        setTitle("Menú iniciar partida");
+        setSize(400, 300);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        etiquetaTitulo = new JLabel("Menú inicio de partida");
+        botonNuevaPartida = new JButton("Nueva partida");
+        botonCargarPartida = new JButton("Cargar partida");
+
+        botonNuevaPartida.addActionListener(this);
+        botonCargarPartida.addActionListener(this);
+
+        panel = new JPanel(new GridLayout(3, 1));
+        panel.add(etiquetaTitulo);
+        panel.add(botonNuevaPartida);
+        panel.add(botonCargarPartida);
+
+        getContentPane().add(panel);
+        setVisible(true);
+    }
+	
+    public void actionPerformed(ActionEvent e) {
+        dispose();
+        if (e.getSource() == botonNuevaPartida) {
+            new MenuNuevaPartida().setVisible(true);
+        } else if (e.getSource() == botonCargarPartida) {
+            System.out.println("Cargando partida...");
+        }
+    }
+}
+
+class MenuNuevaPartida extends JFrame implements ActionListener {
+	
+	JButton facil, medio, dificil;
+    JButton iniciar;
+    String dificultadSeleccionada;
+
+    public MenuNuevaPartida() {
+    	
+    	// Configurar la ventana
+        setTitle("Menú nueva partida");
+        setSize(400, 300);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         
-        /*
-        
-		Definir una lista de todos los posibles reinos
-	    ArrayList<Reino> posiblesReinos = new ArrayList<Reino>();
-	    posiblesReinos.add(new ReinoDragon("ReinoDragon", 1));
-	    posiblesReinos.add(new ReinoGigante("Reino Gigante", 2));
-	    posiblesReinos.add(new ReinoGuerrero("Reino Guerrero", 3));
-	    posiblesReinos.add(new ReinoHielo("Reino Hielo", 4));
-	    posiblesReinos.add(new ReinoNinja("Reino Ninja", 5));
-        
+        // Crear componentes
+        Container contenedor = getContentPane();
+        contenedor.setLayout(new GridLayout(3, 1));
 
-        ArrayList<Reino> reinos = new ArrayList<Reino>();
-        reinos.add(nombreProtagonista);
-        reinos.add(reinoGigante);
-        reinos.add(reinoGuerrero);
-        reinos.add(reinoHielo);
-        reinos.add(reinoNinja);
-        */
-        Protagonista cobalk = new Protagonista("cobalk",nombreProtagonista);
-        Protagonista maen = new Protagonista("Maen",reinoGigante);
-        Protagonista golem = new Protagonista("Golem", reinoGigante);
-        
-        Rey shrek=new Rey("shrek", 0, 0, 0, 0, 0, reinoNinja);
+        JLabel mensaje = new JLabel("Seleccione la dificultad");
+        mensaje.setHorizontalAlignment(JLabel.CENTER);
+        contenedor.add(mensaje);
 
-       
-        System.out.println(maen.getVida());
-        System.out.println(cobalk.getFuerza());
-        System.out.println(cobalk.getVida());
-        System.out.println(golem.getFuerza());
-        System.out.println(golem.getVida());
-        System.out.println(ReinoHielo.getNivel());
-        System.out.println(shrek.getNombre());
-       
-         
-        
-            	do {
-            	String nombreProtagonista=(JOptionPane.showInputDialog(null,"Introduce el nombre de tu pj"));
-            	String eleccion=JOptionPane.showInputDialog("Ahora elige cual es tu reino origen"
-						+ "\t1.- Reino Dragon --> + Inteligencia\n" + "\t2.- Reino Gigante --> + Vida\n"
-						+ "\t3.- Reino Guerrero --> + Fuerza\n" + "\t4.- Reino Hielo --> + Mana\n"
-						+ "\t5.- Reino Ninja --> + Velocidad");
-				try {
-            	switch (eleccion) {
-				case "1":
-					Protagonista protagonistaDragon =new Protagonista(nombreProtagonista, new ReinoDragon("ReinoDragon",1));
-					break;
-				case "2":
-					Protagonista protagonistaGigante =new Protagonista(nombreProtagonista, new ReinoGigante("Reino Gigante", 2));
-					break;
-				case "3":
-					Protagonista protagonistaGuerrero =new Protagonista(nombreProtagonista, new ReinoGuerrero("Reino Guerrero", 3));
-					break;
-				case "4":
-					Protagonista protagonistHielo =new Protagonista(nombreProtagonista, new ReinoGuerrero("Reino Hielo", 4));
-					break;
-				case "5":
-					ReinoNinja reinoNinja = new ReinoNinja("Reino Ninja", 5);
-					break;
-            	}
-            	}catch(NumberFormatException e) {
-            		
-            	}
-            	 finally {
-            		 // 
+        JPanel panelBotones = new JPanel(new GridLayout(1, 3));
+        facil = new JButton("Fácil");
+        medio = new JButton("Medio");
+        dificil = new JButton("Difícil");
+        panelBotones.add(facil);
+        panelBotones.add(medio);
+        panelBotones.add(dificil);
+        contenedor.add(panelBotones);
 
-            		    // Crear una lista de reinos creados
-            		    List<Reino> reinosCreados = new ArrayList<>();
+        iniciar = new JButton("Iniciar partida");
+        iniciar.setEnabled(false);
+        contenedor.add(iniciar);
 
-            		    // Recorrer la lista de posibles reinos y crear aquellos que no hayan sido creados
-            		    for (Reino reino : posiblesReinos) {
-            		        boolean creado = false;
-            		        if (protagonistaDragon != null && protagonistaDragon.getReino().equals(reino)) {
-            		            creado = true;
-            		        }
-            		        if (protagonistaGigante != null && protagonistaGigante.getReino().equals(reino)) {
-            		            creado = true;
-            		        }
-            		        if (protagonistaGuerrero != null && protagonistaGuerrero.getReino().equals(reino)) {
-            		            creado = true;
-            		        }
-            		        if (protagonistHielo != null && protagonistHielo.getReino().equals(reino)) {
-            		            creado = true;
-            		        }
-            		        if (reinoNinja != null && reinoNinja.equals(reino)) {
-            		            creado = true;
-            		        }
-            		        if (!creado) {
-            		            Reino nuevoReino = crearReino(reino);
-            		            reinosCreados.add(nuevoReino);
-            		        }
-            		    }
-            		}
-				}
-                
+        // Configurar los botones
+        facil.addActionListener(this);
+        medio.addActionListener(this);
+        dificil.addActionListener(this);
 
-                System.out.println(protagonista);
-            
-                System.out.println("¿Quieres borrar el personaje?S/N");
-                String opcionString = inputString.nextLine().toLowerCase();
-                if(opcionString.equals("s")){
-                    Personaje.protagonistaCreado = false;
-                    System.out.println(Personaje.protagonistaCreado);
-                    System.out.println("Introduce el nombre de tu pj");
-                    String nombre = inputString.nextLine();
-                    System.out.println("Ahora elige cual es tu reino origen");
-                    System.out.println("\t1.- Reino Dragon --> + Inteligenicia\n" +
-                    "\t2.- Reino Gigante --> + Vida\n" +
-                    "\t3.- Reino Guerrero --> + Fuerza\n" +
-                    "\t4.- Reino Hielo --> + Mana\n" + 
-                    "\t5.- Reino Ninja --> + Velocidad");
-                    int opcion = inputInt.nextInt();
+        iniciar.addActionListener(this);
 
-                    Personaje protagonista = new Personaje(false,true,nombre,reinos.get(opcion-1));
-                    Personaje.protagonistaCreado = true;
-                    System.out.println(protagonista);
-                }else if(opcionString.equals("n")){
-                    System.out.println("Perfecto!");
-                }            
-            
-       
+        // Mostrar la ventana
+        setVisible(true);
+    }
+	
+    public void actionPerformed(ActionEvent e) {
+    	if (e.getSource() == facil) {
+    		// Acción al presionar el botón de dificultad fácil
+            iniciar.setEnabled(true);
+            medio.setEnabled(false);
+            dificil.setEnabled(false);
+            dificultadSeleccionada = "Fácil";
+        }
 
-       
+        if (e.getSource() == medio) {
+        	// Acción al presionar el botón de dificultad medio
+            iniciar.setEnabled(true);
+            facil.setEnabled(false);
+            dificil.setEnabled(false);
+            dificultadSeleccionada = "Medio";
+        }
 
+        if (e.getSource() == dificil) {
+        	// Acción al presionar el botón de dificultad difícil
+            iniciar.setEnabled(true);
+            facil.setEnabled(false);
+            medio.setEnabled(false);
+            dificultadSeleccionada = "Difícil";
+        }
+
+        if (e.getSource() == iniciar) {
+            JOptionPane.showMessageDialog(null, "Iniciando partida en modo " + dificultadSeleccionada + "...");
+            dispose(); // cierra la ventana principal
+            JOptionPane.getRootFrame().dispose(); // cierra el mensaje de diálogo
+        }
     }
 }while(true);
 }
