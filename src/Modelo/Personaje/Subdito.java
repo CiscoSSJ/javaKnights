@@ -24,7 +24,7 @@ public class Subdito extends Personaje {
 
 	@Override
 	public void atacar() {
-		getProtagonista.getvida -= this.fuerza;
+		
 	}
 
 	@Override

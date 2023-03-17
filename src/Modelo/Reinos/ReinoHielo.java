@@ -11,7 +11,7 @@ public class ReinoHielo extends Reino {
 	protected static String[] nombreSubditos = { "Elsa de Frozen", "Caminante Blanco", "Gared Tollett" };
 
 	public ReinoHielo() {
-		super("Rey de la noche", nombreSubditos, "Reino Dragon", 4, reyHielo, subditosHielo,getProtagonista());
+		super("Rey de la noche", nombreSubditos, "Reino Dragon", 4, reyHielo, subditosHielo);
 	}
 
 }

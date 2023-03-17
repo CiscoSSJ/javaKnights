@@ -1,5 +1,8 @@
 package Modelo.OpcionesMenu;
 
+
+
+import Examen2Modelo.ComicEstandar;
 import Modelo.Personaje.Protagonista;
 import Modelo.Reinos.Reino;
 import Modelo.Reinos.ReinoDragon;
@@ -13,7 +16,8 @@ public class Partida {
 	private Reino[] reinos = { new ReinoDragon(), new ReinoGigante(), new ReinoGuerrero(), new ReinoHielo(),
 			new ReinoNinja() };
 	private Partida[] partidasGuardadas = new Partida[numeroPartidasCreadas];
-	private Protagonista protagonista;
+	private Protagonista protagonista =new Protagonista();
+	private Menu menu =new Menu();
 	public Partida() {
 		numeroPartidasCreadas++;
 
@@ -34,7 +38,16 @@ public class Partida {
 	public Partida[] getPartidasGuardadas() {
 		return partidasGuardadas;
 	}
+	public void crearComicEstandar() {
+		for (int i = 0; i < partidasGuardadas.length && !(partidasGuardadas[i] == null); i++) {
 
+			if (comicsClasicos[i] == null) {
+				comicsClasicos[i] = new Partida();
+				comicCreado = comicsClasicos[i];
+			}
+
+		}
+	}
 	public void setPartidasGuardadas(Partida[] partidasGuardadas) {
 		for (int i = 0; i < partidasGuardadas.length; i++) {
 
@@ -42,11 +55,11 @@ public class Partida {
 		this.partidasGuardadas = partidasGuardadas;
 	}
 
-
-	public void nombreProtagonista(String nombreProtagonista) {
+	public void setNombreProtagonista(String nombreProtagonista) {
 		protagonista.setNombreProtagonista(nombreProtagonista);
-		
+
 	}
+
 	public void reinoPerteneciente(int eleccion) {
 
 		switch (eleccion) {
@@ -74,7 +87,17 @@ public class Partida {
 	public Protagonista getProtagonista() {
 		return protagonista;
 	}
+	public combate() {
+		
+	}
+
+
+	public Menu getMenus() {
+		return menu;
+	}
+
+	
+
+	
 
 }
-
-

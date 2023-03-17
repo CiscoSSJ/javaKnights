@@ -11,14 +11,14 @@ public abstract class Reino {
 	protected int nivel;
 	protected Rey rey;
 	protected Subdito[] subditos;
-	private Protagonista protagonista=null;
+	private static Protagonista protagonista=null;
 
 	/*
 	 * M�todos de acci�n
 	 */
 
 
-	public Reino(String nombreRey, String nombreSubditos[], String nombreReino, int nivel, Rey rey, Subdito[] subditos,Protagonista protagonista) {
+	public Reino(String nombreRey, String nombreSubditos[], String nombreReino, int nivel, Rey rey, Subdito[] subditos) {
 		this.nombreRey = nombreRey;
 		this.nombreSubditos = nombreSubditos;
 		this.nombreReino = nombreReino;
@@ -92,7 +92,7 @@ public abstract class Reino {
 	}
 	
 	public void setProtagonista(Protagonista protagonista){
-		if(!this.protagonista.equals(null)){
+		if(this.protagonista.equals(null)){
 			protagonista.setAtributosProtagonista(getNivel(), getNivel(), getNivel());
 			this.protagonista=protagonista;
 		}
@@ -102,8 +102,8 @@ public abstract class Reino {
 	/**
 	 * @return the protagonista
 	 */
-	public  Protagonista getProtagonista() {
-		return this.protagonista;
+	public static  Protagonista getProtagonista() {
+		return protagonista;
 	}
 	
 }
