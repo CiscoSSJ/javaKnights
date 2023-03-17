@@ -3,19 +3,31 @@ package Modelo.Personaje;
 
 
 public class Protagonista extends Personaje {
+	private static String nombreProtagonista;
+	public Protagonista () {
+		super();
+	}
+	
 
-	public Protagonista (String nombreProtagonista,String nombreReino, int fuerza, int vida, int velocidad) {
-		super(nombreProtagonista,nombreReino, fuerza, vida, velocidad);
-		
+	
+	
+	public void setAtributosProtagonista(int fuerza, int vida, int velocidad) {
+		this.fuerza=fuerza;
+		this.vida=vida;
+		this.velocidad=velocidad;
 	}
 
+	public void setNombreProtagonista(String nombreProtagonista) {
+		this.nombreProtagonista=nombreProtagonista+" I del "+super.nombreReino;
+	}
+	public static String getNombreProtagonista() {
+		return nombreProtagonista;
+	}
 	public int getVida() {
-		// TODO Auto-generated method stub
 		return this.vida;
 	}
 
 	public int getFuerza() {
-		// TODO Auto-generated method stub
 		return this.fuerza;
 	}
 

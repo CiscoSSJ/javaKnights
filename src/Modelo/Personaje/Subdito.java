@@ -1,8 +1,7 @@
 package Modelo.Personaje;
-import Modelo.Personaje.Protagonista;
 public class Subdito extends Personaje {
 
-	protected Protagonista protagonista;
+
 	
 
 	public Subdito(String nombreSubdito, String nombreReino, int fuerza, int vida, int velocidad) {
@@ -25,7 +24,7 @@ public class Subdito extends Personaje {
 
 	@Override
 	public void atacar() {
-		protagonista.vida -= this.fuerza;
+		getProtagonista.getvida -= this.fuerza;
 	}
 
 	@Override

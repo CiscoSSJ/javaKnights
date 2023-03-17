@@ -3,7 +3,6 @@ package Modelo.Reinos;
 import Modelo.Personaje.Protagonista;
 import Modelo.Personaje.Rey;
 import Modelo.Personaje.Subdito;
-import java.util.ArrayList;
 public abstract class Reino {
 	protected String nombreReino;
 	protected String nombreRey;
@@ -12,14 +11,14 @@ public abstract class Reino {
 	protected int nivel;
 	protected Rey rey;
 	protected Subdito[] subditos;
-	protected Protagonista protagonista;
+	private Protagonista protagonista=null;
 
 	/*
 	 * M�todos de acci�n
 	 */
 
 
-	public Reino(String nombreRey, String nombreSubditos[], String nombreReino, int nivel, Rey rey, Subdito[] subditos) {
+	public Reino(String nombreRey, String nombreSubditos[], String nombreReino, int nivel, Rey rey, Subdito[] subditos,Protagonista protagonista) {
 		this.nombreRey = nombreRey;
 		this.nombreSubditos = nombreSubditos;
 		this.nombreReino = nombreReino;
@@ -89,14 +88,22 @@ public abstract class Reino {
 	 * Getters de los atributos del protagonista
 	 */
 	public String getNombreProtagonista() {
-		return protagonista.getNombre();
+		return getProtagonista().getNombre();
 	}
 	
 	public void setProtagonista(Protagonista protagonista){
-		if(!protagonista.equals(null)){
-			this.protagonista = protagonista;
-			System.out.println(getNombreReino() + ", " + getNombreProtagonista());
+		if(!this.protagonista.equals(null)){
+			protagonista.setAtributosProtagonista(getNivel(), getNivel(), getNivel());
+			this.protagonista=protagonista;
 		}
+	}
+
+
+	/**
+	 * @return the protagonista
+	 */
+	public  Protagonista getProtagonista() {
+		return this.protagonista;
 	}
 	
 }

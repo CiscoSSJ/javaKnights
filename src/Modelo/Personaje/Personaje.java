@@ -17,6 +17,11 @@ public abstract class Personaje {
 
 	
 
+	public Personaje() {
+	}
+
+
+
 	public String getNombre() {
 		return nombre;
 	}

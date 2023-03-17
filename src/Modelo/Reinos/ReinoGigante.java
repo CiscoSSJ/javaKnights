@@ -10,7 +10,7 @@ public class ReinoGigante extends Reino {
 	protected static String[] nombreSubditos = { "Mag el Poderoso", "Wun Weg Wun Dar Wun", "Dongo el gigante" };
 
 	public ReinoGigante() {
-		super(nombreReyGigante, nombreSubditos, "Reino Gigante", 2, reyGigante, subditosGigantes);
+		super(nombreReyGigante, nombreSubditos, "Reino Gigante", 2, reyGigante, subditosGigantes, getProtagonista());
 
 	}
 }
