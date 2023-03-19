@@ -1,28 +1,26 @@
 package Modelo.Personaje;
 
-
-
 public class Protagonista extends Personaje {
 	private static String nombreProtagonista;
-	public Protagonista () {
+
+	public Protagonista() {
 		super();
 	}
-	
 
-	
-	
 	public void setAtributosProtagonista(int fuerza, int vida, int velocidad) {
-		this.fuerza=fuerza;
-		this.vida=vida;
-		this.velocidad=velocidad;
+		this.fuerza = fuerza;
+		this.vida = vida;
+		this.velocidad = velocidad;
 	}
 
-	public void setNombreProtagonista(String nombreProtagonista) {
-		this.nombreProtagonista=nombreProtagonista+" I del "+super.nombreReino;
+	public void setNombreProtagonista(String nombreProta) {
+		nombreProtagonista = nombreProta + " I del " + super.nombreReino;
 	}
+
 	public static String getNombreProtagonista() {
 		return nombreProtagonista;
 	}
+
 	public int getVida() {
 		return this.vida;
 	}
@@ -31,41 +29,29 @@ public class Protagonista extends Personaje {
 		return this.fuerza;
 	}
 
-
+	@Override
+	public void hablar(int nivelReino) {
+   // TODO document why this method is empty
+ }
 
 	@Override
-	public void atacar() {
-		
-	}
-
-
+	public void esquivar(int nivelReino) {
+   // TODO document why this method is empty
+ }
 
 	@Override
-	public void defender() {
-		
-	}
-
-
+	public void defender(int nivelReino) {
+   // TODO document why this method is empty
+ }
 
 	@Override
-	public void curar() {
-		
-	}
-	
+	public void desgastar(int nivelReino) {
+   // TODO document why this method is empty
+ }
 
-
-
-
-
-
-	
-
-
-
-
-
-
-
-	
+	@Override
+	public void silencio(int nivelReino) {
+   // TODO document why this method is empty
+ }
 
 }

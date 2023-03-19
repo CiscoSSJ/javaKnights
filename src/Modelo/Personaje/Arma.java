@@ -1,9 +1,15 @@
 package Modelo.Personaje;
 
-import Modelo.Reinos.Reino;
 
-public class Arma extends Reino {
+
+public class Arma  {
 	
+	/**
+	 
+		super(nombreRey, nombreSubditos, nombreReino, nivel, rey, subditos);
+		// TODO Auto-generated constructor stub
+	}
+
 	enum Tipo{
 		Llama,Tempano,Espada,Mazo,Shuriken
 	}
@@ -27,4 +33,6 @@ public class Arma extends Reino {
 		
 	}
 
+}
+*/
 }

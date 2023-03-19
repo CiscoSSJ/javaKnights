@@ -1,8 +1,5 @@
 package Modelo.OpcionesMenu;
 
-
-
-import Examen2Modelo.ComicEstandar;
 import Modelo.Personaje.Protagonista;
 import Modelo.Reinos.Reino;
 import Modelo.Reinos.ReinoDragon;
@@ -12,92 +9,93 @@ import Modelo.Reinos.ReinoHielo;
 import Modelo.Reinos.ReinoNinja;
 
 public class Partida {
-	public static int numeroPartidasCreadas = 0;
+	static boolean saliReinos;
 	private Reino[] reinos = { new ReinoDragon(), new ReinoGigante(), new ReinoGuerrero(), new ReinoHielo(),
 			new ReinoNinja() };
-	private Partida[] partidasGuardadas = new Partida[numeroPartidasCreadas];
-	private Protagonista protagonista =new Protagonista();
-	private Menu menu =new Menu();
-	public Partida() {
-		numeroPartidasCreadas++;
+	private Reino reinoConsultado;
+	private Partida[] partidasGuardadas;
+	private Dificultad dificultad=new Dificultad(null);
+	private Protagonista protagonistaPartida = new Protagonista();
+	private Menu menu = new Menu();
+	
 
-	}
-
-	public int getNumeroPartidasCreadas() {
-		return numeroPartidasCreadas;
-	}
-
-	public Reino[] getReinos() {
-		return reinos;
+	public void setReinoConsultado(Reino reino) {
+		reinoConsultado = reino;
 	}
 
 	public void setReinos(Reino[] reinos) {
 		this.reinos = reinos;
 	}
 
-	public Partida[] getPartidasGuardadas() {
-		return partidasGuardadas;
-	}
-	public void crearComicEstandar() {
+	public void setPartidasGuardadas(Partida partida) {
 		for (int i = 0; i < partidasGuardadas.length && !(partidasGuardadas[i] == null); i++) {
 
-			if (comicsClasicos[i] == null) {
-				comicsClasicos[i] = new Partida();
-				comicCreado = comicsClasicos[i];
+			if (partidasGuardadas[i] == null) {
+				partidasGuardadas[i] = partida;
+
 			}
 
 		}
 	}
-	public void setPartidasGuardadas(Partida[] partidasGuardadas) {
-		for (int i = 0; i < partidasGuardadas.length; i++) {
-
+	
+	public  void setProtagonistaPartida(Protagonista protagonistaMenu) {
+		if (protagonistaPartida!=null) {
+			protagonistaMenu.setAtributosProtagonista( getReino().getNivel(), getReino().getNivel(), getReino().getNivel());
+			protagonistaPartida = protagonistaMenu;
 		}
-		this.partidasGuardadas = partidasGuardadas;
 	}
-
-	public void setNombreProtagonista(String nombreProtagonista) {
-		protagonista.setNombreProtagonista(nombreProtagonista);
-
+	 void setNombreProtagonista(String nombreProtagonista) {
+		protagonistaPartida.setNombreProtagonista(nombreProtagonista);
 	}
+	
+	
 
-	public void reinoPerteneciente(int eleccion) {
-
-		switch (eleccion) {
-		case 1:
-			reinos[0].setProtagonista(protagonista);
-			break;
-		case 2:
-			reinos[1].setProtagonista(protagonista);
-			break;
-		case 3:
-			reinos[2].setProtagonista(protagonista);
-			break;
-		case 4:
-			reinos[3].setProtagonista(protagonista);
-			break;
-		case 5:
-			reinos[4].setProtagonista(protagonista);
-		}
-
-	}
 
 	/**
 	 * @return the protagonista
 	 */
-	public Protagonista getProtagonista() {
-		return protagonista;
-	}
-	public combate() {
+	public Protagonista getProtagonistaPartida() {
 		
+		return protagonistaPartida;
 	}
 
+	public Reino[] getReinos() {
+		return reinos;
+	}
+
+	public Reino getReino() {
+		for (int i = 0; i < reinos.length && reinos[i] != null; i++) {
+			reinoConsultado = reinos[i];
+		}
+		return reinoConsultado;
+	}
 
 	public Menu getMenus() {
 		return menu;
 	}
 
-	
+	public Partida[] getPartidasGuardadas() {
+		return partidasGuardadas;
+	}
 
-	
+	/**
+	 * @return the dificultad
+	 */
+	public Dificultad getDificultad() {
+		return dificultad;
+	}
 
+	/**
+	 * @param dificultad the dificultad to set
+	 */
+	public void setDificultad(Dificultad dificultad) {
+		this.dificultad = dificultad;
+	}
+
+	/**
+	 * @return the mensajeGanadorPartida
+	 */
+	public String getMensajeGanadorPartida() {
+		return "Enhorabuena "+protagonistaPartida.getNombre()+" has pasado de ser un javakngth cualquiera al aunténtico rey";
+	}
 }

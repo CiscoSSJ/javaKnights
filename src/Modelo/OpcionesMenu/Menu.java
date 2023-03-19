@@ -3,22 +3,27 @@ package Modelo.OpcionesMenu;
 import javax.swing.JOptionPane;
 
 public class Menu {
-	private static String eleccionString;
-	private static String eleccionStringInt;
-	private static String eleccionStringTry;
-	private static int eleccionInt;
-	private static boolean salir;
+
+	private Partida partidaCreada;
 
 	public void menuPrincipal(Partida partida) {
-		eleccionString = "<html><div style='text-align: center;'>Â¡Bienvenido a Java Knights!<br><br>Este es un juego creado en Java donde tendrÃ¡s que demostrar tus habilidades de estrategia y combate para convertirte en un verdadero caballero.<br><br>A medida que avances en el juego, tendrÃ¡s la oportunidad de enfrentarte a desafiantes enemigos y ganar valiosos tesoros.<br><br>Â¡PrepÃ¡rate para embarcarte en una emocionante aventura en el mundo medieval de Java Knights!</div></html>";
-		eleccionString=  "<html><div style='text-align: center;'>IndÃ­canos cuÃ¡l es tu nombre, caballer@!<br><br></div></html>";
-		tryCatchString();
-		partida.setNombreProtagonista(eleccionString);
-		eleccionString = "<html><div style='text-align: center;'>Â¿A quÃ© reino quieres pertenecer?<br><br>"
-				+ "1. Dragon<br>" + "2. Gigante<br>" + "3. Guerrero<br>" + "4. Hielo<br>" + "5. Ninja</div></html>";
-		;
-		tryCatchInt();
-		switch (eleccionInt) {
+		String eleccionMenuPrincipal;
+		setPartidaCreada(partida);
+		JOptionPane.showMessageDialog(null,
+				"<html><div style='text-align: center;'>¡Bienvenido a Java Knights!<br><br>Este es un juego creado en Java donde tendrás que demostrar tus habilidades de estrategia y combate para convertirte en un verdadero caballero.<br><br>A medida que avances en el juego, tendrás la oportunidad de enfrentarte a desafiantes enemigos y ganar valiosos tesoros.<br><br>¡Prepárate para embarcarte en una emocionante aventura en el mundo medieval de Java Knights!</div></html>");
+		eleccionMenuPrincipal = "<html><div style='text-align: center;'>Indícanos cuál es tu nombre, caballer@!<br><br></div></html>";
+		tryCatchString(eleccionMenuPrincipal);
+		partidaCreada.setNombreProtagonista(tryCatchString(eleccionMenuPrincipal));
+		menuOpciones();
+
+	}
+
+	public void menuOpciones() {
+		String eleccionMenuOpciones;
+		eleccionMenuOpciones = "<html><div style='text-align: center;'>¿Que quieres hacer?<br><br>"
+				+ "1. Iniciar partida<br>" + "2. Ver creditos<br>" + "3. Opciones<br>" + "4. Salir<br></div></html>";
+		tryCatchInt(eleccionMenuOpciones);
+		switch (tryCatchInt(eleccionMenuOpciones)) {
 		case 1:
 			menuPartida();
 			break;
@@ -26,88 +31,218 @@ public class Menu {
 			menuCreditos();
 			break;
 		case 3:
-			menuOpciones();
+			menuTutorial();
 			break;
 		case 4:
-			JOptionPane.showMessageDialog(null, "Â¡Hasta pronto  " + partida.getProtagonista().getNombre() + " !");
+			JOptionPane.showMessageDialog(null,
+					"¡Hasta pronto  " + partidaCreada.getProtagonistaPartida().getNombre() + " !");
 			break;
 		}
-		resetearCaracteristicas();
+
 	}
 
-	private void resetearCaracteristicas() {
-		 eleccionString=null;
-		 eleccionStringInt=null;
-		 eleccionStringTry=null;
-		 eleccionInt=0;
-		 salir=false;
+	public void menuTutorial() {
+		// TODO document why this method is empty
 	}
 
-	private void menuOpciones() {
-		eleccionString="Empieza el combate de los JavaKnigths";
-		tryCatchInt();
-		switch (eleccionInt) {
-		case 1:
-			menuPartida();
+	public void menuCreditos() {
+		System.out.println("Los máquinas");
 
-			break;
-		case 2:
-			menuCreditos();
-			break;
-		case 3:
-			menuOpciones();
-			break;
-		case 4:
-			JOptionPane.showMessageDialog(null, "Â¡Hasta pronto  " + partida.getProtagonista().getNombre() + " !");
-			break;
-		}
-		resetearCaracteristicas();
-	}
-	
-
-	private void menuCreditos() {
-		resetearCaracteristicas();
 	}
 
 	public void menuPartida() {
-		resetearCaracteristicas();
+		String eleccionMenuPartida;
+		eleccionMenuPartida = "<html><div style='text-align: center;'>¿A qué reino quieres pertenecer?<br><br>"
+				+ "1. Dragon<br>" + "2. Gigante<br>" + "3. Guerrero<br>" + "4. Hielo<br>" + "5. Ninja</div></html>";
+
+		setReinoPerteneciente(tryCatchInt(eleccionMenuPartida));
+		combateReinos();
+		JOptionPane.showMessageDialog(null, "Gracias por jugar");
+
+	}
+
+	public void combateReinos() {
+		boolean combateReinos = false;
+		do {
+			menuCombateSubditos();
+			combateReinos = menuCombateSubditos();
+			menuCombateRey(combateReinos);
+			combateReinos = menuCombateRey(combateReinos);
+		} while (partidaCreada.getReino() != null || !combateReinos);
+
+	}
+
+	public boolean menuCombateSubditos() {
+		boolean subditoSalir = false;
+		String eleccionMenuCombateSubditos;
+		do {
+			do {
+				eleccionMenuCombateSubditos = partidaCreada.getReino().getSubdito().getNombreSubditos()
+						+ " tee esta desafiando ¿Que haras para derrotarle?" + "\n" + "1.Hablar" + "\n" + "2.Esquivar"
+						+ "\n" + "3.Defender" + "\n" + "4.Desgastar" + "\n" + "5.Silencio";
+				tryCatchString(eleccionMenuCombateSubditos);
+				switch (tryCatchInt(eleccionMenuCombateSubditos)) {
+				case 1:
+					partidaCreada.getReino().comprobarDebilidad(false);
+					partidaCreada.getReinos()[0].debilidad(partidaCreada.getReino().getSubdito().hablar(partidaCreada.getReino().getNivel()));
+					break;
+				case 2:
+					partidaCreada.getReinos()[1].debilidad(partidaCreada.getReino().getSubdito());
+					break;
+				case 3:
+					partidaCreada.getReinos()[2].debilidad(partidaCreada.getReino().getSubdito());
+					break;
+				case 4:
+					partidaCreada.getReinos()[3].debilidad(partidaCreada.getReino().getSubdito());
+					break;
+				case 5:
+					partidaCreada.getReinos()[4].debilidad(partidaCreada.getReino().getSubdito());
+					break;
+				default:
+					break;
+				}
+				if (partidaCreada.getReino().getSubdito().getVida() != 0) {
+					JOptionPane.showMessageDialog(null, "¡" + partidaCreada.getReino().getNombreSubditos()
+							+ " te ha quitado vida ten cuidado o moriras");
+				}
+					
+			} while (partidaCreada.getReino().getSubdito().getVidaSubditos() != 0
+					|| partidaCreada.getProtagonistaPartida().getVida() != 0);
+			if (partidaCreada.getReino().getSubdito().getVida() != 0) {
+				partidaCreada.getReino().setSubditoConsultado(null);
+
+			} else {
+				mensajeHasMuerto();
+				subditoSalir = true;
+			}
+		} while (partidaCreada.getReino().getSubdito() != null || !subditoSalir);
+		return subditoSalir;
+	}
+
+	public boolean menuCombateRey(boolean seguir) {
+		boolean combateRey = seguir;
+		String eleccionMenuCombateRey;
+		do {
+
+			eleccionMenuCombateRey = partidaCreada.getReino().getNombreRey()
+					+ " tee esta desafiando ¿Que haras para derrotarle?" + "\n" + "1.Hablar" + "\n" + "2.Esquivar"
+					+ "\n" + "3.Defender" + "\n" + "4.Desgastar" + "\n" + "5.Silencio";
+			tryCatchString(eleccionMenuCombateRey);
+			switch (tryCatchInt(eleccionMenuCombateRey)) {
+			case 1:
+				partidaCreada.getReinos()[0].debilidad(partidaCreada.getReino().getRey());
+				break;
+			case 2:
+				partidaCreada.getReinos()[1].debilidad(partidaCreada.getReino().getRey());
+				break;
+			case 3:
+				partidaCreada.getReinos()[2].debilidad(partidaCreada.getReino().getRey());
+				break;
+			case 4:
+				partidaCreada.getReinos()[3].debilidad(partidaCreada.getReino().getRey());
+				break;
+			case 5:
+				partidaCreada.getReinos()[4].debilidad(partidaCreada.getReino().getRey());
+				break;
+			default:
+				break;
+			}
+			while ((partidaCreada.getReino().getRey().getVida() != 0)
+					|| (partidaCreada.getProtagonistaPartida().getVida() != 0))
+				;
+			if (partidaCreada.getReino().getRey().getVida() != 0) {
+				partidaCreada.getReino().setRey(null);
+				combateRey = false;
+			} else {
+				mensajeHasMuerto();
+				combateRey = true;
+			}
+		} while (partidaCreada.getReino().getRey() != null || !combateRey);
+		return combateRey;
+	}
+
+	public void setReinoPerteneciente(int eleccion) {
+
+		switch (eleccion) {
+		case 1:
+			partidaCreada.getReinos()[0].setProtagonista(partidaCreada.getProtagonistaPartida());
+			break;
+		case 2:
+			partidaCreada.getReinos()[1].setProtagonista(partidaCreada.getProtagonistaPartida());
+			break;
+		case 3:
+			partidaCreada.getReinos()[2].setProtagonista(partidaCreada.getProtagonistaPartida());
+			break;
+		case 4:
+			partidaCreada.getReinos()[3].setProtagonista(partidaCreada.getProtagonistaPartida());
+			break;
+		case 5:
+			partidaCreada.getReinos()[4].setProtagonista(partidaCreada.getProtagonistaPartida());
+		default:
+		}
+
+	}
+
+	public void mensajeHasMuerto() {
+		JOptionPane.showMessageDialog(null, "Has muerto" + partidaCreada.getProtagonistaPartida().getNombre());
 	}
 
 	/**
 	 * Metodo tryCatch para la entrada de datos de String con bucle incorporado
+	 * 
+	 * @return
 	 */
-	public static void tryCatchString() {
-
+	public String tryCatchString(String eleccion) {
+		String eleccionTryString = null;
+		boolean salirTryString = false;
 		do {
 			try {
 				// Escaner de entrada de datos
-				eleccionStringTry = JOptionPane.showInputDialog(eleccionString);
+				eleccionTryString = JOptionPane.showInputDialog(eleccion);
 				// Si todo va bien sale del bucle y del metodo
-				salir = true;
+				salirTryString = true;
 			} catch (Exception e) {
 				// Si todo no va bien vuelve a entrar en el bucle sin salir del metodo
 				JOptionPane.showMessageDialog(null, "Dato mal introducido");
-				salir = false;
+
 			}
-		} while (!salir);
+		} while (!salirTryString);
+		return eleccionTryString;
 	}
 
 	/**
 	 * Metodo tryCatch para la entrada de datos de int con bucle incorporado
 	 */
-	public static void tryCatchInt() {
+	public int tryCatchInt(String pregunta) {
+		int eleccionTryInt = 0;
+		boolean salirTryInt = false;
 		do {
 			try {
 				// Escaner de entrada de datos
-				eleccionInt = Integer.parseInt(JOptionPane.showInputDialog(eleccionStringInt));
+				eleccionTryInt = Integer.parseInt(JOptionPane.showInputDialog(pregunta));
 				// Si todo va bien sale del bucle y del metodo
-				salir = true;
+				salirTryInt = true;
 			} catch (Exception e) {
 				// Si todo no va bien vuelve a entrar en el bucle sin salir del metodo
 				JOptionPane.showMessageDialog(null, "Dato mal introducido");
-				salir = false;
+
 			}
-		} while (!salir);
+		} while (!salirTryInt);
+		return eleccionTryInt;
 	}
-	
+
+	/**
+	 * @return the partidaCreada
+	 */
+	public Partida getPartidaCreada() {
+		return partidaCreada;
+	}
+
+	/**
+	 * @param partidaCreada the partidaCreada to set
+	 */
+	public void setPartidaCreada(Partida partida) {
+		partidaCreada = partida;
+	}
+
 }

@@ -1,5 +1,6 @@
 package Modelo.Reinos;
 
+import Modelo.Personaje.Personaje;
 import Modelo.Personaje.Protagonista;
 import Modelo.Personaje.Rey;
 import Modelo.Personaje.Subdito;
@@ -14,5 +15,10 @@ public class ReinoNinja extends Reino {
 	public ReinoNinja() {
 		super(nombreRey,nombreSubditos,"Reino Dragon", 5, reyNinja, subditosNinjas);
 	}
+	@Override
+	void debilidad(Personaje personaje) {
+		personaje.silencio();
+	}
+
 
 }

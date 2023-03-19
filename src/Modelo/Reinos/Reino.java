@@ -1,24 +1,31 @@
 package Modelo.Reinos;
 
+import Modelo.Personaje.Personaje;
 import Modelo.Personaje.Protagonista;
 import Modelo.Personaje.Rey;
 import Modelo.Personaje.Subdito;
-public abstract class Reino {
-	protected String nombreReino;
-	protected String nombreRey;
-	protected String nombresSubditos="";
-	protected String[] nombreSubditos;
-	protected int nivel;
-	protected Rey rey;
-	protected Subdito[] subditos;
-	private static Protagonista protagonista=null;
 
+public abstract class Reino {
+	/**
+	 * Vamos a crear los atributos de cada reino que despues van a ser setteados en
+	 * cada uno de los reinos de forma indepediente en cada constructor de reino
+	 */
+	private String nombreReino;
+	private String nombreRey;
+	private String mensajeGanadorReino;
+	private String nombresSubditos = "";
+	private String[] nombreSubditos;
+	private int nivel;
+	private Rey rey;
+	private Subdito[] subditos;
+	private Subdito subditoConsultado = null;
+	static Protagonista protagonista=null;
 	/*
 	 * M�todos de acci�n
 	 */
-
-
-	public Reino(String nombreRey, String nombreSubditos[], String nombreReino, int nivel, Rey rey, Subdito[] subditos) {
+	
+	protected Reino(String nombreRey, String[] nombreSubditos, String nombreReino, int nivel, Rey rey,
+			Subdito[] subditos) {
 		this.nombreRey = nombreRey;
 		this.nombreSubditos = nombreSubditos;
 		this.nombreReino = nombreReino;
@@ -30,9 +37,9 @@ public abstract class Reino {
 			}
 		}
 		this.rey = new Rey(nombreRey, nombreReino, nivel, nivel, nivel);
+
 	}
 
-	
 	public int getNivel() {
 		return this.nivel;
 	}
@@ -42,68 +49,94 @@ public abstract class Reino {
 	}
 
 	/**
-	 * Getters de los atributos del rey
+	 *
 	 * 
-	 * @return
+	 * @return Rey del reino
 	 */
 	public Rey getRey() {
 		return rey;
 	}
 
-	public String getNombreRey() {
-		return this.rey.getNombreRey();
-	}
-
-	public int getVidaRey() {
-		return this.rey.getVidaRey();
-	}
-
-	public int getFuerzaRey() {
-		return rey.getFuerzaRey();
+	public void setRey(Rey rey) {
+		this.rey = rey;
 	}
 
 	/**
-	 * @return the nombreSubditos
+	 * Este set lo utilizaremos solamente para el combate cuando el subdito pierda
+	 * la vida
+	 * 
+	 * @param subdito
 	 */
+	public void setSubditoConsultado(Subdito subdito) {
+		 this.subditoConsultado= subdito;
+	}
 
 	/**
-	 * @param nombreSubditos the nombreSubditos to set
-	 */
-
-	/**
-	 * Getters de los atributos de los s�bditos
+	 * Hemos creado este get para que depende de la posicion en el que este el
+	 * subdito creado en el constructor coja el nombre de ese subdito en cada reino
+	 * por si el usuario quiere saber el nombre de los subditos del reino en
+	 * concreto
+	 *
 	 * 
 	 * @return
 	 */
-
 	public String getNombreSubditos() {
+		StringBuilder bld = new StringBuilder();
 		for (int j = 0; j < this.nombreSubditos.length; j++) {
-			nombresSubditos+=this.nombreSubditos[j]+",";
-			
+			bld.append(this.nombreSubditos[j] + ",");
 		}
+		nombresSubditos = bld.toString();
 		return nombresSubditos;
 	}
 
 	/**
-	 * Getters de los atributos del protagonista
+	 * En este get lo que hacemos es que el subdito estatico el cual estamos
+	 * setteando en el bucle for para que podamos hacer las acciones del combate lo
+	 * devuelva
+	 * 
+	 * @return subdito
 	 */
-	public String getNombreProtagonista() {
-		return getProtagonista().getNombre();
-	}
-	
-	public void setProtagonista(Protagonista protagonista){
-		if(this.protagonista.equals(null)){
-			protagonista.setAtributosProtagonista(getNivel(), getNivel(), getNivel());
-			this.protagonista=protagonista;
+	public Subdito getSubdito() {
+		for (int i = 0; i < subditos.length && subditos[i] != null; i++) {
+			subditoConsultado = (subditos[i]);
 		}
+		return subditoConsultado;
 	}
-
 
 	/**
-	 * @return the protagonista
+	 * @param nombreRey the nombreRey to set
 	 */
-	public static  Protagonista getProtagonista() {
-		return protagonista;
+	public void setNombreRey(String nombreRey) {
+		this.nombreRey = nombreRey;
 	}
+
+	public String getNombreRey() {
+		return this.nombreRey;
+	}
+
+	/**
+	 * @return the mensajeGanadorReino
+	 */
+	public String getMensajeGanadorReino() {
+		return mensajeGanadorReino;
+	}
+
+	/**
+	 * @param mensajeGanadorReino the mensajeGanadorReino to set
+	 */
+	public void setMensajeGanadorReino(String mensajeGanadorReino) {
+		this.mensajeGanadorReino = mensajeGanadorReino;
+	}
+	
+	public abstract void debilidad(Personaje personaje);
+	
+
+	public void setProtagonista(Protagonista protagonistaPartida) {
+		protagonista=protagonistaPartida;
+	}
+
+	protected abstract boolean comprobarDebilidad();
+	
+
 	
 }

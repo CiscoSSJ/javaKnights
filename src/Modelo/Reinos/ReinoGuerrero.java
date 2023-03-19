@@ -1,5 +1,6 @@
 package Modelo.Reinos;
 
+import Modelo.Personaje.Personaje;
 import Modelo.Personaje.Rey;
 import Modelo.Personaje.Subdito;
 
@@ -11,6 +12,12 @@ public class ReinoGuerrero extends Reino {
 	public ReinoGuerrero() {
 		super("Alejandro Magno", nombreSubditos, "Reino Guerrero", 3, reyGuerrero, subditosGuerreros);
 
+	}
+
+
+	@Override
+	void debilidad(Personaje personaje) {
+		personaje.defender();
 	}
 
 }

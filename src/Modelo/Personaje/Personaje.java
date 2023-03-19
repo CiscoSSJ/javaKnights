@@ -15,66 +15,44 @@ public abstract class Personaje {
 		this.velocidad = velocidad;
 	}
 
-	
-
 	public Personaje() {
 	}
-
-
 
 	public String getNombre() {
 		return nombre;
 	}
 
-
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-
 
 	public String getNombreReino() {
 		return nombreReino;
 	}
 
-
-
 	public void setNombreReino(String nombreReino) {
 		this.nombreReino = nombreReino;
 	}
-
-
 
 	public int getFuerza() {
 		return fuerza;
 	}
 
-
-
 	public void setFuerza(int fuerza) {
 		this.fuerza = fuerza;
 	}
-
-
 
 	public int getVida() {
 		return vida;
 	}
 
-
-
 	public void setVida(int vida) {
 		this.vida = vida;
 	}
 
-
-
 	public int getVelocidad() {
 		return velocidad;
 	}
-
-
 
 	public void setVelocidad(int velocidad) {
 		this.velocidad = velocidad;
@@ -82,13 +60,9 @@ public abstract class Personaje {
 
 
 
-	public void debilidad() {
-		this.vida = 0;
-	}
-
-	abstract public void atacar();
-
-	abstract public void defender();
-
-	abstract public void curar();
+	public abstract void hablar(int nivelReino);
+	public abstract void esquivar(int nivelReino);
+	public abstract void defender(int nivelReino);
+	public abstract void desgastar(int nivelReino);
+	public abstract void silencio(int nivelReino);
 }

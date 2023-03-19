@@ -1,4 +1,7 @@
 package Modelo.Personaje;
+
+
+
 public class Subdito extends Personaje {
 
 
@@ -21,22 +24,36 @@ public class Subdito extends Personaje {
 	public int getFuerzaSubditos() {
 		return this.fuerza;
 	}
-
-	@Override
-	public void atacar() {
-		
+	public void debilidadSubdito(int nivelReino) {
+		setVida(vida-nivelReino);
 	}
 
 	@Override
-	public void defender() {
-		// TODO Auto-generated method stub
-		
+	public void hablar(int nivelReino) {
+		debilidadSubdito(nivelReino);
 	}
 
 	@Override
-	public void curar() {
-		// TODO Auto-generated method stub
-		
+	public void esquivar(int nivelReino) {
+		debilidadSubdito(nivelReino);		
 	}
+
+	@Override
+	public void defender(int nivelReino) {
+		debilidadSubdito(nivelReino);		
+	}
+
+	@Override
+	public void desgastar(int nivelReino) {
+		debilidadSubdito(nivelReino);		
+	}
+
+	@Override
+	public void silencio(int nivelReino) {
+		debilidadSubdito(nivelReino);		
+	}
+
+	
+
 
 }
