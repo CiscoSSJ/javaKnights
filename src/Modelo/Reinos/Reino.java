@@ -18,20 +18,18 @@ public abstract class Reino {
 	private int nivel;
 	private Rey rey;
 	private Subdito[] subditos;
-	private Subdito subditoConsultado = null;
-	static Protagonista protagonista=null;
+	static Protagonista protagonista = null;
 	/*
 	 * Mï¿½todos de acciï¿½n
 	 */
-	
-	protected Reino(String nombreRey, String[] nombreSubditos, String nombreReino, int nivel, Rey rey,
-			Subdito[] subditos) {
+
+	protected Reino(String nombreRey, String[] nombreSubditos, String nombreReino, int nivel) {
 		this.nombreRey = nombreRey;
 		this.nombreSubditos = nombreSubditos;
 		this.nombreReino = nombreReino;
 		this.nivel = nivel;
 		this.subditos = new Subdito[nombreSubditos.length];
-		for (int i = 0; i < nombreSubditos.length; i++) {
+		for (int i = 0; i < subditos.length; i++) {
 			for (int j = 0; j < nombreSubditos.length; j++) {
 				this.subditos[i] = new Subdito(nombreSubditos[i], nombreReino, nivel, nivel, nivel);
 			}
@@ -40,36 +38,79 @@ public abstract class Reino {
 
 	}
 
+	/**
+	 * Getters de los atributos del reino
+	 */
+
+	/**
+	 * 
+	 * @return nivel
+	 */
+
 	public int getNivel() {
 		return this.nivel;
 	}
 
+	/**
+	 * 
+	 * @return nombreReino
+	 */
 	public String getNombreReino() {
 		return this.nombreReino;
 	}
 
 	/**
+	 * Getter y setter del rey que se utilizaran mas adelante en el menuCombate
+	 */
+
+	/**
 	 *
-	 * 
-	 * @return Rey del reino
+	 * @return rey
 	 */
 	public Rey getRey() {
 		return rey;
 	}
-
+	
+	/**
+	 * 
+	 * @return nombreRey
+	 */
+	public String getNombreRey() {
+		return this.nombreRey;
+	}
+	/**
+	 * Este set lo utilizaremos solamente para el combate cuando el rey del reino pierda
+	 * la vida y lo settearemos a null
+	 * @param rey
+	 */
 	public void setRey(Rey rey) {
 		this.rey = rey;
 	}
 
 	/**
-	 * Este set lo utilizaremos solamente para el combate cuando el subdito pierda
-	 * la vida
-	 * 
-	 * @param subdito
+	 * Getter y setter de los subditos que se utilizaran mas adelante en el menuCombate
 	 */
-	public void setSubditoConsultado(Subdito subdito) {
-		 this.subditoConsultado= subdito;
+	
+	
+	/**
+	 * En este get lo que hacemos es que el subdito estatico el cual estamos
+	 * setteando en el bucle for para que podamos hacer las acciones del combate lo
+	 * devuelva
+	 * 
+	 * @return subdito
+	 */
+	public Subdito getSubdito() {
+		for (Subdito subdito : subditos) {
+
+			if (subdito != null) {
+				return subdito;
+			}
+			
+		}
+		
+		return null; // Si no se encuentra ningún elemento no nulo, devuelve null
 	}
+	
 
 	/**
 	 * Hemos creado este get para que depende de la posicion en el que este el
@@ -88,31 +129,27 @@ public abstract class Reino {
 		nombresSubditos = bld.toString();
 		return nombresSubditos;
 	}
-
 	/**
-	 * En este get lo que hacemos es que el subdito estatico el cual estamos
-	 * setteando en el bucle for para que podamos hacer las acciones del combate lo
-	 * devuelva
+	 * Este set lo utilizaremos solamente para el combate cuando el subdito pierda
+	 * la vida y lo settearemos a null
 	 * 
-	 * @return subdito
+	 * @param subdito
 	 */
-	public Subdito getSubdito() {
-		for (int i = 0; i < subditos.length && subditos[i] != null; i++) {
-			subditoConsultado = (subditos[i]);
-		}
-		return subditoConsultado;
+	
+	public void setSubdito(Subdito subdito) {
+		subdito=null;
 	}
+	
+	/**}for(
 
-	/**
-	 * @param nombreRey the nombreRey to set
-	 */
-	public void setNombreRey(String nombreRey) {
-		this.nombreRey = nombreRey;
+	int i = 0;i<subditos.length&&subditos[i]!=null;i++)
+	{
+		subditoConsultado = (subditos[i]);
+	}return subditoConsultado;
 	}
+	*/
+	
 
-	public String getNombreRey() {
-		return this.nombreRey;
-	}
 
 	/**
 	 * @return the mensajeGanadorReino
@@ -127,16 +164,13 @@ public abstract class Reino {
 	public void setMensajeGanadorReino(String mensajeGanadorReino) {
 		this.mensajeGanadorReino = mensajeGanadorReino;
 	}
-	
+
 	public abstract void debilidad(Personaje personaje);
-	
 
 	public void setProtagonista(Protagonista protagonistaPartida) {
-		protagonista=protagonistaPartida;
+		protagonista = protagonistaPartida;
 	}
 
 	protected abstract boolean comprobarDebilidad();
-	
 
-	
 }

@@ -8,10 +8,10 @@ public class Subdito extends Personaje {
 	
 
 	public Subdito(String nombreSubdito, String nombreReino, int fuerza, int vida, int velocidad) {
-		super(nombreSubdito, nombreReino, fuerza, vida, velocidad);
+		super(nombreSubdito+" del " +nombreReino, nombreReino, fuerza, vida, velocidad);
 
 	}
-
+	
 	public String getNombreSubditos() {
 		return this.nombre;
 

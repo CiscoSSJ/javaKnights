@@ -12,7 +12,7 @@ public class Partida {
 	static boolean saliReinos;
 	private Reino[] reinos = { new ReinoDragon(), new ReinoGigante(), new ReinoGuerrero(), new ReinoHielo(),
 			new ReinoNinja() };
-	private Reino reinoConsultado;
+
 	private Partida[] partidasGuardadas;
 	private Dificultad dificultad=new Dificultad(null);
 	private Protagonista protagonistaPartida = new Protagonista();
@@ -28,7 +28,7 @@ public class Partida {
 	}
 
 	public void setPartidasGuardadas(Partida partida) {
-		for (int i = 0; i < partidasGuardadas.length && !(partidasGuardadas[i] == null); i++) {
+		for (int i = 0; i < partidasGuardadas.length && partidasGuardadas[i] != null; i++) {
 
 			if (partidasGuardadas[i] == null) {
 				partidasGuardadas[i] = partida;
@@ -60,16 +60,27 @@ public class Partida {
 	}
 
 	public Reino[] getReinos() {
+
 		return reinos;
+	
+	}
+	public Reino getReino() {
+	    for (Reino r : reinos) {
+	        if (r != null) {
+	            return r;
+	        }
+	    }
+	    return null; // Si no se encuentra ningún elemento no nulo, devuelve null
 	}
 
+	/**
 	public Reino getReino() {
 		for (int i = 0; i < reinos.length && reinos[i] != null; i++) {
 			reinoConsultado = reinos[i];
 		}
 		return reinoConsultado;
 	}
-
+	*/
 	public Menu getMenus() {
 		return menu;
 	}

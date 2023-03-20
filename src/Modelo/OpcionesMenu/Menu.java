@@ -87,16 +87,16 @@ public class Menu {
 					partidaCreada.getReinos()[0].debilidad(partidaCreada.getReino().getSubdito().hablar(partidaCreada.getReino().getNivel()));
 					break;
 				case 2:
-					partidaCreada.getReinos()[1].debilidad(partidaCreada.getReino().getSubdito());
+					partidaCreada.getReinos()[1].debilidad(partidaCreada.getReino().getSubdito().esquivar(partidaCreada.getReino().getNivel()));
 					break;
 				case 3:
-					partidaCreada.getReinos()[2].debilidad(partidaCreada.getReino().getSubdito());
+					partidaCreada.getReinos()[2].debilidad(partidaCreada.getReino().getSubdito().defender(partidaCreada.getReino().getNivel()));
 					break;
 				case 4:
-					partidaCreada.getReinos()[3].debilidad(partidaCreada.getReino().getSubdito());
+					partidaCreada.getReinos()[3].debilidad(partidaCreada.getReino().getSubdito().desgastar(partidaCreada.getReino().getNivel()));
 					break;
 				case 5:
-					partidaCreada.getReinos()[4].debilidad(partidaCreada.getReino().getSubdito());
+					partidaCreada.getReinos()[4].debilidad(partidaCreada.getReino().getSubdito().silencio(partidaCreada.getReino().getNivel()));
 					break;
 				default:
 					break;

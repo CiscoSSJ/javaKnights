@@ -1,42 +1,26 @@
 package Modelo.Reinos;
 
 import Modelo.Personaje.Personaje;
-import Modelo.Personaje.Rey;
-import Modelo.Personaje.Subdito;
 
 public class ReinoGigante extends Reino {
-	private Rey reyGigante;
-	protected  String [] subditosGigantes={ "Mag el Poderoso", "Wun Weg Wun Dar Wun", "Dongo el gigante"}
-	private 
+
 	public ReinoGigante() {
-		super("Gigante de hierro",getSubditosGigantes(), "Reino Gigante", 2);
-		super
-	
+		super("Gigante de hierro", new String[] { "Mag el Poderoso", "Wun Weg Wun Dar Wun", "Dongo el gigante" },
+				"Reino Gigante", 2);
 
-
-}
-	public String[] getSubditosGigantes() {
-		return subditosGigantes;
 	}
-
-	public void setSubditosGigantes(String[] subditosGigantes) {
-		this.subditosGigantes = subditosGigantes;
-	}
-
-	
 
 	@Override
 	public void debilidad(Personaje personaje) {
+		comprobarDebilidad();
 		personaje.esquivar(getNivel());
-		
+
 	}
 
 	@Override
 	protected boolean comprobarDebilidad() {
+		// TODO Auto-generated method stub
 		return true;
 	}
-
-
-	
 
 }
