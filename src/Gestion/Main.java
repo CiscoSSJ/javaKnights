@@ -1,17 +1,5 @@
 package Gestion;
 
-import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
-
-import Modelo.Personaje.Protagonista;
-import Modelo.Personaje.Rey;
-import Modelo.Reinos.Reino;
-import Modelo.Reinos.ReinoDragon;
-import Modelo.Reinos.ReinoGigante;
-import Modelo.Reinos.ReinoGuerrero;
-import Modelo.Reinos.ReinoHielo;
-import Modelo.Reinos.ReinoNinja;
 
 public class Main {
 	public static void main(String[] args) {
@@ -36,7 +24,7 @@ public class Main {
         reinos.add(reinoHielo);
         reinos.add(reinoNinja);
         */
-        Protagonista cobalk = new Protagonista("cobalk",nombreProtagonista);
+        /**Protagonista cobalk = new Protagonista("cobalk",nombreProtagonista);
         Protagonista maen = new Protagonista("Maen",reinoGigante);
         Protagonista golem = new Protagonista("Golem", reinoGigante);
         
@@ -145,4 +133,7 @@ public class Main {
 }while(true);
 }
 
+}
+*/
+	}
 }

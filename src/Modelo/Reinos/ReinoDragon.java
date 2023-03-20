@@ -16,7 +16,7 @@ public class ReinoDragon extends Reino {
 
 	@Override
 	public void debilidad(Personaje personaje) {
-		comprobarDebilidad();
+		super.setComprobarDebilidad(true);
 		personaje.hablar(getNivel());
 
 	}

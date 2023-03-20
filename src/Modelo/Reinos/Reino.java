@@ -15,6 +15,7 @@ public abstract class Reino {
 	private String mensajeGanadorReino;
 	private String nombresSubditos = "";
 	private String[] nombreSubditos;
+	private boolean comprobarDebilidad;
 	private int nivel;
 	private Rey rey;
 	private Subdito[] subditos;
@@ -108,7 +109,7 @@ public abstract class Reino {
 			
 		}
 		
-		return null; // Si no se encuentra ningún elemento no nulo, devuelve null
+		return null; // Si no se encuentra ningï¿½n elemento no nulo, devuelve null
 	}
 	
 
@@ -172,5 +173,13 @@ public abstract class Reino {
 	}
 
 	protected abstract boolean comprobarDebilidad();
+
+	public boolean isComprobarDebilidad() {
+		return comprobarDebilidad;
+	}
+
+	public void setComprobarDebilidad(boolean comprobarDebilidad) {
+		this.comprobarDebilidad = comprobarDebilidad;
+	}
 
 }

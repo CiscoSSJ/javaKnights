@@ -1,5 +1,5 @@
 package Gestion;
-
+/*
 import javax.swing.JOptionPane;
 
 import Modelo.Personaje.Protagonista;
@@ -39,12 +39,13 @@ public class MainPrueba {
 		 * System.out.println(uno.getNombreSubditos());
 		 * System.out.println(uno.getVidaRey());
 		 */
-		menuPersonaje();
-	}
+		//menuPersonaje();
+
+//}
 
 
 
-
+/**
 	public static void menuPersonaje(){
 		String nombreProtagonista = "";
 		int reinoPerteneciente = 0;
@@ -56,9 +57,7 @@ public class MainPrueba {
 				try {
 					if (nombreProtagonista.equals("")){
 						nombreProtagonista = JOptionPane.showInputDialog(null, "Como te llamas");
-						if (nombreProtagonista.length() <= 0){
-							throw EStringVacio();
-						}
+					
 					}
 					reinoPerteneciente = Integer.parseInt(JOptionPane.showInputDialog(null,
 						"¿A qué reino quieres pertenecer?\n" 
@@ -114,4 +113,5 @@ public class MainPrueba {
 	private static Exception EStringVacio() {
 		return null;
 	}
-}
+*/
+

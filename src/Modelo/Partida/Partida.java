@@ -1,5 +1,7 @@
-package Modelo.OpcionesMenu;
+package Modelo.Partida;
 
+import Modelo.Menu.Menus;
+import Modelo.Menu.Opciones.Dificultad;
 import Modelo.Personaje.Protagonista;
 import Modelo.Reinos.Reino;
 import Modelo.Reinos.ReinoDragon;
@@ -16,12 +18,9 @@ public class Partida {
 	private Partida[] partidasGuardadas;
 	private Dificultad dificultad=new Dificultad(null);
 	private Protagonista protagonistaPartida = new Protagonista();
-	private Menu menu = new Menu();
+	private Menus menus = new Menus();
 	
 
-	public void setReinoConsultado(Reino reino) {
-		reinoConsultado = reino;
-	}
 
 	public void setReinos(Reino[] reinos) {
 		this.reinos = reinos;
@@ -70,7 +69,7 @@ public class Partida {
 	            return r;
 	        }
 	    }
-	    return null; // Si no se encuentra ningún elemento no nulo, devuelve null
+	    return null; // Si no se encuentra ningï¿½n elemento no nulo, devuelve null
 	}
 
 	/**
@@ -81,8 +80,8 @@ public class Partida {
 		return reinoConsultado;
 	}
 	*/
-	public Menu getMenus() {
-		return menu;
+	public Menus getMenus() {
+		return menus;
 	}
 
 	public Partida[] getPartidasGuardadas() {
@@ -107,6 +106,6 @@ public class Partida {
 	 * @return the mensajeGanadorPartida
 	 */
 	public String getMensajeGanadorPartida() {
-		return "Enhorabuena "+protagonistaPartida.getNombre()+" has pasado de ser un javakngth cualquiera al aunténtico rey";
+		return "Enhorabuena "+protagonistaPartida.getNombre()+" has pasado de ser un javakngth cualquiera al auntï¿½ntico rey";
 	}
 }
