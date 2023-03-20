@@ -13,7 +13,7 @@ public class ReinoDragon extends Reino {
 
 	@Override
 	public void debilidad(Personaje personaje) {
-		personaje.hablar(getNivel());
+		personaje.hablar();
 
 	}
 

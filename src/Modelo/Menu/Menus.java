@@ -6,7 +6,7 @@ import Modelo.Partida.Partida;
 
 
 public class Menus {
-
+	
 	private Partida partidaCreada;
 
 	public void menuPrincipal(Partida partida) {
@@ -24,7 +24,6 @@ public class Menus {
 		String eleccionMenuOpciones;
 		eleccionMenuOpciones = "<html><div style='text-align: center;'>�Que quieres hacer?<br><br>"
 				+ "1. Iniciar partida<br>" + "2. Ver creditos<br>" + "3. Opciones<br>" + "4. Salir<br></div></html>";
-		tryCatchInt(eleccionMenuOpciones);
 		switch (tryCatchInt(eleccionMenuOpciones)) {
 		case 1:
 			menuPartida();
@@ -36,6 +35,7 @@ public class Menus {
 			menuTutorial();
 			break;
 		case 4:
+					
 			JOptionPane.showMessageDialog(null,
 					"�Hasta pronto  " + partidaCreada.getProtagonistaPartida().getNombre() + " !");
 			break;
@@ -44,9 +44,9 @@ public class Menus {
 	}
 
 	public void menuTutorial() {
-		// TODO document why this method is empty
+	
 	}
-
+	
 	public void menuCreditos() {
 		System.out.println("Los m�quinas");
 
@@ -56,8 +56,8 @@ public class Menus {
 		String eleccionMenuPartida;
 		eleccionMenuPartida = "<html><div style='text-align: center;'>�A qu� reino quieres pertenecer?<br><br>"
 				+ "1. Dragon<br>" + "2. Gigante<br>" + "3. Guerrero<br>" + "4. Hielo<br>" + "5. Ninja</div></html>";
-
-		setReinoPerteneciente(tryCatchInt(eleccionMenuPartida));
+		tryCatchInt(eleccionMenuPartida);
+		menuDificultad();
 		combateReinos();
 		JOptionPane.showMessageDialog(null, "Gracias por jugar");
 
@@ -77,16 +77,14 @@ public class Menus {
 	public boolean menuCombateSubditos() {
 		boolean subditoSalir = false;
 		String eleccionMenuCombateSubditos;
-		do {
+		
 			do {
 				eleccionMenuCombateSubditos = partidaCreada.getReino().getSubdito().getNombreSubditos()
-						+ " tee esta desafiando �Que haras para derrotarle?" + "\n" + "1.Hablar" + "\n" + "2.Esquivar"
+						+ " te esta desafiando �Que haras para derrotarle?" + "\n" + "1.Hablar" + "\n" + "2.Esquivar"
 						+ "\n" + "3.Defender" + "\n" + "4.Desgastar" + "\n" + "5.Silencio";
-				tryCatchString(eleccionMenuCombateSubditos);
 				switch (tryCatchInt(eleccionMenuCombateSubditos)) {
 				case 1:
-					
-						partidaCreada.getReinos()[0].debilidad(partidaCreada.getReino().getSubdito());
+					partidaCreada.getReinos()[0].debilidad(partidaCreada.getReino().getSubdito());
 					break;
 				case 2:
 					partidaCreada.getReinos()[1].debilidad(partidaCreada.getReino().getSubdito());
@@ -107,17 +105,16 @@ public class Menus {
 					JOptionPane.showMessageDialog(null, "�" + partidaCreada.getReino().getNombreSubditos()
 							+ " te ha quitado vida ten cuidado o moriras");
 				}
-					
-			} while (partidaCreada.getReino().getSubdito().getVidaSubditos() != 0
-					|| partidaCreada.getProtagonistaPartida().getVida() != 0);
-			if (partidaCreada.getReino().getSubdito().getVida() != 0) {
-				partidaCreada.getReino().setSubdito(null);
+				if (partidaCreada.getReino().getSubdito().getVida() <= 0) {
+					partidaCreada.getReino().setSubdito(null);
 
-			} else {
-				mensajeHasMuerto();
-				subditoSalir = true;
-			}
-		} while (partidaCreada.getReino().getSubdito() != null || !subditoSalir);
+				} else {
+					mensajeHasMuerto();
+					subditoSalir = true;
+				}
+			} while (partidaCreada.getReino().getSubdito()!= null
+					|| partidaCreada.getProtagonistaPartida().getVida() != 0||!subditoSalir);
+		
 		return subditoSalir;
 	}
 
@@ -163,28 +160,26 @@ public class Menus {
 		return combateRey;
 	}
 
-	public void setReinoPerteneciente(int eleccion) {
-
-		switch (eleccion) {
+	public void menuDificultad() {
+		String eleccionMenuDificultad;
+		int dificultad = 0;
+		eleccionMenuDificultad="Elige la dificultad";
+		switch (tryCatchInt(eleccionMenuDificultad)) {
 		case 1:
-			partidaCreada.getReinos()[0].setProtagonista(partidaCreada.getProtagonistaPartida());
+			dificultad=5;
 			break;
+
 		case 2:
-			partidaCreada.getReinos()[1].setProtagonista(partidaCreada.getProtagonistaPartida());
+			dificultad=3;
 			break;
 		case 3:
-			partidaCreada.getReinos()[2].setProtagonista(partidaCreada.getProtagonistaPartida());
-			break;
-		case 4:
-			partidaCreada.getReinos()[3].setProtagonista(partidaCreada.getProtagonistaPartida());
-			break;
-		case 5:
-			partidaCreada.getReinos()[4].setProtagonista(partidaCreada.getProtagonistaPartida());
-		default:
+			dificultad=1;
 		}
+		partidaCreada.getReino().getRey().setAtributosRey(dificultad);
+		partidaCreada.setProtagonistaPartida(dificultad);
 
 	}
-
+	
 	public void mensajeHasMuerto() {
 		JOptionPane.showMessageDialog(null, "Has muerto" + partidaCreada.getProtagonistaPartida().getNombre());
 	}
@@ -194,13 +189,13 @@ public class Menus {
 	 * 
 	 * @return
 	 */
-	public String tryCatchString(String eleccion) {
+	public String tryCatchString(String pregunta) {
 		String eleccionTryString = null;
 		boolean salirTryString = false;
 		do {
 			try {
 				// Escaner de entrada de datos
-				eleccionTryString = JOptionPane.showInputDialog(eleccion);
+				eleccionTryString = JOptionPane.showInputDialog(pregunta);
 				if (eleccionTryString.length() <= 0){
 					throw stringVacio();
 				}

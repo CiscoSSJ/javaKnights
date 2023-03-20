@@ -12,11 +12,11 @@ import Modelo.Reinos.ReinoNinja;
 
 public class Partida {
 	static boolean saliReinos;
+	
 	private Reino[] reinos = { new ReinoDragon(), new ReinoGigante(), new ReinoGuerrero(), new ReinoHielo(),
 			new ReinoNinja() };
-
 	private Partida[] partidasGuardadas;
-	private Dificultad dificultad=new Dificultad(null);
+	private Dificultad dificultad;
 	private Protagonista protagonistaPartida = new Protagonista();
 	private Menus menus = new Menus();
 	
@@ -37,14 +37,12 @@ public class Partida {
 		}
 	}
 	
-	public  void setProtagonistaPartida(Protagonista protagonistaMenu) {
-		if (protagonistaPartida!=null) {
-			protagonistaMenu.setAtributosProtagonista( getReino().getNivel(), getReino().getNivel(), getReino().getNivel());
-			protagonistaPartida = protagonistaMenu;
-		}
+	public  void setProtagonistaPartida(int dificultad) {
+           this.protagonistaPartida.setAtributosProtagonista(dificultad,dificultad,dificultad);
+       
 	}
 	 public void setNombreProtagonista(String nombreProtagonista) {
-		protagonistaPartida.setNombreProtagonista(nombreProtagonista);
+		this.protagonistaPartida.setNombreProtagonista(nombreProtagonista);
 	}
 	
 	
@@ -108,4 +106,5 @@ public class Partida {
 	public String getMensajeGanadorPartida() {
 		return "Enhorabuena "+protagonistaPartida.getNombre()+" has pasado de ser un javakngth cualquiera al aunt�ntico rey";
 	}
+	
 }

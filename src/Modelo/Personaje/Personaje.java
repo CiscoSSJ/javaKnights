@@ -60,9 +60,9 @@ public abstract class Personaje {
 
 
 
-	public abstract void hablar(int nivelReino);
-	public abstract void esquivar(int nivelReino);
-	public abstract void defender(int nivelReino);
-	public abstract void desgastar(int nivelReino);
-	public abstract void silencio(int nivelReino);
+	public abstract void hablar();
+	public abstract void esquivar();
+	public abstract void defender();
+	public abstract void desgastar();
+	public abstract void silencio();
 }

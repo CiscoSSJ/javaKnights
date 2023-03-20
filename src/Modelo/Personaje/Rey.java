@@ -3,12 +3,19 @@ package Modelo.Personaje;
 public class Rey extends Personaje {
 
 	protected Protagonista protagonista;
-
+	private int dificultad;
+	
 	public Rey(String nombreRey, String nombreReino, int fuerza, int vida, int velocidad) {
-		super(nombreRey, nombreReino, fuerza * fuerza, vida * vida, velocidad * velocidad);
+		super(nombreRey, nombreReino, fuerza , vida , velocidad );
 
 	}
-
+	public void  setAtributosRey(int dificultad) {
+		this.fuerza*=dificultad;
+		this.vida*=dificultad;
+		this.velocidad*=dificultad;
+		this.dificultad=dificultad;
+		
+	}
 	public String getNombreRey() {
 		return this.nombre;
 	}
@@ -21,40 +28,40 @@ public class Rey extends Personaje {
 		return this.fuerza;
 	}
 
-	public void debilidadRey(int nivelReino) {
+	public void debilidadRey() {
 		if (this.vida == 1)
-			setVida(vida - nivelReino);
+			setVida(0);
 		else {
-			setVida(vida -= nivelReino / 2);
+			setVida(vida -=(this.dificultad/ 2));
 		}
 	}
 
 	@Override
-	public void hablar(int nivelReino) {
-		debilidadRey(nivelReino);
+	public void hablar() {
+		debilidadRey();
 
 	}
 
 	@Override
-	public void esquivar(int nivelReino) {
-		debilidadRey(nivelReino);
+	public void esquivar() {
+		debilidadRey();
 	}
 
 	@Override
-	public void defender(int nivelReino) {
-		debilidadRey(nivelReino);
+	public void defender() {
+		debilidadRey();
 	}
 
 	@Override
-	public void desgastar(int nivelReino) {
-		debilidadRey(nivelReino);
+	public void desgastar() {
+		debilidadRey();
 	}
 
 	@Override
-	public void silencio(int nivelReino) {
-		debilidadRey(nivelReino);
+	public void silencio() {
+		debilidadRey();
 	}
-
+	
 	// ¿Velocidad?
 	/*
 	 * if(protagonista.velocidad<this.velocidad) protagonista.vida-=this.fuerza;

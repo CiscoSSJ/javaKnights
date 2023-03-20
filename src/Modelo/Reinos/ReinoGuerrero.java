@@ -12,7 +12,7 @@ public class ReinoGuerrero extends Reino {
 
 	@Override
 	public void debilidad(Personaje personaje) {
-		personaje.defender(getNivel());
+		personaje.defender();
 
 	}
 

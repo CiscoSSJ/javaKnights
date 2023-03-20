@@ -5,7 +5,7 @@ import Modelo.Personaje.Personaje;
 public class ReinoHielo extends Reino {
 
 	public ReinoHielo() {
-		super("Rey de la noche", new String[] { "Elsa de Frozen", "Caminante Blanco", "Gared Tollett" }, "Reino Dragon",
+		super("Rey de la noche", new String[] { "Elsa de Frozen", "Caminante Blanco", "Gared Tollett" }, "Reino Hielo",
 				4);
 
 	}
@@ -13,7 +13,7 @@ public class ReinoHielo extends Reino {
 	@Override
 
 	public void debilidad(Personaje personaje) {
-		personaje.desgastar(getNivel());
+		personaje.desgastar();
 
 	}
 

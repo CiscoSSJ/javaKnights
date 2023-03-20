@@ -12,7 +12,7 @@ public class ReinoGigante extends Reino {
 
 	@Override
 	public void debilidad(Personaje personaje) {
-		personaje.esquivar(getNivel());
+		personaje.esquivar();
 
 	}
 

@@ -1,7 +1,7 @@
 package Modelo.Personaje;
 
 public class Protagonista extends Personaje {
-	private static String nombreProtagonista;
+	private  String nombreProtagonista;
 
 	public Protagonista() {
 		super();
@@ -14,10 +14,10 @@ public class Protagonista extends Personaje {
 	}
 
 	public void setNombreProtagonista(String nombreProta) {
-		nombreProtagonista = nombreProta + " I del " + super.nombreReino;
+		this.nombreProtagonista = nombreProta + " I";
 	}
 
-	public static String getNombreProtagonista() {
+	public  String getNombreProtagonista() {
 		return nombreProtagonista;
 	}
 
@@ -30,27 +30,27 @@ public class Protagonista extends Personaje {
 	}
 
 	@Override
-	public void hablar(int nivelReino) {
+	public void hablar() {
    // TODO document why this method is empty
  }
 
 	@Override
-	public void esquivar(int nivelReino) {
+	public void esquivar() {
    // TODO document why this method is empty
  }
 
 	@Override
-	public void defender(int nivelReino) {
+	public void defender() {
    // TODO document why this method is empty
  }
 
 	@Override
-	public void desgastar(int nivelReino) {
+	public void desgastar() {
    // TODO document why this method is empty
  }
 
 	@Override
-	public void silencio(int nivelReino) {
+	public void silencio() {
    // TODO document why this method is empty
  }
 

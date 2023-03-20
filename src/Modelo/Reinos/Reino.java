@@ -1,7 +1,7 @@
 package Modelo.Reinos;
 
+import Modelo.Menu.Opciones.Dificultad;
 import Modelo.Personaje.Personaje;
-import Modelo.Personaje.Protagonista;
 import Modelo.Personaje.Rey;
 import Modelo.Personaje.Subdito;
 
@@ -19,12 +19,12 @@ public abstract class Reino {
 	private int nivel;
 	private Rey rey;
 	private Subdito[] subditos;
-	private Protagonista protagonista = null;
+	private Dificultad dificultad;
 	/*
-	 * M�todos de acci�n
+	 * M�todos de accion 
 	 */
 
-	protected Reino(String nombreRey, String[] nombreSubditos, String nombreReino, int nivel) {
+	public Reino(String nombreRey, String[] nombreSubditos, String nombreReino, int nivel) {
 		this.nombreRey = nombreRey;
 		this.nombreSubditos = nombreSubditos;
 		this.nombreReino = nombreReino;
@@ -137,8 +137,13 @@ public abstract class Reino {
 	 * @param subdito
 	 */
 	
-	public void setSubdito(Subdito subdito) {
-		subdito=null;
+	public Subdito setSubdito(Subdito subdito) {
+		for (int i = 0; i < subditos.length && subditos[i]!=null;) {
+			subditos[i]=subdito;
+			return subditos[i];
+		}
+		return subdito;
+		
 	}
 	
 	/**}for(
@@ -168,11 +173,6 @@ public abstract class Reino {
 
 	public abstract void debilidad(Personaje personaje);
 
-	public void setProtagonista(Protagonista protagonistaPartida) {
-		protagonista = protagonistaPartida;
-	}
-
-
 
 	public boolean isComprobarDebilidad() {
 		return comprobarDebilidad;
@@ -180,6 +180,13 @@ public abstract class Reino {
 
 	public void setComprobarDebilidad(boolean comprobarDebilidad) {
 		this.comprobarDebilidad = comprobarDebilidad;
+	}
+
+	/**
+	 * @return the dificultad
+	 */
+	public Dificultad getDificultad() {
+		return dificultad;
 	}
 
 }

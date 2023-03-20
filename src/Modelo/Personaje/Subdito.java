@@ -24,33 +24,33 @@ public class Subdito extends Personaje {
 	public int getFuerzaSubditos() {
 		return this.fuerza;
 	}
-	public void debilidadSubdito(int nivelReino) {
-		setVida(vida-nivelReino);
+	public void debilidadSubdito() {
+		setVida(0);
 	}
 
 	@Override
-	public void hablar(int nivelReino) {
-		debilidadSubdito(nivelReino);
+	public void hablar() {
+		debilidadSubdito();
 	}
 
 	@Override
-	public void esquivar(int nivelReino) {
-		debilidadSubdito(nivelReino);		
+	public void esquivar() {
+		debilidadSubdito();		
 	}
 
 	@Override
-	public void defender(int nivelReino) {
-		debilidadSubdito(nivelReino);		
+	public void defender() {
+		debilidadSubdito();		
 	}
 
 	@Override
-	public void desgastar(int nivelReino) {
-		debilidadSubdito(nivelReino);		
+	public void desgastar() {
+		debilidadSubdito();		
 	}
 
 	@Override
-	public void silencio(int nivelReino) {
-		debilidadSubdito(nivelReino);		
+	public void silencio() {
+		debilidadSubdito();		
 	}
 
 	
