@@ -19,7 +19,7 @@ public abstract class Reino {
 	private int nivel;
 	private Rey rey;
 	private Subdito[] subditos;
-	static Protagonista protagonista = null;
+	private Protagonista protagonista = null;
 	/*
 	 * M�todos de acci�n
 	 */
@@ -166,7 +166,7 @@ public abstract class Reino {
 		this.mensajeGanadorReino = mensajeGanadorReino;
 	}
 
-	public abstract void debilidad(Personaje personaje,boolean comprobarDebilidad);
+	public abstract void debilidad(Personaje personaje);
 
 	public void setProtagonista(Protagonista protagonistaPartida) {
 		protagonista = protagonistaPartida;

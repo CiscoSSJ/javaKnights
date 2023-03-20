@@ -2,7 +2,6 @@ package Modelo.Reinos;
 
 import Modelo.Personaje.Personaje;
 
-
 public class ReinoHielo extends Reino {
 
 	public ReinoHielo() {
@@ -15,12 +14,6 @@ public class ReinoHielo extends Reino {
 
 	public void debilidad(Personaje personaje) {
 		personaje.desgastar(getNivel());
-
-	}
-
-	@Override
-	protected boolean comprobarDebilidad() {
-		return true;
 
 	}
 

@@ -2,7 +2,6 @@ package Modelo.Reinos;
 
 import Modelo.Personaje.Personaje;
 
-
 public class ReinoNinja extends Reino {
 
 	public ReinoNinja() {
@@ -11,13 +10,7 @@ public class ReinoNinja extends Reino {
 
 	@Override
 	public void debilidad(Personaje personaje) {
-		comprobarDebilidad();
 		personaje.silencio(getNivel());
 
-	}
-
-	@Override
-	protected boolean comprobarDebilidad() {
-		return true;
 	}
 }

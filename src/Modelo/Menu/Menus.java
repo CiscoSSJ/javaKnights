@@ -3,7 +3,7 @@ package Modelo.Menu;
 import javax.swing.JOptionPane;
 
 import Modelo.Partida.Partida;
-import Modelo.Personaje.Personaje;
+
 
 public class Menus {
 
@@ -15,7 +15,6 @@ public class Menus {
 		JOptionPane.showMessageDialog(null,
 				"<html><div style='text-align: center;'>ï¿½Bienvenido a Java Knights!<br><br>Este es un juego creado en Java donde tendrï¿½s que demostrar tus habilidades de estrategia y combate para convertirte en un verdadero caballero.<br><br>A medida que avances en el juego, tendrï¿½s la oportunidad de enfrentarte a desafiantes enemigos y ganar valiosos tesoros.<br><br>ï¿½Prepï¿½rate para embarcarte en una emocionante aventura en el mundo medieval de Java Knights!</div></html>");
 		eleccionMenuPrincipal = "<html><div style='text-align: center;'>Indï¿½canos cuï¿½l es tu nombre, caballer@!<br><br></div></html>";
-		tryCatchString(eleccionMenuPrincipal);
 		partidaCreada.setNombreProtagonista(tryCatchString(eleccionMenuPrincipal));
 		menuOpciones();
 
@@ -74,8 +73,8 @@ public class Menus {
 		} while (partidaCreada.getReino() != null || !combateReinos);
 
 	}
-
-	public boolean menuCombateSubditos(Personaje personaje) {
+	//¿Implementacion de un solo metodo para que se le pase personaje?
+	public boolean menuCombateSubditos() {
 		boolean subditoSalir = false;
 		String eleccionMenuCombateSubditos;
 		do {
@@ -86,20 +85,20 @@ public class Menus {
 				tryCatchString(eleccionMenuCombateSubditos);
 				switch (tryCatchInt(eleccionMenuCombateSubditos)) {
 				case 1:
-					if(partidaCreada.getReino().isComprobarDebilidad()==true)
-					partidaCreada.getReinos()[0].debilidad(partidaCreada.getReino().getSubdito().hablar(partidaCreada.getReino().getNivel()));
+					
+						partidaCreada.getReinos()[0].debilidad(partidaCreada.getReino().getSubdito());
 					break;
 				case 2:
-					partidaCreada.getReinos()[1].debilidad(partidaCreada.getReino().getSubdito().esquivar(partidaCreada.getReino().getNivel()));
+					partidaCreada.getReinos()[1].debilidad(partidaCreada.getReino().getSubdito());
 					break;
 				case 3:
-					partidaCreada.getReinos()[2].debilidad(partidaCreada.getReino().getSubdito().defender(partidaCreada.getReino().getNivel()));
+					partidaCreada.getReinos()[2].debilidad(partidaCreada.getReino().getSubdito());
 					break;
 				case 4:
-					partidaCreada.getReinos()[3].debilidad(partidaCreada.getReino().getSubdito().desgastar(partidaCreada.getReino().getNivel()));
+					partidaCreada.getReinos()[3].debilidad(partidaCreada.getReino().getSubdito());
 					break;
 				case 5:
-					partidaCreada.getReinos()[4].debilidad(partidaCreada.getReino().getSubdito().silencio(partidaCreada.getReino().getNivel()));
+					partidaCreada.getReinos()[4].debilidad(partidaCreada.getReino().getSubdito());
 					break;
 				default:
 					break;

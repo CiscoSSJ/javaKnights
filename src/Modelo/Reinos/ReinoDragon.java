@@ -1,8 +1,7 @@
 package Modelo.Reinos;
 
 import Modelo.Personaje.Personaje;
-import Modelo.Personaje.Rey;
-import Modelo.Personaje.Subdito;
+
 
 public class ReinoDragon extends Reino {
 	
@@ -13,8 +12,7 @@ public class ReinoDragon extends Reino {
 	}
 
 	@Override
-	public void debilidad(Personaje personaje,boolean comprobarDebilidad) {
-		super.setComprobarDebilidad(true);
+	public void debilidad(Personaje personaje) {
 		personaje.hablar(getNivel());
 
 	}
