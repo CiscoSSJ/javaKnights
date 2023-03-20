@@ -43,7 +43,7 @@ public class Partida {
 			protagonistaPartida = protagonistaMenu;
 		}
 	}
-	 void setNombreProtagonista(String nombreProtagonista) {
+	 public void setNombreProtagonista(String nombreProtagonista) {
 		protagonistaPartida.setNombreProtagonista(nombreProtagonista);
 	}
 	

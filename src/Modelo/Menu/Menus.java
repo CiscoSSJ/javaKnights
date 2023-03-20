@@ -3,6 +3,7 @@ package Modelo.Menu;
 import javax.swing.JOptionPane;
 
 import Modelo.Partida.Partida;
+import Modelo.Personaje.Personaje;
 
 public class Menus {
 
@@ -74,7 +75,7 @@ public class Menus {
 
 	}
 
-	public boolean menuCombateSubditos() {
+	public boolean menuCombateSubditos(Personaje personaje) {
 		boolean subditoSalir = false;
 		String eleccionMenuCombateSubditos;
 		do {
@@ -85,7 +86,7 @@ public class Menus {
 				tryCatchString(eleccionMenuCombateSubditos);
 				switch (tryCatchInt(eleccionMenuCombateSubditos)) {
 				case 1:
-					partidaCreada.getReino().comprobarDebilidad(false);
+					if(partidaCreada.getReino().isComprobarDebilidad()==true)
 					partidaCreada.getReinos()[0].debilidad(partidaCreada.getReino().getSubdito().hablar(partidaCreada.getReino().getNivel()));
 					break;
 				case 2:
@@ -111,7 +112,7 @@ public class Menus {
 			} while (partidaCreada.getReino().getSubdito().getVidaSubditos() != 0
 					|| partidaCreada.getProtagonistaPartida().getVida() != 0);
 			if (partidaCreada.getReino().getSubdito().getVida() != 0) {
-				partidaCreada.getReino().setSubditoConsultado(null);
+				partidaCreada.getReino().setSubdito(null);
 
 			} else {
 				mensajeHasMuerto();

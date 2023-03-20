@@ -5,9 +5,7 @@ import Modelo.Personaje.Rey;
 import Modelo.Personaje.Subdito;
 
 public class ReinoDragon extends Reino {
-	protected static Rey reyDragon;
-	protected static Subdito[] subditosDragones;
-	protected static String[] nombreSubditos = { "Droghon", "Raeghal", "Viserion" };
+	
 
 	public ReinoDragon() {
 		super("Veighar", new String[] { "Droghon", "Raeghal", "Viserion" }, "Reino Dragon", 1);
@@ -15,16 +13,11 @@ public class ReinoDragon extends Reino {
 	}
 
 	@Override
-	public void debilidad(Personaje personaje) {
+	public void debilidad(Personaje personaje,boolean comprobarDebilidad) {
 		super.setComprobarDebilidad(true);
 		personaje.hablar(getNivel());
 
 	}
 
-	@Override
-	protected boolean comprobarDebilidad() {
-		// TODO Auto-generated method stub
-		return true;
-	}
 
 }
