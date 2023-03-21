@@ -10,10 +10,10 @@ public class Rey extends Personaje {
 
 	}
 	public void  setAtributosRey(int dificultad) {
-		this.fuerza*=dificultad;
-		this.vida*=dificultad;
-		this.velocidad*=dificultad;
-		this.dificultad=dificultad;
+		this.fuerza-=dificultad/2;
+		this.vida-=dificultad/2;
+		this.velocidad-=dificultad/2;
+		this.dificultad-=dificultad/2;
 		
 	}
 	public String getNombreRey() {

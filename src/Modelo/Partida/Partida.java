@@ -79,6 +79,13 @@ public class Partida {
 	    }
 	    return null; // Si no se encuentra ning�n elemento no nulo, devuelve null
 	}
+	public void setAtributosRey(int dificultad) {
+		  for (Reino r : reinos) {
+		       r.getRey().setAtributosRey(dificultad);
+		       
+		    }
+		    
+	}
 
 	/**
 	public Reino getReino() {

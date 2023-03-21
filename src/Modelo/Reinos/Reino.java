@@ -101,17 +101,19 @@ public abstract class Reino {
 	 * @return subdito
 	 */
 	public Subdito getSubdito() {
-		for (int i = 0; i < this.subditos.length &&this.subditos[i]!=null;i++) {
-
-			if (subditos[i] != null) {
+		for (int i = 0; i < this.subditos.length;) {
+			if(this.subditos[i]==null) {
+				i++;
 				return subditos[i];
 			}
 			else {
-				i--;
+				return subditos[i];
 			}
 			
+			
 		}
-		return null; // Si no se encuentra ning�n elemento no nulo, devuelve null
+		// Si no se encuentra ning�n elemento no nulo, devuelve null
+		return null;
 	}
 	
 
