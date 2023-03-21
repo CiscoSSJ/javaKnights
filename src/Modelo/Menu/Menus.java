@@ -90,8 +90,7 @@ public class Menus {
 	public void combateReinos() {
 		boolean combateReinos = false;
 		do {
-			combateReinos = menuCombateSubditos();
-			combateReinos= menuCombateRey(combateReinos);
+			combateReinos = menuCombateRey(menuCombateSubditos());
 
 		} while (partidaCreada.getReinos()[4].getRey() != null || !combateReinos);
 
@@ -100,6 +99,7 @@ public class Menus {
 	// ¿Implementacion de un solo metodo para que se le pase personaje?
 	public boolean menuCombateSubditos() {
 		boolean subditoSalir = false;
+		boolean subditoSalirBucle=false;
 		String eleccionMenuCombateSubditos;
 		JOptionPane.showMessageDialog(null, "Estas en el " + partidaCreada.getReino().getNombreReino() + "\n"
 				+ "¡Lucha con sus subditos para conquistarlo!");
@@ -151,18 +151,19 @@ public class Menus {
 			// el combate
 			if (partidaCreada.getProtagonistaPartida().getVida() == 0) {
 				mensajeHasMuerto();
-				subditoSalir = true;
+				subditoSalirBucle = true;
 			}
 
 		} while (partidaCreada.getReino().getSubdito() != null && partidaCreada.getProtagonistaPartida().getVida() != 0
-				&& partidaCreada.getReino() != null || !subditoSalir);
-
+				&& partidaCreada.getReino() != null || !subditoSalirBucle);
+		if (partidaCreada.getProtagonistaPartida().getVida() == 0) {
+			subditoSalir = true;
+		}
 		return subditoSalir;
 	}
 
 	public boolean menuCombateRey(boolean seguir) {
-		boolean combateRey = false;
-		combateRey=seguir;
+		boolean combateRey = seguir;
 		String eleccionMenuCombateRey;
 		do {
 
@@ -194,7 +195,7 @@ public class Menus {
 				;
 			if (partidaCreada.getReino().getRey().getVida() != 0) {
 				partidaCreada.getReino().setRey(null);
-				combateRey = false;
+
 			} else {
 				mensajeHasMuerto();
 				combateRey = true;
