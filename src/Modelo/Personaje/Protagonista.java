@@ -14,9 +14,14 @@ public class Protagonista extends Personaje {
 	}
 
 	public void setNombreProtagonista(String nombreProta) {
-		this.nombreProtagonista = nombreProta + " I";
+		this.nombreProtagonista = nombreProta ;
 	}
-
+	public void setNombreReino(String nombreReino) {
+		this.nombreProtagonista=this.nombreProtagonista+ " I del "+nombreReino;
+	}
+	public void setAtaqueAProtagonista() {
+		this.vida--;
+	}
 	public  String getNombreProtagonista() {
 		return nombreProtagonista;
 	}
@@ -28,30 +33,26 @@ public class Protagonista extends Personaje {
 	public int getFuerza() {
 		return this.fuerza;
 	}
-
+	
 	@Override
 	public void hablar() {
-   // TODO document why this method is empty
- }
+		
+	}
 
 	@Override
 	public void esquivar() {
-   // TODO document why this method is empty
  }
 
 	@Override
 	public void defender() {
-   // TODO document why this method is empty
  }
 
 	@Override
 	public void desgastar() {
-   // TODO document why this method is empty
  }
 
 	@Override
 	public void silencio() {
-   // TODO document why this method is empty
  }
 
 }

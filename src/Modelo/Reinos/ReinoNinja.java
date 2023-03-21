@@ -13,4 +13,6 @@ public class ReinoNinja extends Reino {
 		personaje.silencio();
 
 	}
+
+	
 }

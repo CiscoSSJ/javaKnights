@@ -21,9 +21,19 @@ public class Partida {
 	private Menus menus = new Menus();
 	
 
-
-	public void setReinos(Reino[] reinos) {
-		this.reinos = reinos;
+	
+		
+	public Reino setReino(Reino reinos) {
+		for (int i = 0; i < this.reinos.length;) {
+			
+			if(this.reinos[i]!=null) {
+			this.reinos[i]=reinos;
+			return this.reinos[i];
+			}
+			i++;	
+		}
+		return reinos;
+		
 	}
 
 	public void setPartidasGuardadas(Partida partida) {
@@ -42,7 +52,7 @@ public class Partida {
        
 	}
 	 public void setNombreProtagonista(String nombreProtagonista) {
-		this.protagonistaPartida.setNombreProtagonista(nombreProtagonista);
+		this.protagonistaPartida.setNombre(nombreProtagonista);
 	}
 	
 	
@@ -104,7 +114,7 @@ public class Partida {
 	 * @return the mensajeGanadorPartida
 	 */
 	public String getMensajeGanadorPartida() {
-		return "Enhorabuena "+protagonistaPartida.getNombre()+" has pasado de ser un javakngth cualquiera al aunt�ntico rey";
+		return "Enhorabuena "+protagonistaPartida.getNombre()+" has pasado de ser un javaknigth cualquiera al aunt�ntico rey";
 	}
 	
 }

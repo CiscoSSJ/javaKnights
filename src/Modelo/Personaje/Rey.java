@@ -27,7 +27,7 @@ public class Rey extends Personaje {
 	public int getFuerzaRey() {
 		return this.fuerza;
 	}
-
+	//Revisar mañana
 	public void debilidadRey() {
 		if (this.vida == 1)
 			setVida(0);

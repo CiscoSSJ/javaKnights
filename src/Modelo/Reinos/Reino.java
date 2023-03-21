@@ -101,14 +101,16 @@ public abstract class Reino {
 	 * @return subdito
 	 */
 	public Subdito getSubdito() {
-		for (Subdito subdito : subditos) {
+		for (int i = 0; i < this.subditos.length &&this.subditos[i]!=null;i++) {
 
-			if (subdito != null) {
-				return subdito;
+			if (subditos[i] != null) {
+				return subditos[i];
+			}
+			else {
+				i--;
 			}
 			
 		}
-		
 		return null; // Si no se encuentra ning�n elemento no nulo, devuelve null
 	}
 	
@@ -138,9 +140,13 @@ public abstract class Reino {
 	 */
 	
 	public Subdito setSubdito(Subdito subdito) {
-		for (int i = 0; i < subditos.length && subditos[i]!=null;) {
-			subditos[i]=subdito;
-			return subditos[i];
+		for (int i = 0; i < this.subditos.length;) {
+			
+			if(this.subditos[i]!=null) {
+			this.subditos[i]=subdito;
+			return this.subditos[i];
+			}
+			i++;	
 		}
 		return subdito;
 		
@@ -188,5 +194,6 @@ public abstract class Reino {
 	public Dificultad getDificultad() {
 		return dificultad;
 	}
+
 
 }
