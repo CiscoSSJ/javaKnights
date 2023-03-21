@@ -12,16 +12,32 @@ public class Menus {
 	public void menuPrincipal(Partida partida) {
 		String eleccionMenuPrincipal;
 		JOptionPane.showMessageDialog(null,
-				"<html><div style='text-align: center;'>¿Bienvenido a Java Knights!<br><br>Este es un juego creado en Java donde tendrias que demostrar tus habilidades de estrategia y combate para convertirte en un verdadero caballero.<br><br>A medida que avances en el juego, tendras la oportunidad de enfrentarte a desafiantes enemigos y ganar valiosos tesoros.<br><br>¿Preparate para embarcarte en una emocionante aventura en el mundo medieval de Java Knights!</div></html>");
+				"<html>"
+					+ "<div style='text-align: center;'>"
+						+ "Â¿Bienvenido a Java Knights!<br><br>"
+						+ "Este e un juego creado en Java donde tendrias que demostrar tus habilidades"
+						+ " de estrategia y combate para convertirte en un verdadero caballero."
+						+ "<br><br>"
+						+ "A medida que avances en el juego, tendras la oportunidad de enfrentarte"
+						+ " a desafiantes enemigos y ganar valiosos tesoros."
+						+ "<br><br>"
+						+ "Â¿Preparate para embarcarte en una emocionante aventura en el mundo medieval"
+						+ " de Java Knights!"
+					+ "</div>"
+				+ "</html>",
+				"Java Knights", JOptionPane.PLAIN_MESSAGE);
 		eleccionMenuPrincipal = "<html><div style='text-align: center;'>Indicanos cual es tu nombre, caballer@!<br><br></div></html>";
-		partida.setNombreProtagonista(tryCatchString(eleccionMenuPrincipal));
+		String nombreProtagonista = tryCatchString(eleccionMenuPrincipal);
+		if (nombreProtagonista == null) { // El usuario hizo clic en Cancelar
+			System.exit(0); // Salir del programa
+		}
+		partida.setNombreProtagonista(nombreProtagonista);
 		menuOpciones(partida);
-
 	}
 
 	public void menuOpciones(Partida partida) {
 		String eleccionMenuOpciones;
-		eleccionMenuOpciones = "<html><div style='text-align: center;'>¿Que quieres hacer?<br><br>"
+		eleccionMenuOpciones = "<html><div style='text-align: center;'>Â¿Que quieres hacer?<br><br>"
 				+ "1. Iniciar partida<br>" + "2. Ver creditos<br>" + "3. Opciones<br>" + "4. Salir<br></div></html>";
 		switch (tryCatchInt(eleccionMenuOpciones)) {
 		case 1:
@@ -35,8 +51,8 @@ public class Menus {
 			break;
 		case 4:
 
-			JOptionPane.showMessageDialog(null, "¡Hasta pronto  " + partida.getProtagonistaPartida().getNombre()
-					+ " nos vemos en la siguiente batalla!");
+			JOptionPane.showMessageDialog(null, "Â¡Hasta pronto  " + partida.getProtagonistaPartida().getNombre()
+					+ " nos vemos en la siguiente batalla!", "Java Knights - Adios", JOptionPane.PLAIN_MESSAGE);
 			break;
 		}
 
@@ -47,13 +63,19 @@ public class Menus {
 	}
 
 	public void menuCreditos() {
-		System.out.println("Los maquinas");
+		JOptionPane.showMessageDialog(null,
+				"<html>"
+					+ "<div style='text-align: center;'>"
+						+ "Los Maquinas."
+					+ "</div>"
+				+ "</html>",
+				"Java Knights", JOptionPane.PLAIN_MESSAGE);
 
 	}
 
 	public void menuPartida(Partida partida) {
 		String eleccionMenuPartida;
-		eleccionMenuPartida = "<html><div style='text-align: center;'>¿ A que reino quieres pertenecer?<br><br>"
+		eleccionMenuPartida = "<html><div style='text-align: center;'>Â¿ A que reino quieres pertenecer?<br><br>"
 				+ "1. Dragon<br>" + "2. Gigante<br>" + "3. Guerrero<br>" + "4. Hielo<br>" + "5. Ninja</div></html>";
 
 		partida.getProtagonistaPartida().setNombreReino(setReinoPerteneciente(partida, tryCatchInt(eleccionMenuPartida)));
@@ -95,18 +117,18 @@ public class Menus {
 		combateReinos = menuCombateRey(partida, menuCombateSubditos(partida));
 		}
 		
-		JOptionPane.showMessageDialog(null, partida.getMensajeGanadorPartida());
+		JOptionPane.showMessageDialog(null, partida.getMensajeGanadorPartida(), "Java Knights", JOptionPane.PLAIN_MESSAGE);
 	}
 
-	// ¿Implementacion de un solo metodo para que se le pase personaje?
+	// Â¿Implementacion de un solo metodo para que se le pase personaje?
 	public boolean menuCombateSubditos(Partida partida) {
 	    boolean subditoSalir = false;
 	    String eleccionMenuCombateSubditos;
 	    JOptionPane.showMessageDialog(null, "Estas en el " + partida.getReino().getNombreReino() + "\n"
-	            + "¡Lucha con sus subditos para conquistarlo!");
+	            + "Â¡Lucha con sus subditos para conquistarlo!", "Java Knights", JOptionPane.PLAIN_MESSAGE);
 	    do {
 	        eleccionMenuCombateSubditos = partida.getReino().getSubdito().getNombreSubditos()
-	                + " te esta desafiando ¿Que haras para derrotarle?" + "\n" + "1.Hablar" + "\n" + "2.Esquivar" + "\n"
+	                + " te esta desafiando Â¿Que haras para derrotarle?" + "\n" + "1.Hablar" + "\n" + "2.Esquivar" + "\n"
 	                + "3.Defender" + "\n" + "4.Desgastar" + "\n" + "5.Silencio";
 	        switch (tryCatchInt(eleccionMenuCombateSubditos)) {
 	            case 1:
@@ -131,8 +153,8 @@ public class Menus {
 	        // Condicion para cuando el protagonista falla y se le quita vida a este
 	        if (partida.getReino().getSubdito().getVida() != 0) {
 	            partida.getProtagonistaPartida().setAtaqueAProtagonista();
-	            JOptionPane.showMessageDialog(null, "¡" + partida.getReino().getSubdito().getNombreSubditos()
-	                    + " te ha quitado vida ten cuidado o moriras!");
+	            JOptionPane.showMessageDialog(null, "Â¡" + partida.getReino().getSubdito().getNombreSubditos()
+	                    + " te ha quitado vida ten cuidado o moriras!", "Java Knights - Aviso", JOptionPane.PLAIN_MESSAGE);
 	            if (partida.getProtagonistaPartida().getVida() <= 0) {
 	                mensajeHasMuerto(partida, partida.getReino().getSubdito());
 	                subditoSalir = true;
@@ -152,13 +174,13 @@ public class Menus {
 		boolean subditoSalir = false;
 		String eleccionMenuCombateSubditos;
 		JOptionPane.showMessageDialog(null, "Estas en el " + partida.getReino().getNombreReino() + "\n"
-				+ "¡Lucha con sus subditos para conquistarlo!");
+				+ "Â¡Lucha con sus subditos para conquistarlo!", "Java Knights", JOptionPane.PLAIN_MESSAGE);
 		do {
 
 
 
 			eleccionMenuCombateSubditos = partida.getReino().getSubdito().getNombreSubditos()
-					+ " te esta desafiando ¿Que haras para derrotarle?" + "\n" + "1.Hablar" + "\n" + "2.Esquivar" + "\n"
+					+ " te esta desafiando Â¿Que haras para derrotarle?" + "\n" + "1.Hablar" + "\n" + "2.Esquivar" + "\n"
 					+ "3.Defender" + "\n" + "4.Desgastar" + "\n" + "5.Silencio";
 			switch (tryCatchInt(eleccionMenuCombateSubditos)) {
 			case 1:
@@ -183,7 +205,7 @@ public class Menus {
 			// Condicion para cuando falla el protagonista y se le quita vida a este
 			if(partida.getReino().getSubdito().getVida() != 0){
 				partida.getProtagonistaPartida().setAtaqueAProtagonista();
-				JOptionPane.showMessageDialog(null, "¡" + partida.getReino().getSubdito().getNombreSubditos()
+				JOptionPane.showMessageDialog(null, "Â¡" + partida.getReino().getSubdito().getNombreSubditos()
 						+ " te ha quitado vida ten cuidado o moriras!");
 
 			}
@@ -212,7 +234,7 @@ public class Menus {
 		while(!combateRey) {
 			do {
 			eleccionMenuCombateRey = "<html><div style=text align:left>" + partida.getReino().getNombreRey()
-					+ " te esta desafiando ¿Que haras para derrotarle?" + "\n" + "1.Hablar" + "\n" + "2.Esquivar"
+					+ " te esta desafiando Â¿Que haras para derrotarle?" + "\n" + "1.Hablar" + "\n" + "2.Esquivar"
 					+ "\n" + "3.Defender" + "\n" + "4.Desgastar" + "\n" + "5.Silencio</div></html>";
 			switch (tryCatchInt(eleccionMenuCombateRey)) {
 			case 1:
@@ -238,8 +260,8 @@ public class Menus {
 
 			} else {
 				partida.getProtagonistaPartida().setAtaqueAProtagonista();
-				JOptionPane.showMessageDialog(null, "¡" + partida.getReino().getRey().getNombreRey()
-						+ " te ha quitado vida ten cuidado o moriras!");
+				JOptionPane.showMessageDialog(null, "Â¡" + partida.getReino().getRey().getNombreRey()
+						+ " te ha quitado vida ten cuidado o moriras!", "Java Knights - Aviso", JOptionPane.PLAIN_MESSAGE);
 			if(partida.getProtagonistaPartida().getVida()==0)
 				mensajeHasMuerto(partida, partida.getReino().getRey());
 				combateRey = true;
@@ -257,10 +279,10 @@ public class Menus {
 	public void menuDificultad(Partida partida) {
 		String eleccionMenuDificultad;
 		int dificultad = 0;
-		eleccionMenuDificultad = " <html><div style='text-align: left;'>Elige a continuacion la dificultad de la partida"
+		eleccionMenuDificultad = "Elige a continuacion la dificultad de la partida:"
 				+ "\n 1. Facil - Puedes conquistar reinos facilmente."
-				+ "\n 2. Media - Vas a poder conquistar con facilidad los reinos aunque algun que otro subdito te pondra las cosas dificiles"
-				+ "\n 3. Dificil - En cada reino te cuestionaras si merecio la pena ir a conquistar ese reino</div></html>";
+				+ "\n 2. Media - Vas a poder conquistar con facilidad los reinos aunque algun que otro subdito te pondra las cosas dificiles."
+				+ "\n 3. Dificil - En cada reino te cuestionaras si merecio la pena ir a conquistar ese reino.";
 		switch (tryCatchInt(eleccionMenuDificultad)) {
 		case 1:
 			dificultad = 5;
@@ -287,52 +309,55 @@ public class Menus {
 	 * @return
 	 */
 	public String tryCatchString(String pregunta) {
-		String eleccionTryString = null;
-		boolean salirTryString = false;
-		do {
-			try {
-				// Escaner de entrada de datos
-				eleccionTryString = JOptionPane.showInputDialog(pregunta);
-				if (eleccionTryString.length() <= 0) {
-					throw stringVacio();
-				}
-				// Si todo va bien sale del bucle y del metodo
-				salirTryString = true;
-			} catch (Exception e) {
-				// Si todo no va bien vuelve a entrar en el bucle sin salir del metodo
-				JOptionPane.showMessageDialog(null, "Palabra mal introducida,vuelve a intentarlo");
-
-			}
-		} while (!salirTryString);
-		return eleccionTryString;
+	    String eleccionTryString = null;
+	    boolean salirTryString = false;
+	    do {
+	        try {
+	            // Escaner de entrada de datos
+	            eleccionTryString = JOptionPane.showInputDialog(null, pregunta, "Java Knights", JOptionPane.PLAIN_MESSAGE);
+	            if (eleccionTryString == null) { // El usuario hizo clic en Cancelar
+	                break; // Salir del bucle
+	            }
+	            if (eleccionTryString.length() <= 0) {
+	                throw stringVacio();
+	            }
+	            // Si todo va bien sale del bucle y del metodo
+	            salirTryString = true;
+	        } catch (Exception e) {
+	            // Si todo no va bien vuelve a entrar en el bucle sin salir del metodo
+	            JOptionPane.showMessageDialog(null, "Palabra mal introducida,vuelve a intentarlo", "Java Knights", JOptionPane.ERROR_MESSAGE);
+	        }
+	    } while (!salirTryString);
+	    return eleccionTryString;
 	}
 
 	/**
 	 * Metodo tryCatch para la entrada de datos de int con bucle incorporado
 	 */
 	public int tryCatchInt(String pregunta) {
-		int eleccionTryInt = 0;
-		boolean salirTryInt = false;
-		do {
-			try {
-				// Escaner de entrada de datos
-				eleccionTryInt = Integer.parseInt(JOptionPane.showInputDialog(pregunta));
+	    int eleccionTryInt = 0;
+	    boolean salirTryInt = false;
+	    do {
+	        try {
+	            // Escaner de entrada de datos
+	            String input = JOptionPane.showInputDialog(null, pregunta, "Java Knights", JOptionPane.PLAIN_MESSAGE);
+	            if (input == null) { // El usuario hizo clic en Cancelar
+	                break; // Salir del bucle
+	            }
+	            eleccionTryInt = Integer.parseInt(input);
+	            // Si todo va bien sale del bucle y del metodo
+	            salirTryInt = true;
+	        } catch (Exception e) {
+	            // Si todo no va bien vuelve a entrar en el bucle sin salir del metodo
+	            JOptionPane.showMessageDialog(null,
+	                    "Numero mal introducido,vuelve a intentarlo con una de las opciones", "Java Knights", JOptionPane.ERROR_MESSAGE);
 
-				// Si todo va bien sale del bucle y del metodo
-				salirTryInt = true;
-			} catch (Exception e) {
-				// Si todo no va bien vuelve a entrar en el bucle sin salir del metodo
-				JOptionPane.showMessageDialog(null,
-						"Numero mal introducido,vuelve a intentarlo con una de las opciones");
-
-			}
-		} while (!salirTryInt);
-		return eleccionTryInt;
+	        }
+	    } while (!salirTryInt);
+	    return eleccionTryInt;
 	}
 
-
-
 	private static Exception stringVacio() {
-		return null;
+	    return null;
 	}
 }
