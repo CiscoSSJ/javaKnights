@@ -1,5 +1,7 @@
 package Modelo.Personaje;
 
+import java.util.Objects;
+
 public abstract class Personaje {
 	protected String nombre;
 	protected String nombreReino;
@@ -59,6 +61,20 @@ public abstract class Personaje {
 	}
 
 
+
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Personaje other = (Personaje) obj;
+		return vida == other.vida;
+	}
 
 	public abstract void hablar();
 	public abstract void esquivar();

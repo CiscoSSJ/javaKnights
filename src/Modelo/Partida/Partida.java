@@ -14,7 +14,7 @@ public class Partida {
 			new ReinoNinja() };
 	private Protagonista protagonistaPartida = new Protagonista();
 	private Menus menus = new Menus();
-
+	//Eliminar
 	public Reino setReino(Reino reinos) {
 		for (int i = 0; i < this.reinos.length;) {
 

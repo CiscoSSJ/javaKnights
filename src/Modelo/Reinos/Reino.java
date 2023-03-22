@@ -18,6 +18,7 @@ public abstract class Reino {
 	private int nivel;
 	private Rey rey;
 	private Subdito[] subditos;
+	private Subdito subdito;
 
 	/*
 	 * M�todos de accion
@@ -102,17 +103,16 @@ public abstract class Reino {
 	 * @return subdito
 	 */
 	public Subdito getSubdito() {
-		for (int i=0;i<subditos.length;) {
-			
-			if (subditos[i] != null) {
-				return subditos[i];
-			}
-			else {
-				return subditos[i];
+		for (Subdito s : subditos) {
+			if (s.getVida() != 0) {
+				subdito=s;
 			}
 		}
+		return subdito; // Si no se encuentra ning�n elemento no nulo, devuelve null
+	}
 
-		return null; // Si no se encuentra ning�n elemento no nulo, devuelve null
+	public Subdito[] getSubditos() {
+		return subditos;
 	}
 
 	/**
@@ -139,15 +139,14 @@ public abstract class Reino {
 	 * 
 	 * @param subdito
 	 */
-
-	public void eliminarSubdito(Subdito subdito) {
+	//Eliminar
+	public void setSubdito(Subdito subdito) {
 		for (int i = 0; i < subditos.length; i++) {
-			if (subditos[i] == subdito) {
-				subditos[i] = null;
+			subditos[i]=subdito;
+				 
 			}
 		}
-	}
-
+	
 	/**
 	 * @return the mensajeGanadorReino
 	 */
