@@ -21,7 +21,7 @@ public abstract class Reino {
 	private Subdito[] subditos;
 	private Dificultad dificultad;
 	/*
-	 * M�todos de accion 
+	 * M�todos de accion
 	 */
 
 	public Reino(String nombreRey, String[] nombreSubditos, String nombreReino, int nivel) {
@@ -71,7 +71,7 @@ public abstract class Reino {
 	public Rey getRey() {
 		return rey;
 	}
-	
+
 	/**
 	 * 
 	 * @return nombreRey
@@ -79,9 +79,11 @@ public abstract class Reino {
 	public String getNombreRey() {
 		return this.nombreRey;
 	}
+
 	/**
-	 * Este set lo utilizaremos solamente para el combate cuando el rey del reino pierda
-	 * la vida y lo settearemos a null
+	 * Este set lo utilizaremos solamente para el combate cuando el rey del reino
+	 * pierda la vida y lo settearemos a null
+	 * 
 	 * @param rey
 	 */
 	public void setRey(Rey rey) {
@@ -89,10 +91,10 @@ public abstract class Reino {
 	}
 
 	/**
-	 * Getter y setter de los subditos que se utilizaran mas adelante en el menuCombate
+	 * Getter y setter de los subditos que se utilizaran mas adelante en el
+	 * menuCombate
 	 */
-	
-	
+
 	/**
 	 * En este get lo que hacemos es que el subdito estatico el cual estamos
 	 * setteando en el bucle for para que podamos hacer las acciones del combate lo
@@ -101,21 +103,16 @@ public abstract class Reino {
 	 * @return subdito
 	 */
 	public Subdito getSubdito() {
-		for (int i = 0; i < this.subditos.length;) {
-			if(this.subditos[i]==null) {
-				i++;
-				return subditos[i];
+		for (Subdito subdito : subditos) {
+
+			if (subdito != null) {
+				return subdito;
 			}
-			else {
-				return subditos[i];
-			}
-			
-			
+
 		}
-		// Si no se encuentra ning�n elemento no nulo, devuelve null
-		return null;
+
+		return null; // Si no se encuentra ning�n elemento no nulo, devuelve null
 	}
-	
 
 	/**
 	 * Hemos creado este get para que depende de la posicion en el que este el
@@ -134,36 +131,21 @@ public abstract class Reino {
 		nombresSubditos = bld.toString();
 		return nombresSubditos;
 	}
+
 	/**
 	 * Este set lo utilizaremos solamente para el combate cuando el subdito pierda
 	 * la vida y lo settearemos a null
 	 * 
 	 * @param subdito
 	 */
-	
-	public Subdito setSubdito(Subdito subdito) {
-		for (int i = 0; i < this.subditos.length;) {
-			
-			if(this.subditos[i]!=null) {
-			this.subditos[i]=subdito;
-			return this.subditos[i];
-			}
-			i++;	
-		}
-		return subdito;
-		
-	}
-	
-	/**}for(
 
-	int i = 0;i<subditos.length&&subditos[i]!=null;i++)
-	{
-		subditoConsultado = (subditos[i]);
-	}return subditoConsultado;
+	public void eliminarSubdito(Subdito subdito) {
+	    for (int i = 0; i < subditos.length; i++) {
+	        if (subditos[i] == subdito) {
+	            subditos[i] = null;
+	        }
 	}
-	*/
-	
-
+	}
 
 	/**
 	 * @return the mensajeGanadorReino
@@ -181,7 +163,6 @@ public abstract class Reino {
 
 	public abstract void debilidad(Personaje personaje);
 
-
 	public boolean isComprobarDebilidad() {
 		return comprobarDebilidad;
 	}
@@ -196,6 +177,5 @@ public abstract class Reino {
 	public Dificultad getDificultad() {
 		return dificultad;
 	}
-
 
 }
