@@ -34,7 +34,7 @@ public abstract class Reino {
 				this.subditos[i] = new Subdito(nombreSubditos[i], nombreReino, nivel, nivel, nivel);
 			}
 		}
-		this.rey = new Rey(nombreRey, nombreReino, nivel, nivel, nivel);
+		this.rey = new Rey(nombreRey, nombreReino, nivel+2, nivel+2, nivel+2);
 
 	}
 
@@ -102,17 +102,19 @@ public abstract class Reino {
 	 * @return subdito
 	 */
 	public Subdito getSubdito() {
-		for (int i=0;i<subditos.length;) {
+		Subdito subdito = null;
+		boolean encontrado = false;
+		
+		for (int i=0;i<subditos.length&&!encontrado;i++) {
 			
 			if (subditos[i] != null) {
-				return subditos[i];
+				subdito = subditos[i];
+				encontrado = true;
 			}
-			else {
-				return subditos[i];
-			}
+		
 		}
 
-		return null; // Si no se encuentra ning�n elemento no nulo, devuelve null
+		return subdito; 
 	}
 
 	/**
@@ -146,6 +148,14 @@ public abstract class Reino {
 				subditos[i] = null;
 			}
 		}
+	}
+	
+	public boolean comprobarReino(Subdito subdito) {
+		boolean retorno = false;
+		if(getNombreReino().equals(subdito.getNombreReino())) {
+			retorno = true;
+		}
+		return retorno;
 	}
 
 	/**

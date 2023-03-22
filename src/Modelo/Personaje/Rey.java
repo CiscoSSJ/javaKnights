@@ -2,8 +2,7 @@ package Modelo.Personaje;
 
 public class Rey extends Personaje {
 
-	protected Protagonista protagonista;
-	private int dificultad;
+	
 
 	public Rey(String nombreRey, String nombreReino, int fuerza, int vida, int velocidad) {
 		super(nombreRey, nombreReino, fuerza, vida, velocidad);
@@ -11,10 +10,9 @@ public class Rey extends Personaje {
 	}
 
 	public void setAtributosRey(int dificultad) {
-		this.fuerza -= dificultad / 2;
-		this.vida -= dificultad / 2;
-		this.velocidad -= dificultad / 2;
-		this.dificultad -= dificultad / 2;
+		this.fuerza -= (dificultad - fuerza) ;
+		this.vida -= (dificultad - vida) ;
+		this.velocidad -= (dificultad - velocidad) ;
 
 	}
 
@@ -30,12 +28,12 @@ public class Rey extends Personaje {
 		return this.fuerza;
 	}
 
-	// Revisar mañana
+	// Revisar maï¿½ana
 	public void debilidadRey() {
 		if (this.vida == 1)
 			setVida(0);
 		else {
-			setVida(vida -= (this.dificultad / 2));
+			setVida(vida -= 2);
 		}
 	}
 

@@ -10,8 +10,8 @@ public class Menus {
 	public void menuPrincipal(Partida partida) {
 		String eleccionMenuPrincipal;
 		JOptionPane.showMessageDialog(null,
-				"<html><div style='text-align: left;'>¡Bienvenido a Java Knights!<hr><br>Este es un juego creado en Java donde tendrias que demostrar tus habilidades de estrategia y combate para convertirte en un verdadero caballero.<br>A medida que avances en el juego, tendras la oportunidad de enfrentarte a desafiantes enemigos y ganar valiosos tesoros.<br>Preparate para embarcarte en una emocionante aventura en el mundo medieval de Java Knights!</div></html>");
-		eleccionMenuPrincipal = "<html><div style='text-align: left;'>¡Indicanos cual es tu nombre, caballer@!<br><br></div></html>";
+				"<html><div style='text-align: left;'>ï¿½Bienvenido a Java Knights!<hr><br>Este es un juego creado en Java donde tendrias que demostrar tus habilidades de estrategia y combate para convertirte en un verdadero caballero.<br>A medida que avances en el juego, tendras la oportunidad de enfrentarte a desafiantes enemigos y ganar valiosos tesoros.<br>Preparate para embarcarte en una emocionante aventura en el mundo medieval de Java Knights!</div></html>");
+		eleccionMenuPrincipal = "<html><div style='text-align: left;'>ï¿½Indicanos cual es tu nombre, caballer@!<br><br></div></html>";
 		partida.setNombreProtagonista(tryCatchString(eleccionMenuPrincipal));
 		menuOpciones(partida);
 
@@ -19,7 +19,7 @@ public class Menus {
 
 	public void menuOpciones(Partida partida) {
 		String eleccionMenuOpciones;
-		eleccionMenuOpciones = "<html><div style='text-align: left;'>¿Que quieres hacer?<hr><br>"
+		eleccionMenuOpciones = "<html><div style='text-align: left;'>ï¿½Que quieres hacer?<hr><br>"
 				+ "1. Iniciar partida<br>" + "2. Ver creditos<br>" + "3. Opciones<br>" + "4. Salir<br></div></html>";
 		switch (tryCatchInt(eleccionMenuOpciones)) {
 		case 1:
@@ -34,7 +34,7 @@ public class Menus {
 		case 4:
 
 			JOptionPane.showMessageDialog(null,
-					"<html><div style='text-align: left;'>¡Hasta pronto " + partida.getProtagonistaPartida().getNombre()
+					"<html><div style='text-align: left;'>ï¿½Hasta pronto " + partida.getProtagonistaPartida().getNombre()
 							+ " nos vemos en la siguiente batalla!</div></html>");
 			break;
 		}
@@ -52,7 +52,7 @@ public class Menus {
 
 	public void menuPartida(Partida partida) {
 		String eleccionMenuPartida;
-		eleccionMenuPartida = "<html><div style='text-align: left;'>¿ A que reino quieres pertenecer?<hr><br>"
+		eleccionMenuPartida = "<html><div style='text-align: left;'>ï¿½ A que reino quieres pertenecer?<hr><br>"
 				+ "1. Dragon<br>" + "2. Gigante<br>" + "3. Guerrero<br>" + "4. Hielo<br>" + "5. Ninja</div></html>";
 
 		partida.getProtagonistaPartida()
@@ -89,39 +89,57 @@ public class Menus {
 	public void combateReinos(Partida partida) {
 		boolean combateReinos = false;
 
-		while (partida.getReinos()[4].getRey() != null || !combateReinos) {
-			combateReinos = menuCombateRey(partida, menuCombateSubditos(partida));
+		while (!combateReinos) {
+			menuCombateSubditos(partida);
+			menuCombateRey(partida,partida.getReino().getRey(),partida.getProtagonistaPartida());
+			if(partida.getReinos()[4].getRey() == null ) {
+				JOptionPane.showMessageDialog(null, partida.getMensajeGanadorPartida());
+				combateReinos = true;
+			}else if(partida.getProtagonistaPartida().getVida() <= 0) {
+				combateReinos = true;
+			}
 		}
-
-		JOptionPane.showMessageDialog(null, partida.getMensajeGanadorPartida());
+			
+		
 	}
 
-	// ¿Implementacion de un solo metodo para que se le pase personaje?
-	public boolean menuCombateSubditos(Partida partida) {
-		boolean subditoSalir = false;
+	// ï¿½Implementacion de un solo metodo para que se le pase personaje?
+	public void menuCombateSubditos(Partida partida) {
+		boolean subditoSalir = true;
 		String eleccionMenuCombateSubditos;
 		
-		JOptionPane.showMessageDialog(null, "<html><div style='text-align: left;'>Estas en el " + partida.getReino().getNombreReino() + "<hr>¡Lucha con sus subditos para conquistarlo!</div></html>");
+		JOptionPane.showMessageDialog(null, "<html><div style='text-align: left;'>Estas en el " + partida.getReino().getNombreReino() + "<hr>ï¿½Lucha con sus subditos para conquistarlo!</div></html>");
 		do {
 			eleccionMenuCombateSubditos = "<html><div style='text-align: left;'>"
 					+ partida.getReino().getSubdito().getNombre()
-					+ " te esta desafiando!<hr>¿Que haras para derrotarle?<br>" + "1. Hablar<br>" + "2. Esquivar<br>"
+					+ " te esta desafiando!<hr>ï¿½Que haras para derrotarle?<br>" + "1. Hablar<br>" + "2. Esquivar<br>"
 					+ "3. Defender<br>" + "4. Desgastar<br>" + "5. Estar en silencio</div></html>";
 			switch (tryCatchInt(eleccionMenuCombateSubditos)) {
 			case 1:
-				partida.getReinos()[0].debilidad(partida.getReino().getSubdito());
+				if(partida.getReinos()[0].comprobarReino(partida.getReino().getSubdito())) {
+					partida.getReinos()[0].debilidad(partida.getReino().getSubdito());
+				}
+					
 				break;
 			case 2:
-				partida.getReinos()[1].debilidad(partida.getReino().getSubdito());
+				if(partida.getReinos()[1].comprobarReino(partida.getReino().getSubdito())) {
+					partida.getReinos()[1].debilidad(partida.getReino().getSubdito());
+				}
 				break;
 			case 3:
-				partida.getReinos()[2].debilidad(partida.getReino().getSubdito());
+				if(partida.getReinos()[2].comprobarReino(partida.getReino().getSubdito())) {
+					partida.getReinos()[2].debilidad(partida.getReino().getSubdito());
+				}
 				break;
 			case 4:
-				partida.getReinos()[3].debilidad(partida.getReino().getSubdito());
+				if(partida.getReinos()[3].comprobarReino(partida.getReino().getSubdito())) {
+					partida.getReinos()[3].debilidad(partida.getReino().getSubdito());
+				}
 				break;
 			case 5:
-				partida.getReinos()[4].debilidad(partida.getReino().getSubdito());
+				if(partida.getReinos()[4].comprobarReino(partida.getReino().getSubdito())) {
+					partida.getReinos()[4].debilidad(partida.getReino().getSubdito());
+				}
 				break;
 			default:
 				break;
@@ -129,10 +147,10 @@ public class Menus {
 
 			// Condicion para cuando el protagonista falla y se le quita vida a este
 			
-			if (partida.getReino().getSubdito().getVidaSubditos() != 0) {
+			if (partida.getReino().getSubdito().getVidaSubditos() > 0) {
 				partida.getProtagonistaPartida().setAtaqueAProtagonista();
 				JOptionPane.showMessageDialog(null,
-						"<html><div style='text-align: left;'>¡" + partida.getReino().getSubdito().getNombreSubditos()
+						"<html><div style='text-align: left;'>ï¿½" + partida.getReino().getSubdito().getNombreSubditos()
 								+ " te ha quitado vida ten cuidado o moriras!</div></html>");
 			}
 			
@@ -142,121 +160,69 @@ public class Menus {
 			if(partida.getReino().getSubdito().getVidaSubditos()==0){
 					partida.getReino().eliminarSubdito(partida.getReino().getSubdito());
 			}
-			
+			if(partida.getReino().getSubdito()==null)
+				subditoSalir=false;
 			if (partida.getProtagonistaPartida().getVida() <= 0) {
 				mensajeHasMuerto(partida, partida.getReino().getSubdito());
-				subditoSalir = true;
+				subditoSalir = false;
 			}
 			
 			
-		} while (partida.getReino().getSubdito() != null || !subditoSalir);
-		return subditoSalir;
+		} while (subditoSalir);
 	}
 
-	public boolean menuCombateSubditos2(Partida partida) {
-		boolean subditoSalir = false;
-		String eleccionMenuCombateSubditos;
-		JOptionPane.showMessageDialog(null, "Estas en el " + partida.getReino().getNombreReino() + "<hr>"
-				+ "¡Lucha con sus subditos para conquistarlo!");
-		do {
 
-			eleccionMenuCombateSubditos = partida.getReino().getSubdito().getNombreSubditos()
-					+ " te esta desafiando ¿Que haras para derrotarle?" + "\n" + "1.Hablar" + "\n" + "2.Esquivar" + "\n"
-					+ "3.Defender" + "\n" + "4.Desgastar" + "\n" + "5.Silencio";
-			switch (tryCatchInt(eleccionMenuCombateSubditos)) {
-			case 1:
-				partida.getReinos()[0].debilidad(partida.getReino().getSubdito());
-				break;
-			case 2:
-				partida.getReinos()[1].debilidad(partida.getReino().getSubdito());
-				break;
-			case 3:
-				partida.getReinos()[2].debilidad(partida.getReino().getSubdito());
-				break;
-			case 4:
-				partida.getReinos()[3].debilidad(partida.getReino().getSubdito());
-				break;
-			case 5:
-				partida.getReinos()[4].debilidad(partida.getReino().getSubdito());
-				break;
-			default:
-				break;
-			}
-
-			// Condicion para cuando falla el protagonista y se le quita vida a este
-			if (partida.getReino().getSubdito().getVidaSubditos() != 0) {
-				partida.getProtagonistaPartida().setAtaqueAProtagonista();
-				JOptionPane.showMessageDialog(null, "¡" + partida.getReino().getSubdito().getNombreSubditos()
-						+ " te ha quitado vida ten cuidado o moriras!");
-
-			}
-			// Condicion para cuando acierta y se le quita vida al subdito
-			else if (partida.getReino().getSubdito().getVidaSubditos() == 0) {
-				partida.getReino().eliminarSubdito(partida.getReino().getSubdito());
-			}
-
-			// Condicion para cuando el protagonista ha fallado muchas veces y le han
-			// quitado la vida ,entonces muere y se acaba
-			// el combate
-			if (partida.getProtagonistaPartida().getVida() <= 0) {
-				mensajeHasMuerto(partida, partida.getReino().getSubdito());
-				subditoSalir = true;
-			}
-
-		} while (partida.getReino().getSubdito() != null && partida.getProtagonistaPartida().getVida() != 0
-				&& partida.getReino() != null || !subditoSalir);
-
-		return subditoSalir;
-	}
-
-	public boolean menuCombateRey(Partida partida, boolean seguir) {
-		boolean combateRey = seguir;
+	public boolean menuCombateRey(Partida partida, Personaje personaje, Personaje protagonista) {
+		boolean combateRey = false;
 		String eleccionMenuCombateRey;
-		while (!combateRey) {
-			do {
-				eleccionMenuCombateRey = "<html><div style=text align:left>" + partida.getReino().getNombreRey()
-						+ " te esta desafiando ¿Que haras para derrotarle?" + "<br>" + "1.Hablar" + "<br>"
-						+ "2.Esquivar" + "<br>" + "3.Defender" + "<br>" + "4.Desgastar" + "<br>"
-						+ "5.Silencio</div></html>";
-				switch (tryCatchInt(eleccionMenuCombateRey)) {
-				case 1:
-					partida.getReinos()[0].debilidad(partida.getReino().getRey());
-					break;
-				case 2:
-					partida.getReinos()[1].debilidad(partida.getReino().getRey());
-					break;
-				case 3:
-					partida.getReinos()[2].debilidad(partida.getReino().getRey());
-					break;
-				case 4:
-					partida.getReinos()[3].debilidad(partida.getReino().getRey());
-					break;
-				case 5:
-					partida.getReinos()[4].debilidad(partida.getReino().getRey());
-					break;
-				default:
-					break;
-				}
-				
-				if (partida.getReino().getRey().getVidaRey() == 0) {
-					partida.getReino().setRey(null);
-
-				} else {
-					partida.getProtagonistaPartida().setAtaqueAProtagonista();
-					JOptionPane.showMessageDialog(null, "<html><div style='text-align: left;'>¡"
-							+ partida.getReino().getRey() + " te ha quitado vida ten cuidado o moriras!</div></html>");
-					if (partida.getProtagonistaPartida().getVida() == 0)
-						mensajeHasMuerto(partida, partida.getReino().getRey());
-					combateRey = true;
-				}
-				while ((partida.getReino().getRey().getVidaRey() != 0) || (partida.getProtagonistaPartida().getVida() != 0)
-						|| !combateRey);
-
-			} while (partida.getReino().getRey() != null || !combateRey);
-
+		if(protagonista.getVida() > 0) {
+			while (!combateRey) {
+				do {
+					eleccionMenuCombateRey = "<html><div style=text align:left>" + partida.getReino().getNombreRey()
+							+ " te esta desafiando ï¿½Que haras para derrotarle?" + "<br>" + "1.Hablar" + "<br>"
+							+ "2.Esquivar" + "<br>" + "3.Defender" + "<br>" + "4.Desgastar" + "<br>"
+							+ "5.Silencio</div></html>";
+					switch (tryCatchInt(eleccionMenuCombateRey)) {
+					case 1:
+						partida.getReinos()[0].debilidad(partida.getReino().getRey());
+						break;
+					case 2:
+						partida.getReinos()[1].debilidad(partida.getReino().getRey());
+						break;
+					case 3:
+						partida.getReinos()[2].debilidad(partida.getReino().getRey());
+						break;
+					case 4:
+						partida.getReinos()[3].debilidad(partida.getReino().getRey());
+						break;
+					case 5:
+						partida.getReinos()[4].debilidad(partida.getReino().getRey());
+						break;
+					default:
+						break;
+					}
+					
+					if (partida.getReino().getRey().getVidaRey() == 0) {
+						partida.getReino().setRey(null);
+	
+					} else {
+						partida.getProtagonistaPartida().setAtaqueAProtagonista();
+						JOptionPane.showMessageDialog(null, "<html><div style='text-align: left;'>ï¿½"
+								+ partida.getReino().getRey() + " te ha quitado vida ten cuidado o moriras!</div></html>");
+						if (partida.getProtagonistaPartida().getVida() == 0)
+							mensajeHasMuerto(partida, partida.getReino().getRey());
+						combateRey = true;
+					}
+					//Posible fallo de cuando matas al primer rey (probablemente poner una condiciÃ³n)
+					while ((partida.getReino().getRey().getVidaRey() != 0) || (partida.getProtagonistaPartida().getVida() != 0)
+							|| !combateRey);
+	
+				} while (partida.getReino().getRey() != null || !combateRey);
+			}
 		}
 		return combateRey;
 	}
+	
 
 	public void menuDificultad(Partida partida) {
 		String eleccionMenuDificultad;
@@ -269,7 +235,6 @@ public class Menus {
 		case 1:
 			dificultad = 5;
 			break;
-
 		case 2:
 			dificultad = 3;
 			break;
