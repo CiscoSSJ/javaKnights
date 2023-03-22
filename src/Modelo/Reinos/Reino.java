@@ -35,7 +35,7 @@ public abstract class Reino {
 				this.subditos[i] = new Subdito(nombreSubditos[i], nombreReino, nivel, nivel, nivel);
 			}
 		}
-		this.rey = new Rey(nombreRey, nombreReino, nivel, nivel, nivel);
+		this.rey = new Rey(nombreRey, nombreReino, nivel+2, nivel+2, nivel+2);
 
 	}
 
@@ -103,16 +103,33 @@ public abstract class Reino {
 	 * @return subdito
 	 */
 	public Subdito getSubdito() {
+<<<<<<< HEAD
 		for (Subdito s : subditos) {
 			if (s.getVida() != 0) {
 				subdito=s;
 			}
+=======
+		Subdito subdito = null;
+		boolean encontrado = false;
+		
+		for (int i=0;i<subditos.length&&!encontrado;i++) {
+			
+			if (subditos[i] != null) {
+				subdito = subditos[i];
+				encontrado = true;
+			}
+		
+>>>>>>> branch 'jesus' of https://github.com/CiscoSSJ/javaKnights.git
 		}
 		return subdito; // Si no se encuentra ning�n elemento no nulo, devuelve null
 	}
 
+<<<<<<< HEAD
 	public Subdito[] getSubditos() {
 		return subditos;
+=======
+		return subdito; 
+>>>>>>> branch 'jesus' of https://github.com/CiscoSSJ/javaKnights.git
 	}
 
 	/**
@@ -146,7 +163,20 @@ public abstract class Reino {
 				 
 			}
 		}
+<<<<<<< HEAD
 	
+=======
+	}
+	
+	public boolean comprobarReino(Subdito subdito) {
+		boolean retorno = false;
+		if(getNombreReino().equals(subdito.getNombreReino())) {
+			retorno = true;
+		}
+		return retorno;
+	}
+
+>>>>>>> branch 'jesus' of https://github.com/CiscoSSJ/javaKnights.git
 	/**
 	 * @return the mensajeGanadorReino
 	 */

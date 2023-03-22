@@ -52,12 +52,16 @@ public class Partida {
 	}
 
 	public Reino getReino() {
-		for (Reino r : reinos) {
-			if (r != null) {
-				return r;
+		Reino reino = null;
+		boolean encontrado = false;
+		
+		for (int i=0;i<reinos.length&&!encontrado;i++) {
+			if (reinos[i] != null) {
+				reino = reinos[i];
+				encontrado = true;
 			}
 		}
-		return null; // Si no se encuentra ning�n elemento no nulo, devuelve null
+		return reino;
 	}
 
 	public void setAtributosRey(int dificultad) {
