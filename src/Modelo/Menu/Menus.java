@@ -129,7 +129,7 @@ public class Menus {
 
 			// Condicion para cuando el protagonista falla y se le quita vida a este
 			
-			if (partida.getReino().getSubdito().getVida() != 0) {
+			if (partida.getReino().getSubdito().getVidaSubditos() != 0) {
 				partida.getProtagonistaPartida().setAtaqueAProtagonista();
 				JOptionPane.showMessageDialog(null,
 						"<html><div style='text-align: left;'>¡" + partida.getReino().getSubdito().getNombreSubditos()
@@ -139,7 +139,7 @@ public class Menus {
 			
 			// Condicion para cuando el subdito muere y se le setea a null
 			
-			if(partida.getReino().getSubdito().getVida()==0){
+			if(partida.getReino().getSubdito().getVidaSubditos()==0){
 					partida.getReino().eliminarSubdito(partida.getReino().getSubdito());
 			}
 			
@@ -184,14 +184,14 @@ public class Menus {
 			}
 
 			// Condicion para cuando falla el protagonista y se le quita vida a este
-			if (partida.getReino().getSubdito().getVida() != 0) {
+			if (partida.getReino().getSubdito().getVidaSubditos() != 0) {
 				partida.getProtagonistaPartida().setAtaqueAProtagonista();
 				JOptionPane.showMessageDialog(null, "¡" + partida.getReino().getSubdito().getNombreSubditos()
 						+ " te ha quitado vida ten cuidado o moriras!");
 
 			}
 			// Condicion para cuando acierta y se le quita vida al subdito
-			else if (partida.getReino().getSubdito().getVida() == 0) {
+			else if (partida.getReino().getSubdito().getVidaSubditos() == 0) {
 				partida.getReino().eliminarSubdito(partida.getReino().getSubdito());
 			}
 
@@ -238,7 +238,7 @@ public class Menus {
 					break;
 				}
 				
-				if (partida.getReino().getRey().getVida() == 0) {
+				if (partida.getReino().getRey().getVidaRey() == 0) {
 					partida.getReino().setRey(null);
 
 				} else {
@@ -249,7 +249,7 @@ public class Menus {
 						mensajeHasMuerto(partida, partida.getReino().getRey());
 					combateRey = true;
 				}
-				while ((partida.getReino().getRey().getVida() != 0) || (partida.getProtagonistaPartida().getVida() != 0)
+				while ((partida.getReino().getRey().getVidaRey() != 0) || (partida.getProtagonistaPartida().getVida() != 0)
 						|| !combateRey);
 
 			} while (partida.getReino().getRey() != null || !combateRey);

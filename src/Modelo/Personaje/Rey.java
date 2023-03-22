@@ -4,18 +4,20 @@ public class Rey extends Personaje {
 
 	protected Protagonista protagonista;
 	private int dificultad;
-	
+
 	public Rey(String nombreRey, String nombreReino, int fuerza, int vida, int velocidad) {
-		super(nombreRey, nombreReino, fuerza , vida , velocidad );
+		super(nombreRey, nombreReino, fuerza, vida, velocidad);
 
 	}
-	public void  setAtributosRey(int dificultad) {
-		this.fuerza-=dificultad/2;
-		this.vida-=dificultad/2;
-		this.velocidad-=dificultad/2;
-		this.dificultad-=dificultad/2;
-		
+
+	public void setAtributosRey(int dificultad) {
+		this.fuerza -= dificultad / 2;
+		this.vida -= dificultad / 2;
+		this.velocidad -= dificultad / 2;
+		this.dificultad -= dificultad / 2;
+
 	}
+
 	public String getNombreRey() {
 		return this.nombre;
 	}
@@ -27,12 +29,13 @@ public class Rey extends Personaje {
 	public int getFuerzaRey() {
 		return this.fuerza;
 	}
-	//Revisar mañana
+
+	// Revisar mañana
 	public void debilidadRey() {
 		if (this.vida == 1)
 			setVida(0);
 		else {
-			setVida(vida -=(this.dificultad/ 2));
+			setVida(vida -= (this.dificultad / 2));
 		}
 	}
 
@@ -61,11 +64,5 @@ public class Rey extends Personaje {
 	public void silencio() {
 		debilidadRey();
 	}
-	
-	// ¿Velocidad?
-	/*
-	 * if(protagonista.velocidad<this.velocidad) protagonista.vida-=this.fuerza;
-	 * 
-	 */
 
 }

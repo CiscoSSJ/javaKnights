@@ -1,6 +1,5 @@
 package Modelo.Reinos;
 
-import Modelo.Menu.Opciones.Dificultad;
 import Modelo.Personaje.Personaje;
 import Modelo.Personaje.Rey;
 import Modelo.Personaje.Subdito;
@@ -19,7 +18,7 @@ public abstract class Reino {
 	private int nivel;
 	private Rey rey;
 	private Subdito[] subditos;
-	private Dificultad dificultad;
+
 	/*
 	 * M�todos de accion
 	 */
@@ -103,12 +102,14 @@ public abstract class Reino {
 	 * @return subdito
 	 */
 	public Subdito getSubdito() {
-		for (Subdito subdito : subditos) {
-
-			if (subdito != null) {
-				return subdito;
+		for (int i=0;i<subditos.length;) {
+			
+			if (subditos[i] != null) {
+				return subditos[i];
 			}
-
+			else {
+				return subditos[i];
+			}
 		}
 
 		return null; // Si no se encuentra ning�n elemento no nulo, devuelve null
@@ -140,11 +141,11 @@ public abstract class Reino {
 	 */
 
 	public void eliminarSubdito(Subdito subdito) {
-	    for (int i = 0; i < subditos.length; i++) {
-	        if (subditos[i] == subdito) {
-	            subditos[i] = null;
-	        }
-	}
+		for (int i = 0; i < subditos.length; i++) {
+			if (subditos[i] == subdito) {
+				subditos[i] = null;
+			}
+		}
 	}
 
 	/**
@@ -169,13 +170,6 @@ public abstract class Reino {
 
 	public void setComprobarDebilidad(boolean comprobarDebilidad) {
 		this.comprobarDebilidad = comprobarDebilidad;
-	}
-
-	/**
-	 * @return the dificultad
-	 */
-	public Dificultad getDificultad() {
-		return dificultad;
 	}
 
 }
