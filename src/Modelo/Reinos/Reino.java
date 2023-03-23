@@ -14,14 +14,12 @@ public abstract class Reino {
 	private String mensajeGanadorReino;
 	private String nombresSubditos = "";
 	private String[] nombreSubditos;
-	private boolean comprobarDebilidad;
 	private int nivel;
 	private Rey rey;
 	private Subdito[] subditos;
-	private Subdito subdito;
 
 	/*
-	 * M�todos de accion
+	 * Constructor que vamos a utilizar para los diferentes reinos
 	 */
 
 	public Reino(String nombreRey, String[] nombreSubditos, String nombreReino, int nivel) {
@@ -96,19 +94,12 @@ public abstract class Reino {
 	 */
 
 	/**
-	 * En este get lo que hacemos es que el subdito estatico el cual estamos
-	 * setteando en el bucle for para que podamos hacer las acciones del combate lo
-	 * devuelva
-	 * 
+	 * Este get lo utilizaremos para devolver el subdito en la posicion de ese momento si 
+	 *  si encontrado es igual a false ,y si es igual a true se parara y dara 
+	 * el subdito de esa posicion a traves del subdito declarado a null
 	 * @return subdito
 	 */
 	public Subdito getSubdito() {
-<<<<<<< HEAD
-		for (Subdito s : subditos) {
-			if (s.getVida() != 0) {
-				subdito=s;
-			}
-=======
 		Subdito subdito = null;
 		boolean encontrado = false;
 		
@@ -119,22 +110,23 @@ public abstract class Reino {
 				encontrado = true;
 			}
 		
->>>>>>> branch 'jesus' of https://github.com/CiscoSSJ/javaKnights.git
+
 		}
 		return subdito; // Si no se encuentra ning�n elemento no nulo, devuelve null
 	}
 
-<<<<<<< HEAD
+	/**
+	 * 
+	 * @return subditos
+	 */
 	public Subdito[] getSubditos() {
 		return subditos;
-=======
-		return subdito; 
->>>>>>> branch 'jesus' of https://github.com/CiscoSSJ/javaKnights.git
+
 	}
 
 	/**
-	 * Hemos creado este get para que depende de la posicion en el que este el
-	 * subdito creado en el constructor coja el nombre de ese subdito en cada reino
+	 * Este get se utiliza para comprobar  posicion en el que este el
+	 * subdito creado y a su vez el constructor coja el nombre de ese subdito en cada reino
 	 * por si el usuario quiere saber el nombre de los subditos del reino en
 	 * concreto
 	 *
@@ -156,33 +148,12 @@ public abstract class Reino {
 	 * 
 	 * @param subdito
 	 */
-	//Eliminar
 	public void setSubdito(Subdito subdito) {
 		for (int i = 0; i < subditos.length; i++) {
 			subditos[i]=subdito;
 				 
 			}
 		}
-<<<<<<< HEAD
-	
-=======
-	}
-	
-	public boolean comprobarReino(Subdito subdito) {
-		boolean retorno = false;
-		if(getNombreReino().equals(subdito.getNombreReino())) {
-			retorno = true;
-		}
-		return retorno;
-	}
-
->>>>>>> branch 'jesus' of https://github.com/CiscoSSJ/javaKnights.git
-	/**
-	 * @return the mensajeGanadorReino
-	 */
-	public String getMensajeGanadorReino() {
-		return mensajeGanadorReino;
-	}
 
 	/**
 	 * @param mensajeGanadorReino the mensajeGanadorReino to set
@@ -190,15 +161,35 @@ public abstract class Reino {
 	public void setMensajeGanadorReino(String mensajeGanadorReino) {
 		this.mensajeGanadorReino = mensajeGanadorReino;
 	}
+	/**
+	 * Metodo abstracto para todos los reinos para que compruebe la debilidad de cada reino y si 
+	 * coincide el reino con el reino del personaje ,este perdera vida segun este implementado en su 
+	 * subclase de personaje
+	 * @param personaje
+	 */
 
-	public abstract void debilidad(Personaje personaje);
+	public abstract void debilidad(Personaje personaje,boolean comprobar);
 
-	public boolean isComprobarDebilidad() {
-		return comprobarDebilidad;
+	/**
+	 * @return the mensajeGanadorReino
+	 */
+	public String getMensajeGanadorReino() {
+		return mensajeGanadorReino;
 	}
+	public Subdito eliminarSubdito(Personaje personaje) {
+	boolean encontrado = false;
+	Subdito subdito=null;
+	for (int i=0;i<subditos.length&&!encontrado;i++) {
+		
+		if (subditos[i] != null) {
+			subdito=subditos[i];
+			encontrado = true;
+		}
+		subdito=(Subdito) personaje;
+	
 
-	public void setComprobarDebilidad(boolean comprobarDebilidad) {
-		this.comprobarDebilidad = comprobarDebilidad;
 	}
+	return subdito;
 
+}
 }

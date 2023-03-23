@@ -1,22 +1,22 @@
 package Modelo.Personaje;
 
 public class Protagonista extends Personaje {
-	private String nombreProtagonista;
+	
 
 	public Protagonista() {
 		super();
 	}
 
 	public void setNombreReino(String nombreReino) {
-		this.nombreProtagonista = this.nombreProtagonista + " I del " + nombreReino;
+		this.nombre = this.nombre	 + " I del " + nombreReino;
 	}
 
 	public String getNombreProtagonista() {
-		return nombreProtagonista;
+		return nombre;
 	}
 
 	public void setNombreProtagonista(String nombreProta) {
-		this.nombreProtagonista = nombreProta;
+		this.nombre = nombreProta;
 	}
 
 	public int getVida() {

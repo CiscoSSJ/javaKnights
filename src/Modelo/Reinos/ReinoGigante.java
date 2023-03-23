@@ -11,8 +11,9 @@ public class ReinoGigante extends Reino {
 	}
 
 	@Override
-	public void debilidad(Personaje personaje) {
-		personaje.esquivar();
+	public void debilidad(Personaje personaje,boolean comprobar) {
+		if(comprobar)
+			personaje.esquivar();
 
 	}
 

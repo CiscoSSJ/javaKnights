@@ -9,10 +9,10 @@ public class ReinoNinja extends Reino {
 	}
 
 	@Override
-	public void debilidad(Personaje personaje) {
-		personaje.silencio();
+	public void debilidad(Personaje personaje, boolean comprobar) {
+		if (comprobar)
+			personaje.silencio();
 
 	}
 
-	
 }
