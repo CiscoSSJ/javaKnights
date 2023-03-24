@@ -30,11 +30,7 @@ public class Rey extends Personaje {
 
 	// Revisar ma�ana
 	public void debilidadRey() {
-		if (this.vida == 1)
-			setVida(0);
-		else {
-			setVida(vida -= 2);
-		}
+		setVida(0);
 	}
 
 	@Override

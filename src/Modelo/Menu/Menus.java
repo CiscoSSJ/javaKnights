@@ -9,6 +9,10 @@ import Modelo.Personaje.Subdito;
 
 public class Menus {
 
+	/**
+	 * 
+	 * @param partida Se le pasa la partida iniciada previamente
+	 */
 	public void menuPrincipal(Partida partida) {
 		String eleccionMenuPrincipal;
 		JOptionPane.showMessageDialog(null,
@@ -120,7 +124,6 @@ public class Menus {
 		boolean combate = false;
 		do {
 			if (partida.getReinos()[4].getRey() != null) {
-
 				menuCombateRey(partida, comprobarCondicion(menuCombateSubditos(partida, combate)));
 				combate = false;
 			} else {
@@ -137,7 +140,7 @@ public class Menus {
 
 		JOptionPane.showMessageDialog(null,
 				"<html><div style='text-align: left;'>Estas en el " + partida.getReino().getNombreReino()
-						+ "<hr>¡Lucha con " + partida.getReino().getNombreSubditos()
+						+ "<hr>ï¿½Lucha con " + partida.getReino().getNombreSubditos()
 						+ " para conquistarlo!</div></html>");
 
 		do {
@@ -177,10 +180,11 @@ public class Menus {
 
 		JOptionPane.showMessageDialog(null,
 				"<html><div style='text-align: left;'>Estas en el " + partida.getReino().getNombreReino()
-						+ "<hr>¡Lucha con " + partida.getReino().getRey().getNombre()
+						+ "<hr>ï¿½Lucha con " + partida.getReino().getRey().getNombre()
 						+ " para conquistarlo!</div></html>");
 
 		do {
+
 			Rey rey = partida.getReino().getRey();
 			eleccionMenuCombate = "<html><div style='text-align: left;'>" + rey.getNombre()
 					+ " te esta desafiando!<hr>ï¿½Que haras para derrotarle?<br>" + "1. Hablar<br>" + "2. Esquivar<br>"
@@ -204,11 +208,13 @@ public class Menus {
 			default:
 				break;
 			}
-			combateReinos = condicionVidaProtagonista(partida, rey);
-			if (partida.getReino().getRey() == null) {
+			if (partida.getReino().getRey().getVida() <= 0) {
+				partida.getReino().setRey(null);
 				combateReinos = true;
-				
+			}else{
+				combateReinos = condicionVidaProtagonista(partida, rey);
 			}
+			
 		} while (!combateReinos);
 		return combateReinos;
 	}
@@ -227,7 +233,7 @@ public class Menus {
 		if (personaje.getVida() > 0) {
 			partida.getProtagonistaPartida().setAtaqueAProtagonista();
 			JOptionPane.showMessageDialog(null,
-					"¡" + personaje.getNombre() + " te ha quitado vida ten cuidado o moriras!");
+					"ï¿½" + personaje.getNombre() + " te ha quitado vida ten cuidado o moriras!");
 
 		}
 
@@ -322,5 +328,4 @@ public class Menus {
 		} while (!salirTryInt);
 		return eleccionTryInt;
 	}
-
 }

@@ -30,10 +30,10 @@ public abstract class Reino {
 		this.subditos = new Subdito[nombreSubditos.length];
 		for (int i = 0; i < subditos.length; i++) {
 			for (int j = 0; j < nombreSubditos.length; j++) {
-				this.subditos[i] = new Subdito(nombreSubditos[i], nombreReino, nivel, nivel, nivel);
+				this.subditos[i] = new Subdito(nombreSubditos[i], nombreReino, nivel+2, nivel+2, nivel+2);
 			}
 		}
-		this.rey = new Rey(nombreRey, nombreReino, nivel+2, nivel+2, nivel+2);
+		this.rey = new Rey(nombreRey, nombreReino, nivel+4, nivel+4, nivel+4);
 
 	}
 
@@ -157,7 +157,6 @@ public abstract class Reino {
 				subditos[i]=subdito;
 				
 			}
-				 
 			}
 		}
 
