@@ -146,11 +146,17 @@ public abstract class Reino {
 	 * Este set lo utilizaremos solamente para el combate cuando el subdito pierda
 	 * la vida y lo settearemos a null
 	 * 
-	 * @param subdito
+	 * @param personaje
 	 */
 	public void setSubdito(Subdito subdito) {
-		for (int i = 0; i < subditos.length; i++) {
-			subditos[i]=subdito;
+		boolean encontrado=false;
+		for (int i = 0; i < subditos.length&&!encontrado; i++) {
+			
+			if (subditos[i] != null) {
+				encontrado = true;
+				subditos[i]=subdito;
+				
+			}
 				 
 			}
 		}
@@ -192,4 +198,19 @@ public abstract class Reino {
 	return subdito;
 
 }
+
+	public void eliminarPersonaje(Personaje personaje) {
+		if(personaje.equals(rey)) {
+			setRey(null);
+			setNombreReino("Reino vencido");
+		}
+		else {
+			setSubdito(null);
+		}
+		
+	}
+
+	public void setNombreReino(String nulo) {
+		this.nombreReino=nulo;
+	}
 }

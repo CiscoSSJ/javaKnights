@@ -1,7 +1,6 @@
 package Modelo.Partida;
 
 import Modelo.Menu.Menus;
-import Modelo.Personaje.Personaje;
 import Modelo.Personaje.Protagonista;
 import Modelo.Reinos.Reino;
 import Modelo.Reinos.ReinoDragon;
@@ -57,6 +56,7 @@ public class Partida {
 
 		return protagonistaPartida;
 	}
+
 	/**
 	 * 
 	 * @return array reinos
@@ -66,9 +66,12 @@ public class Partida {
 		return reinos;
 
 	}
+
 	/**
 	 * Este metodo devuelve el reino mientras que la variable encontrado sea true
-	 * asi que si el reino no es null va a pararse la iteraccion y reino va a ser reino[i]
+	 * asi que si el reino no es null va a pararse la iteraccion y reino va a ser
+	 * reino[i]
+	 * 
 	 * @return reino (encontrado)
 	 */
 	public Reino getReino() {
@@ -76,10 +79,14 @@ public class Partida {
 		boolean encontrado = false;
 
 		for (int i = 0; i < reinos.length && !encontrado; i++) {
-			if (reinos[i] != null) {
+			if(reinos[i].getRey()==null) {
+				reinos[i].setNombreReino("Reino vencido");
+			}
+			if (!reinos[i].getNombreReino().equals("Reino vencido")) {
 				reino = reinos[i];
 				encontrado = true;
 			}
+
 		}
 		return reino;
 	}
@@ -97,20 +104,7 @@ public class Partida {
 	 */
 	public String getMensajeGanadorPartida() {
 		return "Enhorabuena " + protagonistaPartida.getNombre()
-				+ " has pasado de ser un javaknigth cualquiera al aunt�ntico rey";
-	}
-	/**
-	 * Con este metodo comprobamos que el personaje que le pasamos tiene concordancia con el reino
-	 * al que quiere atacar y si es asi que devuelva true 
-	 * @param personaje
-	 * @return
-	 */
-	public boolean comprobarReino(Personaje personaje) {
-		boolean retorno = false;
-		if (getReino().getNombreReino().equals(personaje.getNombreReino())) {
-			retorno = true;
-		}
-		return retorno;
+				+ " has pasado de ser un javaknigth cualquiera al auntentico rey";
 	}
 
 }

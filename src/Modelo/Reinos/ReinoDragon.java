@@ -15,6 +15,7 @@ public class ReinoDragon extends Reino {
 	public void debilidad(Personaje personaje,boolean comprobar) {
 		if(comprobar)
 			personaje.hablar();
+			
 
 	}
 
