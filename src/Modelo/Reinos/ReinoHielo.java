@@ -12,8 +12,8 @@ public class ReinoHielo extends Reino {
 
 	@Override
 
-	public void debilidad(Personaje personaje, boolean comprobar) {
-		if (comprobar)
+	public void debilidad(Personaje personaje) {
+		if (personaje.getNombreReino().equals(getNombreReino()))
 			personaje.desgastar();
 
 	}

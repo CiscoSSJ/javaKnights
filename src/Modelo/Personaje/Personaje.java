@@ -1,6 +1,6 @@
 package Modelo.Personaje;
 
-import java.util.Objects;
+
 
 public abstract class Personaje {
 	protected String nombre;

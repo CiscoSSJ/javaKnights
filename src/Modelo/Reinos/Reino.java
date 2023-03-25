@@ -105,7 +105,7 @@ public abstract class Reino {
 		
 		for (int i=0;i<subditos.length&&!encontrado;i++) {
 			
-			if (subditos[i] != null) {
+			if (subditos[i]!=null) {
 				subdito = subditos[i];
 				encontrado = true;
 			}
@@ -173,7 +173,7 @@ public abstract class Reino {
 	 * @param personaje
 	 */
 
-	public abstract void debilidad(Personaje personaje,boolean comprobar);
+	public abstract void debilidad(Personaje personaje);
 
 	/**
 	 * @return the mensajeGanadorReino
@@ -181,6 +181,11 @@ public abstract class Reino {
 	public String getMensajeGanadorReino() {
 		return mensajeGanadorReino;
 	}
+	/**
+	 * Metodo para eliminar el subdito si no es igual a null por parametros en los diferentes metodos
+	 * @param personaje
+	 * @return
+	 */
 	public Subdito eliminarSubdito(Personaje personaje) {
 	boolean encontrado = false;
 	Subdito subdito=null;
@@ -197,7 +202,10 @@ public abstract class Reino {
 	return subdito;
 
 }
-
+	/**
+	 * 
+	 * @param personaje
+	 */
 	public void eliminarPersonaje(Personaje personaje) {
 		if(personaje.equals(rey)) {
 			setRey(null);
