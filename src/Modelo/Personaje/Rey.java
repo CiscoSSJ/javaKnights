@@ -2,17 +2,32 @@ package Modelo.Personaje;
 
 public class Rey extends Personaje {
 
+	/**
+	 * Constructor de la clase rey en la que tienes que introducir los siguientes
+	 * valores.
+	 * 
+	 * @param nombreRey
+	 * @param nombreReino
+	 * @param fuerza
+	 * @param vida
+	 * @param velocidad
+	 */
 	
-
 	public Rey(String nombreRey, String nombreReino, int fuerza, int vida, int velocidad) {
 		super(nombreRey, nombreReino, fuerza, vida, velocidad);
 
 	}
 
+	/**
+	 * Modifica los valores del rey dependiendo de la dificultad que se le pase por
+	 * parametros.
+	 * 
+	 * @param dificultad
+	 */
 	public void setAtributosRey(int dificultad) {
-		this.fuerza -= (dificultad - fuerza) ;
-		this.vida -= (dificultad - vida) ;
-		this.velocidad -= (dificultad - velocidad) ;
+		this.fuerza -= (dificultad - fuerza);
+		this.vida -= (dificultad - vida);
+		this.velocidad -= (dificultad - velocidad);
 
 	}
 
@@ -28,7 +43,9 @@ public class Rey extends Personaje {
 		return this.fuerza;
 	}
 
-	// Revisar ma�ana
+	/**
+	 * Metodos que se aplica se aciertas la debilidad.
+	 */
 	public void debilidadRey() {
 		setVida(0);
 	}
