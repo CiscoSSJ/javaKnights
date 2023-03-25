@@ -207,29 +207,7 @@ public class Menus {
 
 	}
 	
-	public void menuDificultad(Partida partida) {
-		String eleccionMenuDificultad;
-		int dificultad = 0;
-		eleccionMenuDificultad = "<html><div style=text align:left>Elige a continuacion la dificultad de la partida<hr>"
-				+ "<br>" + " 1. Facil - Puedes conquistar reinos facilmente." + "<br>" + "<br>"
-				+ " 2. Media - Vas a poder conquistar con facilidad los reinos aunque algun que otro subdito te pondra las cosas dificiles"
-				+ "<br>" + "<br>"
-				+ " 3. Dificil - En cada reino te cuestionaras si merecio la pena ir a conquistar ese reino" + "<br>"
-				+ "</div></html>";
-		switch (tryCatchInt(eleccionMenuDificultad)) {
-		case 1:
-			dificultad = 5;
-			break;
-		case 2:
-			dificultad = 3;
-			break;
-		case 3:
-			dificultad = 1;
-		}
-		partida.setAtributosRey(dificultad);
-		partida.setProtagonistaPartida(dificultad);
 
-	}
 	// Se define un método llamado combateReinos que recibe como parámetro una instancia de la clase Partida.
 	public void combateReinos(Partida partida) {
 		// Se declara una variable booleana llamada combate e inicialmente se establece como false.
@@ -309,7 +287,7 @@ public class Menus {
 	}
 
 	/**
-	 * Define un método público que devuelve un valor booleano 
+	 * Define un metodo público que devuelve un valor booleano 
 	 * y toma dos argumentos: una instancia de la clase Partida y un valor booleano
 	 * @param partida
 	 * @return
@@ -358,11 +336,12 @@ public class Menus {
 			combateReinos = condicionVidaProtagonista(partida, rey);
 
 		} while (!combateReinos);
-	
+		return combateReinos;
+	}
 
 
 
-		 * Comentario que describe la función condicionVidaProtagonista, 
+	/** Comentario que describe la función condicionVidaProtagonista, 
 	 * que toma una instancia de Partida y una instancia de Personaje como parámetros.
 	 * @param partida
 	 * @param personaje
