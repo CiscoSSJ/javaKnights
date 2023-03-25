@@ -169,12 +169,12 @@ public class Menus {
 				break;
 			}
 			
-			if (partida.getReino().getSubdito().getVida() <= 0) {
-				partida.getReino().setSubdito(null);
-			}
+			
+			
 			
 			combateReinos = condicionVidaProtagonista(partida, subdito);			
-
+			
+			
 				
 			
 		} while (!combateReinos);
@@ -199,7 +199,7 @@ public class Menus {
 				partida.getReinos()[0].debilidad(rey);
 				break;
 			case 2:
-				partida.getReinos()[1].debilidad(rey);
+			partida.getReinos()[1].debilidad(rey);
 				break;
 			case 3:
 				partida.getReinos()[2].debilidad(rey);
@@ -213,12 +213,9 @@ public class Menus {
 			default:
 				break;
 			}
-			if (partida.getReino().getRey().getVida() <= 0) {
-				partida.getReino().setRey(null);
-				combateReinos = true;
-			} else {
+		
 				combateReinos = condicionVidaProtagonista(partida, rey);
-			}
+			
 
 		} while (!combateReinos);
 		return combateReinos;
@@ -231,9 +228,14 @@ public class Menus {
 			partida.getProtagonistaPartida().setAtaqueAProtagonista();
 			JOptionPane.showMessageDialog(null,
 					"�" + personaje.getNombre() + " te ha quitado vida ten cuidado o moriras!");
-
+			
 		}
-	
+		else {
+			partida.getReino().eliminarPersonaje(personaje);
+		}
+		if(partida.getReino().getSubdito()==null) {
+			condicionVida=true;
+		}
 		// Condicion para cuando el protagonista ha muerto
 		if (partida.getProtagonistaPartida().getVida() == 0) {
 			mensajeHasMuerto(partida, personaje);
