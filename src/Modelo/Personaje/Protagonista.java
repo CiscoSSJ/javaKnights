@@ -1,14 +1,16 @@
 package Modelo.Personaje;
 
 public class Protagonista extends Personaje {
-	
 
+	/**
+	 * Construtor de la clase personaje.
+	 */
 	public Protagonista() {
 		super();
 	}
 
 	public void setNombreReino(String nombreReino) {
-		this.nombre = this.nombre	 + " I del " + nombreReino;
+		this.nombre = this.nombre + " I del " + nombreReino;
 	}
 
 	public String getNombreProtagonista() {
@@ -23,6 +25,13 @@ public class Protagonista extends Personaje {
 		return this.vida;
 	}
 
+	/**
+	 * Modifica los valores del protagonista.
+	 * 
+	 * @param fuerza
+	 * @param vida
+	 * @param velocidad
+	 */
 	public void setAtributosProtagonista(int fuerza, int vida, int velocidad) {
 		this.fuerza = fuerza;
 		this.vida = vida;
@@ -30,9 +39,9 @@ public class Protagonista extends Personaje {
 	}
 
 	public void setAtaqueAProtagonista() {
-		
-			this.vida--;
-	
+
+		this.vida--;
+
 	}
 
 	@Override
