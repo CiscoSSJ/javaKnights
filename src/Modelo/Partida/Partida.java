@@ -9,10 +9,24 @@ import Modelo.Reinos.ReinoGuerrero;
 import Modelo.Reinos.ReinoHielo;
 import Modelo.Reinos.ReinoNinja;
 
+/**
+ * Clase Partida que representa una partida del juego con un protagonista y varios reinos.
+ */
 public class Partida {
+	
+	/**
+	 * Array de objetos Reino, inicializado con una instancia de cada subclase de Reino: Dragon, Gigante, Guerrero, Hielo, Ninja
+	 */
 	private Reino[] reinos = { new ReinoDragon(), new ReinoGigante(), new ReinoGuerrero(), new ReinoHielo(),
 			new ReinoNinja() };
+	/**
+	 * Objeto Protagonista que representa al jugador en la partida, inicializado con una nueva instancia de Protagonista.
+	 */
 	private Protagonista protagonistaPartida = new Protagonista();
+	
+	/**
+	 * Objeto Menus que se utiliza para mostrar y gestionar los menús en la partida, inicializado con una nueva instancia de Menus.
+	 */
 	private Menus menus = new Menus();
 
 	/**
