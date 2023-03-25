@@ -3,13 +3,14 @@ package Modelo.Reinos;
 import Modelo.Personaje.Personaje;
 
 /**
- * La siguiente clase Java extiende la clase Reino y representa un Reino Guerrero.
+ * La siguiente clase Java extiende la clase Reino y representa un Reino
+ * Guerrero.
  */
 public class ReinoGuerrero extends Reino {
 
 	/**
-	 * Constructor de la clase ReinoGuerrero que llama
-	 * al constructor de la clase padre Reino.
+	 * Constructor de la clase ReinoGuerrero que llama al constructor de la clase
+	 * padre Reino.
 	 */
 	public ReinoGuerrero() {
 		super("Alejandro Magno", new String[] { "Jon Nieve", "Jaime Lannister", "Brienne de Tarth" }, "Reino Guerrero",
@@ -18,13 +19,13 @@ public class ReinoGuerrero extends Reino {
 	}
 
 	/**
-	 * Sobrescribe el método debilidad de la clase padre Reino.
-	 * Si comprobar es verdadero, el personaje defiende.
+	 * Sobrescribe el metodo debilidad de la clase padre Reino. Si comprobar es
+	 * verdadero, el personaje defiende.
 	 */
 	@Override
-	public void debilidad(Personaje personaje, boolean comprobar) {
-		if (comprobar)
-			personaje.defender();
+	public void debilidad(Personaje personaje) {
+		if (personaje.getNombreReino().equals(getNombreReino()))
+			personaje.hablar();
 
 	}
 

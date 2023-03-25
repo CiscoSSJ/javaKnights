@@ -10,22 +10,26 @@ import Modelo.Reinos.ReinoHielo;
 import Modelo.Reinos.ReinoNinja;
 
 /**
- * Clase Partida que representa una partida del juego con un protagonista y varios reinos.
+ * Clase Partida que representa una partida del juego con un protagonista y
+ * varios reinos.
  */
 public class Partida {
-	
+
 	/**
-	 * Array de objetos Reino, inicializado con una instancia de cada subclase de Reino: Dragon, Gigante, Guerrero, Hielo, Ninja
+	 * Array de objetos Reino, inicializado con una instancia de cada subclase de
+	 * Reino: Dragon, Gigante, Guerrero, Hielo, Ninja
 	 */
 	private Reino[] reinos = { new ReinoDragon(), new ReinoGigante(), new ReinoGuerrero(), new ReinoHielo(),
 			new ReinoNinja() };
 	/**
-	 * Objeto Protagonista que representa al jugador en la partida, inicializado con una nueva instancia de Protagonista.
+	 * Objeto Protagonista que representa al jugador en la partida, inicializado con
+	 * una nueva instancia de Protagonista.
 	 */
 	private Protagonista protagonistaPartida = new Protagonista();
-	
+
 	/**
-	 * Objeto Menus que se utiliza para mostrar y gestionar los menús en la partida, inicializado con una nueva instancia de Menus.
+	 * Objeto Menus que se utiliza para mostrar y gestionar los menus en la
+	 * partida, inicializado con una nueva instancia de Menus.
 	 */
 	private Menus menus = new Menus();
 
@@ -93,7 +97,7 @@ public class Partida {
 		boolean encontrado = false;
 
 		for (int i = 0; i < reinos.length && !encontrado; i++) {
-			if(reinos[i].getRey()==null) {
+			if (reinos[i].getRey() == null) {
 				reinos[i].setNombreReino("Reino vencido");
 			}
 			if (!reinos[i].getNombreReino().equals("Reino vencido")) {
@@ -118,7 +122,7 @@ public class Partida {
 	 */
 	public String getMensajeGanadorPartida() {
 		return "Enhorabuena " + protagonistaPartida.getNombre()
-				+ " has pasado de ser un javaknigth cualquiera al auntentico rey";
+				+ " has pasado de ser un javaknight cualquiera al auntentico rey";
 	}
 
 }

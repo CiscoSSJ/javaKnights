@@ -30,10 +30,10 @@ public abstract class Reino {
 		this.subditos = new Subdito[nombreSubditos.length];
 		for (int i = 0; i < subditos.length; i++) {
 			for (int j = 0; j < nombreSubditos.length; j++) {
-				this.subditos[i] = new Subdito(nombreSubditos[i], nombreReino, nivel+2, nivel+2, nivel+2);
+				this.subditos[i] = new Subdito(nombreSubditos[i], nombreReino, nivel + 2, nivel + 2, nivel + 2);
 			}
 		}
-		this.rey = new Rey(nombreRey, nombreReino, nivel+4, nivel+4, nivel+4);
+		this.rey = new Rey(nombreRey, nombreReino, nivel + 4, nivel + 4, nivel + 4);
 
 	}
 
@@ -94,25 +94,25 @@ public abstract class Reino {
 	 */
 
 	/**
-	 * Este get lo utilizaremos para devolver el subdito en la posicion de ese momento si 
-	 *  si encontrado es igual a false ,y si es igual a true se parara y dara 
-	 * el subdito de esa posicion a traves del subdito declarado a null
+	 * Este get lo utilizaremos para devolver el subdito en la posicion de ese
+	 * momento si si encontrado es igual a false ,y si es igual a true se parara y
+	 * dara el subdito de esa posicion a traves del subdito declarado a null
+	 * 
 	 * @return subdito
 	 */
 	public Subdito getSubdito() {
 		Subdito subdito = null;
 		boolean encontrado = false;
-		
-		for (int i=0;i<subditos.length&&!encontrado;i++) {
-			
-			if (subditos[i]!=null) {
+
+		for (int i = 0; i < subditos.length && !encontrado; i++) {
+
+			if (subditos[i] != null) {
 				subdito = subditos[i];
 				encontrado = true;
 			}
-		
 
 		}
-		return subdito; 
+		return subdito;
 	}
 
 	/**
@@ -125,10 +125,9 @@ public abstract class Reino {
 	}
 
 	/**
-	 * Este get se utiliza para comprobar  posicion en el que este el
-	 * subdito creado y a su vez el constructor coja el nombre de ese subdito en cada reino
-	 * por si el usuario quiere saber el nombre de los subditos del reino en
-	 * concreto
+	 * Este get se utiliza para comprobar posicion en el que este el subdito creado
+	 * y a su vez el constructor coja el nombre de ese subdito en cada reino por si
+	 * el usuario quiere saber el nombre de los subditos del reino en concreto
 	 *
 	 * 
 	 * @return nombreSubditos
@@ -149,16 +148,16 @@ public abstract class Reino {
 	 * @param subdito a null
 	 */
 	public void setSubdito(Subdito subdito) {
-		boolean encontrado=false;
-		for (int i = 0; i < subditos.length&&!encontrado; i++) {
-			
+		boolean encontrado = false;
+		for (int i = 0; i < subditos.length && !encontrado; i++) {
+
 			if (subditos[i] != null) {
 				encontrado = true;
-				subditos[i]=subdito;
-				
-			}
+				subditos[i] = subdito;
+
 			}
 		}
+	}
 
 	/**
 	 * Metodo abstracto para todos los reinos para que compruebe la debilidad de
@@ -169,53 +168,59 @@ public abstract class Reino {
 	 * @param comprobar El booleano que indica si se debe comprobar o no.
 	 */
 	public abstract void debilidad(Personaje personaje);
+
 	/**
 	 * Define un metodo para obtener el mensaje del ganador del reino.
+	 * 
 	 * @return the mensajeGanadorReino
 	 */
 	public String getMensajeGanadorReino() {
 		return mensajeGanadorReino;
 	}
+
 	/**
 	 * Define un metodo para eliminar un subdito del reino.
+	 * 
 	 * @param personaje El personaje a eliminar.
 	 * @return El subdito eliminado.
 	 */
 	public Subdito eliminarSubdito(Personaje personaje) {
-	boolean encontrado = false;
-	Subdito subdito=null;
-	for (int i=0;i<subditos.length&&!encontrado;i++) {
-		
-		if (subditos[i] != null) {
-			subdito=subditos[i];
-			encontrado = true;
+		boolean encontrado = false;
+		Subdito subdito = null;
+		for (int i = 0; i < subditos.length && !encontrado; i++) {
+
+			if (subditos[i] != null) {
+				subdito = subditos[i];
+				encontrado = true;
+			}
+			subdito = (Subdito) personaje;
+
 		}
-		subdito=(Subdito) personaje;
-	
+		return subdito;
 
 	}
-	return subdito;
 
-}
 	/**
 	 * Define un metodo para eliminar un personaje del reino.
+	 * 
 	 * @param personaje El personaje a eliminar.
 	 */
 	public void eliminarPersonaje(Personaje personaje) {
-		if(personaje.equals(rey)) {
+		if (personaje.equals(rey)) {
 			setRey(null);
 			setNombreReino("Reino vencido");
-		}
-		else {
+		} else {
 			setSubdito(null);
 		}
-		
+
 	}
+
 	/**
 	 * Define un metodo para establecer el nombre del reino.
+	 * 
 	 * @param nulo
 	 */
 	public void setNombreReino(String nulo) {
-		this.nombreReino=nulo;
+		this.nombreReino = nulo;
 	}
 }
