@@ -48,6 +48,7 @@ public class Rey extends Personaje {
 	 */
 	public void debilidadRey() {
 		setVida(0);
+		setNombreReino("Reino vencido");
 	}
 
 	@Override
