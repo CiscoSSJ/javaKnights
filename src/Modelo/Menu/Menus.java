@@ -61,6 +61,7 @@ public class Menus {
 	 */
 	public void menuOpciones(Partida partida) {
 		String eleccionMenuOpciones;
+		boolean continuar = true;
 		eleccionMenuOpciones = 
 				"<html>"
 					+ "<div style='text-align: left;'>"
@@ -69,74 +70,70 @@ public class Menus {
 						+ "1. Iniciar partida<br>"
 						+ "2. Ver creditos<br>"
 						+ "3. Opciones<br>"
-						+ "4. Salir<br>"
+						+ "4. Tutorial<br>"
+						+ "5. Salir<br>"
 					+ "</div>"
 				+ "</html>";
 		
-		/**
-		 * Se utiliza el switch para llamar a otros métodos dependiendo de la elección del usuario. 
-		 * Se utiliza el método tryCatchInt para llamar a una venta ofreciendo un numero.
-		 */
-		switch (tryCatchInt(eleccionMenuOpciones)) {
-		case 1:
-			menuPartida(partida);
-			break;
-		case 2:
-			menuCreditos();
-			break;
-		case 3:
-			menuTutorial();
-			break;
-		case 4:
-
-			JOptionPane.showMessageDialog(null,
-					"<html>"
-						+ "<div style='text-align: left;'>"
-							+ "¿Hasta pronto "
-							+ partida.getProtagonistaPartida().getNombre()
-							+ " nos vemos en la siguiente batalla!"
-						+ "</div>"
-					+ "</html>");
-			break;
-		default:
-			JOptionPane.showMessageDialog(null, "Has fallado muchas veces");
-		}
-
+		do{
+			switch (tryCatchInt(eleccionMenuOpciones)) {
+			case 1:
+				menuPartida(partida);
+				JOptionPane.showMessageDialog(null,
+						"<html><div style='text-align: left;'>Enhorabuena "
+								+ partida.getProtagonistaPartida().getNombre()
+								+ "! Has conquistado todos los reinos!</div></html>");
+				continuar = false;
+				break;
+			case 2:
+				menuCreditos();
+				break;
+			case 3:
+				menuTutorial();
+				break;
+			case 4:
+				menuTutorial();
+				break;
+			case 5:
+				JOptionPane.showMessageDialog(null,
+						"<html><div style='text-align: left;'>�Hasta pronto "
+								+ partida.getProtagonistaPartida().getNombre()
+								+ " nos vemos en la siguiente batalla!</div></html>");
+				continuar = false;
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Has fallado muchas veces");
+				}
+		}while(continuar);
 	}
-
+		
+	
 	/**
-	 * Este es el encabezado del método menuPartida,
-	 * que toma un objeto Partida como argumento y no devuelve nada.
-	 * @param partida
-	 */
+ * Este es el encabezado del método menuPartida,
+ * que toma un objeto Partida como argumento y no devuelve nada.
+ * @param partida
+ */
 	public void menuPartida(Partida partida) {
 		String eleccionMenuPartida;
-		eleccionMenuPartida = 
-				"<html>"
-					+ "<div style='text-align: left;'>"
-						+ "¿A que reino quieres pertenecer?<hr><br>"
-						+ "1. Dragon<br>"
-						+ "2. Gigante<br>"
-						+ "3. Guerrero<br>"
-						+ "4. Hielo<br>"
-						+ "5. Ninja"
-					+ "</div>"
-				+ "</html>";
+		eleccionMenuPartida = "<html><div style='text-align: left;'>� A que reino quieres pertenecer?<hr><br>"
+				+ "1. Dragon<br>" + "2. Gigante<br>" + "3. Guerrero<br>" + "4. Hielo<br>" + "5. Ninja</div></html>";
 
-		partida.getProtagonistaPartida()
-				.setNombreReino(setReinoPerteneciente(partida, tryCatchInt(eleccionMenuPartida)));
+		partida.getProtagonistaPartida().setNombreReino(setReinoPerteneciente(partida, tryCatchInt(eleccionMenuPartida)));
 		menuDificultad(partida);
 		combateReinos(partida);
-
 	}
 
 	public void menuCreditos() {
-		System.out.println("Los maquinas");
-
+		JOptionPane.showMessageDialog(null,
+		"<html><div style='text-align: left;'>Juego realizado por:<hr><br>"
+		+ "Jesús<br>" + "Cisco<br>" + "Miguel<br>" + "Abdellah</div></html>");
 	}
 
 	public void menuTutorial() {
-		// TODO document why this method is empty
+		JOptionPane.showMessageDialog(null,
+			"<html><div style='text-align: left;'>Bienvenido al tutorial, aquí te enseñaremos los conceptos básicos del juego"
+			+ "<br>Consta de 5 reinos los cuales cada uno tiene una debilidad asociada."
+			+ "<br>Acertar la debilidad del reino te dará un bono de daño y es muy probable que los abatas de un solo golpe!</div></html>");
 	}
 
 	/**
