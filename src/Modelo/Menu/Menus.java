@@ -23,8 +23,8 @@ public class Menus {
 		// Se muestra un mensaje de bienvenida con informacion sobre el juego
 		// utilizando
 		// el metodo showMessageDialog de la libreria Swing.
-		JOptionPane.showMessageDialog(null, "<html>" + "<div style='text-align: left;'>"
-				+ "¡Bienvenido a Java Knights!" + "<hr><br>"
+		JOptionPane.showMessageDialog(null, "<html>" + "<div style='text-align: left;'>" + "¡Bienvenido a Java Knights!"
+				+ "<hr><br>"
 				+ "Este es un juego creado en Java donde tendrias que demostrar tus habilidades de estrategia "
 				+ "y combate para convertirte en un verdadero caballero." + "<br>"
 				+ "A medida que avances en el juego, tendras la oportunidad de enfrentarte a desafiantes enemigos"
@@ -59,11 +59,14 @@ public class Menus {
 		do {
 			switch (tryCatchInt(eleccionMenuOpciones)) {
 			case 1:
+
 				menuPartida(partida);
-				JOptionPane.showMessageDialog(null,
-						"<html><div style='text-align: left;'>Enhorabuena "
-								+ partida.getProtagonistaPartida().getNombre()
-								+ "¡Has conquistado todos los reinos!</div></html>");
+				if (partida.getProtagonistaPartida().getVida() != 0) {
+					JOptionPane.showMessageDialog(null,
+							"<html><div style='text-align: left;'>Enhorabuena "
+									+ partida.getProtagonistaPartida().getNombre()
+									+ " ¡Has conquistado todos los reinos!</div></html>");
+				}
 				continuar = false;
 				break;
 			case 2:
@@ -209,7 +212,8 @@ public class Menus {
 			 */
 			if (partida.getReinos()[4].getRey() != null) {
 				menuCombateSubditos(partida);
-				menuCombateRey(partida);
+				if (partida.getProtagonistaPartida().getVida() != 0)
+					menuCombateRey(partida);
 				// Si el reino numero 4 de la partida no tiene un rey asignado, se actualiza la
 				// variable combate a true para salir del ciclo do-while.
 			} else {
@@ -244,8 +248,8 @@ public class Menus {
 							+ " para conquistarlo!</div></html>");
 			Subdito subdito = partida.getReino().getSubdito();
 			eleccionMenuCombate = "<html><div style='text-align: left;'>" + subdito.getNombre()
-					+ " te esta desafiando!<hr>¿Que haras para derrotarle?<br>" + "1. Hablar<br>"
-					+ "2. Esquivar<br>" + "3. Defender<br>" + "4. Desgastar<br>" + "5. Estar en silencio</div></html>";
+					+ " te esta desafiando!<hr>¿Que haras para derrotarle?<br>" + "1. Hablar<br>" + "2. Esquivar<br>"
+					+ "3. Defender<br>" + "4. Desgastar<br>" + "5. Estar en silencio</div></html>";
 			// Se ejecuta un bloque switch que dependiendo de la eleccion del usuario,
 			// ejecutarÃ¡ el
 			// metodo "debilidad" del reino correspondiente en el arreglo
@@ -301,8 +305,8 @@ public class Menus {
 			// Obtiene el rey del reino actual
 			Rey rey = partida.getReino().getRey();
 			eleccionMenuCombate = "<html><div style='text-align: left;'>" + rey.getNombre()
-					+ " te esta desafiando!<hr>¿Que haras para derrotarle?<br>" + "1. Hablar<br>"
-					+ "2. Esquivar<br>" + "3. Defender<br>" + "4. Desgastar<br>" + "5. Estar en silencio</div></html>";
+					+ " te esta desafiando!<hr>¿Que haras para derrotarle?<br>" + "1. Hablar<br>" + "2. Esquivar<br>"
+					+ "3. Defender<br>" + "4. Desgastar<br>" + "5. Estar en silencio</div></html>";
 			// Utiliza un switch para determinar que reino utilizar segÃºn la opcion
 			// seleccionada
 			// por el jugador utilizando el metodo tryCatchInt para obtener la opcion
@@ -364,9 +368,10 @@ public class Menus {
 			condicionVida = true;
 
 		// Condicion para cuando el protagonista ha muerto
-		if (partida.getProtagonistaPartida().getVida() == 0) {
+		if (partida.getProtagonistaPartida().getVida() <= 0) {
 			mensajeHasMuerto(partida, personaje);
 			partida.getReinos()[4].setRey(null);
+			partida.getReinos()[4].setNombreReino("Reino vencido");
 			condicionVida = true;
 		}
 
@@ -382,6 +387,7 @@ public class Menus {
 	 * @param personaje
 	 */
 	public void mensajeHasMuerto(Partida partida, Personaje personaje) {
+
 		JOptionPane.showMessageDialog(null,
 				"<html>" + "<div style='text-align: left;'>" + "Has muerto "
 						+ partida.getProtagonistaPartida().getNombreProtagonista() + "<br>Te ha matado "
@@ -432,10 +438,10 @@ public class Menus {
 	 */
 	public int tryCatchInt(String pregunta) {
 
-		// InicializaciÃ³n de la variable que almacena el numero entero introducido por
+		// Inicializacion de la variable que almacena el numero entero introducido por
 		// el usuario.
 		int eleccionTryInt = 0;
-		// Variable que controla si se ha introducido un numero vÃ¡lido.
+		// Variable que controla si se ha introducido un numero valido.
 		boolean salirTryInt = false;
 
 		// Bucle do-while para solicitar el numero hasta que se introduzca uno valido.
