@@ -11,7 +11,7 @@ public class ReinoNinja extends Reino {
 	@Override
 	public void debilidad(Personaje personaje) {
 		if (personaje.getNombreReino().equals(getNombreReino()))
-			personaje=null;
+			personaje.silencio();
 			
 		
 	}

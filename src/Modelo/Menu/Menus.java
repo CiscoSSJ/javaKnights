@@ -22,7 +22,7 @@ public class Menus {
 		menuOpciones(partida);
 
 	}
-	
+
 	public void menuOpciones(Partida partida) {
 		String eleccionMenuOpciones;
 		eleccionMenuOpciones = "<html><div style='text-align: left;'>ï¿½Que quieres hacer?<hr><br>"
@@ -30,6 +30,7 @@ public class Menus {
 		switch (tryCatchInt(eleccionMenuOpciones)) {
 		case 1:
 			menuPartida(partida);
+			
 			break;
 		case 2:
 			menuCreditos();
@@ -118,14 +119,24 @@ public class Menus {
 		partida.setProtagonistaPartida(dificultad);
 
 	}
-
+	// Se define un método llamado combateReinos que recibe como parámetro una instancia de la clase Partida.
 	public void combateReinos(Partida partida) {
+		// Se declara una variable booleana llamada combate e inicialmente se establece como false.
 		boolean combate = false;
+		// Se inicia un ciclo do-while que se ejecuta hasta que la variable combate sea true.
 		do {
-
-			menuCombateSubditos(partida);
+			/**
+			 * Se verifica si el reino número 4 de la partida tiene un rey asignado.
+			 * Si tiene un rey, se llama al método menuCombateSubditos que permite
+			 * al usuario elegir un subdito para el combate.
+			 * Luego, se llama al método menuCombateRey que simula un combate
+			 * entre el rey del reino y el subdito elegido por el usuario.
+			 * Finalmente, se actualiza la variable combate a false.
+			 */
 			if (partida.getReinos()[4].getRey() != null) {
+				menuCombateSubditos(partida);
 				menuCombateRey(partida);
+				// Si el reino número 4 de la partida no tiene un rey asignado, se actualiza la variable combate a true para salir del ciclo do-while.
 			} else {
 				combate = true;
 			}
@@ -133,14 +144,22 @@ public class Menus {
 
 	}
 
-	// ï¿½Implementacion de un solo metodo para que se le pase personaje?
+	/**
+	 * Se define un método llamado "menuCombateSubditos" con dos parámetros:
+	 * una instancia de la clase "Partida" y un valor booleano llamado "protaMuerto"
+	 * @param partida
+	 * @param protaMuerto
+	 * @return
+	 */
 	public boolean menuCombateSubditos(Partida partida) {
+		// Se inicializa la variable booleana "combateReinos" con el valor de "protaMuerto"
 		boolean combateReinos = false;
+		// Se declara y se inicializa la variable "eleccionMenuCombate" 
+		//como una cadena de caracteres vacía.
 		String eleccionMenuCombate;
 
-		
-
 		do {
+			// Se muestra un cuadro de diálogo con el nombre del reino y el nombre de los subditos.
 			JOptionPane.showMessageDialog(null,
 					"<html><div style='text-align: left;'>Estas en el " + partida.getReino().getNombreReino()
 							+ "<hr>ï¿½Lucha con " + partida.getReino().getNombreSubditos()
@@ -149,6 +168,8 @@ public class Menus {
 			eleccionMenuCombate = "<html><div style='text-align: left;'>" + subdito.getNombre()
 					+ " te esta desafiando!<hr>ï¿½Que haras para derrotarle?<br>" + "1. Hablar<br>" + "2. Esquivar<br>"
 					+ "3. Defender<br>" + "4. Desgastar<br>" + "5. Estar en silencio</div></html>";
+			// Se ejecuta un bloque switch que dependiendo de la elección del usuario, ejecutará el
+			//método "debilidad" del reino correspondiente en el arreglo "partida.getReinos()".
 			switch (tryCatchInt(eleccionMenuCombate)) {
 			case 1:
 				partida.getReinos()[0].debilidad(subdito);
@@ -168,38 +189,45 @@ public class Menus {
 			default:
 				break;
 			}
-			
-			
-			
-			
-			combateReinos = condicionVidaProtagonista(partida, subdito);			
-			
-			
-				
-			
+			// Se verifica si el protagonista ha perdido la batalla contra el subdito.
+			combateReinos = condicionVidaProtagonista(partida, subdito);
+			if (partida.getReino().getSubdito() == null)
+				combateReinos = true;
 		} while (!combateReinos);
 		return combateReinos;
 	}
-
+	/**
+	 * Define un método público que devuelve un valor booleano 
+	 * y toma dos argumentos: una instancia de la clase Partida y un valor booleano
+	 * @param partida
+	 * @return
+	 */
 	public boolean menuCombateRey(Partida partida) {
+		// Declara e inicializa una variable booleana con el valor del segundo argumento.
 		boolean combateReinos = false;
 		String eleccionMenuCombate;
-
+		// Declara una variable String y muestra un mensaje
+		//emergente de diálogo utilizando la clase JOptionPane
 		do {
+			// Crea un ciclo do-while que se ejecutará al menos una vez y
+			//se repetirá mientras la variable combateReinos sea falsa
 			JOptionPane.showMessageDialog(null,
 					"<html><div style='text-align: left;'>Estas en el " + partida.getReino().getNombreReino()
 							+ "<hr>ï¿½Lucha con " + partida.getReino().getRey().getNombre()
 							+ " para conquistarlo!</div></html>");
+			// Obtiene el rey del reino actual
 			Rey rey = partida.getReino().getRey();
 			eleccionMenuCombate = "<html><div style='text-align: left;'>" + rey.getNombre()
 					+ " te esta desafiando!<hr>ï¿½Que haras para derrotarle?<br>" + "1. Hablar<br>" + "2. Esquivar<br>"
 					+ "3. Defender<br>" + "4. Desgastar<br>" + "5. Estar en silencio</div></html>";
+			// Utiliza un switch para determinar qué reino utilizar según la opción seleccionada
+			//por el jugador utilizando el método tryCatchInt para obtener la opción seleccionada
 			switch (tryCatchInt(eleccionMenuCombate)) {
 			case 1:
 				partida.getReinos()[0].debilidad(rey);
 				break;
 			case 2:
-			partida.getReinos()[1].debilidad(rey);
+				partida.getReinos()[1].debilidad(rey);
 				break;
 			case 3:
 				partida.getReinos()[2].debilidad(rey);
@@ -213,36 +241,47 @@ public class Menus {
 			default:
 				break;
 			}
-		
-				combateReinos = condicionVidaProtagonista(partida, rey);
-			
+			// Verifica si el rey actual ha sido derrotado y
+			//actualiza la variable combateReinos en consecuencia
+			combateReinos = condicionVidaProtagonista(partida, rey);
 
 		} while (!combateReinos);
 		return combateReinos;
 	}
-	
+	/**
+	 * Comentario que describe la función condicionVidaProtagonista, 
+	 * que toma una instancia de Partida y una instancia de Personaje como parámetros.
+	 * @param partida
+	 * @param personaje
+	 * @return
+	 */
 	public boolean condicionVidaProtagonista(Partida partida, Personaje personaje) {
+		// Condicion para cuando el subdito no muere y se le ataca al protagonista
 		boolean condicionVida = false;
 		// Condicion para cuando el subdito no muere y se le ataca al protagonista
 		if (personaje.getVida() > 0) {
 			partida.getProtagonistaPartida().setAtaqueAProtagonista();
 			JOptionPane.showMessageDialog(null,
 					"ï¿½" + personaje.getNombre() + " te ha quitado vida ten cuidado o moriras!");
-			
-		}
-		else {
+
+		} else {
 			partida.getReino().eliminarPersonaje(personaje);
 		}
-		if(partida.getReino().getSubdito()==null) {
+		//Condicion para cuando muere el rey de un reino pase al siguiente reino para 
+		//combatir con los subditos del siguiente reino
+		if (personaje.getNombreReino().equals("Reino vencido"))
 			condicionVida=true;
-		}
+		//Condicion para cuando muere el rey del último reino salga del bucle y acabe el juego 
+		if(partida.getReinos()[4].getNombreReino().equals("Reino vencido")) 
+			condicionVida=true;
+		
 		// Condicion para cuando el protagonista ha muerto
 		if (partida.getProtagonistaPartida().getVida() == 0) {
 			mensajeHasMuerto(partida, personaje);
 			partida.getReinos()[4].setRey(null);
 			condicionVida = true;
 		}
-		
+
 		return condicionVida;
 	}
 
