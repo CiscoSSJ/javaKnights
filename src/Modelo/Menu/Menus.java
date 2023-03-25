@@ -207,6 +207,29 @@ public class Menus {
 
 	}
 	
+	public void menuDificultad(Partida partida) {
+		String eleccionMenuDificultad;
+		int dificultad = 0;
+		eleccionMenuDificultad = "<html><div style=text align:left>Elige a continuacion la dificultad de la partida<hr>"
+				+ "<br>" + " 1. Facil - Puedes conquistar reinos facilmente." + "<br>" + "<br>"
+				+ " 2. Media - Vas a poder conquistar con facilidad los reinos aunque algun que otro subdito te pondra las cosas dificiles"
+				+ "<br>" + "<br>"
+				+ " 3. Dificil - En cada reino te cuestionaras si merecio la pena ir a conquistar ese reino" + "<br>"
+				+ "</div></html>";
+		switch (tryCatchInt(eleccionMenuDificultad)) {
+		case 1:
+			dificultad = 5;
+			break;
+		case 2:
+			dificultad = 3;
+			break;
+		case 3:
+			dificultad = 1;
+		}
+		partida.setAtributosRey(dificultad);
+		partida.setProtagonistaPartida(dificultad);
+
+	}
 	// Se define un método llamado combateReinos que recibe como parámetro una instancia de la clase Partida.
 	public void combateReinos(Partida partida) {
 		// Se declara una variable booleana llamada combate e inicialmente se establece como false.
@@ -222,8 +245,8 @@ public class Menus {
 			 * Finalmente, se actualiza la variable combate a false.
 			 */
 			if (partida.getReinos()[4].getRey() != null) {
-				menuCombateRey(partida, comprobarCondicion(menuCombateSubditos(partida, combate)));
-				combate = false;
+				menuCombateSubditos(partida);
+				menuCombateRey(partida);
 				// Si el reino número 4 de la partida no tiene un rey asignado, se actualiza la variable combate a true para salir del ciclo do-while.
 			} else {
 				combate = true;
@@ -239,54 +262,40 @@ public class Menus {
 	 * @param protaMuerto
 	 * @return
 	 */
-	public boolean menuCombateSubditos(Partida partida, boolean protaMuerto) {
+		public boolean menuCombateSubditos(Partida partida) {
 		// Se inicializa la variable booleana "combateReinos" con el valor de "protaMuerto"
-		boolean combateReinos = protaMuerto;
-		// Se declara y se inicializa la variable "eleccionMenuCombate" como una cadena de caracteres vacía.
+		boolean combateReinos = false;
+		// Se declara y se inicializa la variable "eleccionMenuCombate" 
+		//como una cadena de caracteres vacía.
 		String eleccionMenuCombate;
 
-		// Se muestra un cuadro de diálogo con el nombre del reino y el nombre de los subditos.
-		JOptionPane.showMessageDialog(null,
-				"<html>"
-					+ "<div style='text-align: left;'>"
-						+ "Estas en el " + partida.getReino().getNombreReino()
-						+ "<hr>¿Lucha con " + partida.getReino().getNombreSubditos()
-						+ " para conquistarlo!"
-					+ "</div>"
-				+ "</html>");
-		
-		// Se ejecuta un bucle do-while que se repetirá hasta que "combateReinos" sea verdadero.
 		do {
+			// Se muestra un cuadro de diálogo con el nombre del reino y el nombre de los subditos.
+			JOptionPane.showMessageDialog(null,
+					"<html><div style='text-align: left;'>Estas en el " + partida.getReino().getNombreReino()
+							+ "<hr>ï¿½Lucha con " + partida.getReino().getNombreSubditos()
+							+ " para conquistarlo!</div></html>");
 			Subdito subdito = partida.getReino().getSubdito();
-			eleccionMenuCombate = 
-					"<html>"
-						+ "<div style='text-align: left;'>"
-							+ subdito.getNombre() + " te esta desafiando!<hr>"
-							+ "¿Que haras para derrotarle?<br>"
-							+ "1. Hablar<br>"
-							+ "2. Esquivar<br>"
-							+ "3. Defender<br>"
-							+ "4. Desgastar<br>"
-							+ "5. Estar en silencio"
-						+ "</div>"
-					+ "</html>";
-		
-			// Se ejecuta un bloque switch que dependiendo de la elección del usuario, ejecutará el método "debilidad" del reino correspondiente en el arreglo "partida.getReinos()".
+			eleccionMenuCombate = "<html><div style='text-align: left;'>" + subdito.getNombre()
+					+ " te esta desafiando!<hr>ï¿½Que haras para derrotarle?<br>" + "1. Hablar<br>" + "2. Esquivar<br>"
+					+ "3. Defender<br>" + "4. Desgastar<br>" + "5. Estar en silencio</div></html>";
+			// Se ejecuta un bloque switch que dependiendo de la elección del usuario, ejecutará el
+			//método "debilidad" del reino correspondiente en el arreglo "partida.getReinos()".
 			switch (tryCatchInt(eleccionMenuCombate)) {
 			case 1:
-				partida.getReinos()[0].debilidad(subdito, condicionReinoPersonaje(partida, subdito));
+				partida.getReinos()[0].debilidad(subdito);
 				break;
 			case 2:
-				partida.getReinos()[1].debilidad(subdito, condicionReinoPersonaje(partida, subdito));
+				partida.getReinos()[1].debilidad(subdito);
 				break;
 			case 3:
-				partida.getReinos()[2].debilidad(subdito, condicionReinoPersonaje(partida, subdito));
+				partida.getReinos()[2].debilidad(subdito);
 				break;
 			case 4:
-				partida.getReinos()[3].debilidad(subdito, condicionReinoPersonaje(partida, subdito));
+				partida.getReinos()[3].debilidad(subdito);
 				break;
 			case 5:
-				partida.getReinos()[4].debilidad(subdito, condicionReinoPersonaje(partida, subdito));
+				partida.getReinos()[4].debilidad(subdito);
 				break;
 			default:
 				break;
@@ -299,147 +308,94 @@ public class Menus {
 		return combateReinos;
 	}
 
-	//Define un método público que devuelve un valor booleano 
-	//y toma dos argumentos: una instancia de la clase Partida y un valor booleano
-	public boolean menuCombateRey(Partida partida, boolean protaMuerto) {
+	/**
+	 * Define un método público que devuelve un valor booleano 
+	 * y toma dos argumentos: una instancia de la clase Partida y un valor booleano
+	 * @param partida
+	 * @return
+	 */
+	public boolean menuCombateRey(Partida partida) {
 		// Declara e inicializa una variable booleana con el valor del segundo argumento.
-		boolean combateReinos = protaMuerto;
+		boolean combateReinos = false;
 		String eleccionMenuCombate;
-		
 		// Declara una variable String y muestra un mensaje
 		//emergente de diálogo utilizando la clase JOptionPane
-		JOptionPane.showMessageDialog(null,
-				"<html>"
-					+ "<div style='text-align: left;'>"
-						+ "Estas en el " + partida.getReino().getNombreReino()+"<hr>"
-						+ "¿Lucha con " + partida.getReino().getRey().getNombre()
-						+ " para conquistarlo!"
-					+ "</div>"
-				+ "</html>");
-		// Crea un ciclo do-while que se ejecutará al menos una vez y
-		//se repetirá mientras la variable combateReinos sea falsa
 		do {
+			// Crea un ciclo do-while que se ejecutará al menos una vez y
+			//se repetirá mientras la variable combateReinos sea falsa
+			JOptionPane.showMessageDialog(null,
+					"<html><div style='text-align: left;'>Estas en el " + partida.getReino().getNombreReino()
+							+ "<hr>ï¿½Lucha con " + partida.getReino().getRey().getNombre()
+							+ " para conquistarlo!</div></html>");
 			// Obtiene el rey del reino actual
 			Rey rey = partida.getReino().getRey();
-			
-			// Define una cadena de texto utilizando HTML para mostrar el menú
-			//de combate en un diálogo emergente de JOptionPane
-			eleccionMenuCombate = 
-					"<html>"
-						+ "<div style='text-align: left;'>"
-							+ rey.getNombre()
-							+ " te esta desafiando!<hr>"
-							+ "¿Que haras para derrotarle?<br>"
-							+ "1. Hablar<br>"
-							+ "2. Esquivar<br>"
-							+ "3. Defender<br>"
-							+ "4. Desgastar<br>"
-							+ "5. Estar en silencio"
-						+ "</div>"
-					+ "</html>";
+			eleccionMenuCombate = "<html><div style='text-align: left;'>" + rey.getNombre()
+					+ " te esta desafiando!<hr>ï¿½Que haras para derrotarle?<br>" + "1. Hablar<br>" + "2. Esquivar<br>"
+					+ "3. Defender<br>" + "4. Desgastar<br>" + "5. Estar en silencio</div></html>";
 			// Utiliza un switch para determinar qué reino utilizar según la opción seleccionada
 			//por el jugador utilizando el método tryCatchInt para obtener la opción seleccionada
 			switch (tryCatchInt(eleccionMenuCombate)) {
 			case 1:
-				partida.getReinos()[0].debilidad(rey, condicionReinoPersonaje(partida, rey));
+				partida.getReinos()[0].debilidad(rey);
 				break;
 			case 2:
-				partida.getReinos()[1].debilidad(rey, condicionReinoPersonaje(partida, rey));
+				partida.getReinos()[1].debilidad(rey);
 				break;
 			case 3:
-				partida.getReinos()[2].debilidad(rey, condicionReinoPersonaje(partida, rey));
+				partida.getReinos()[2].debilidad(rey);
 				break;
 			case 4:
-				partida.getReinos()[3].debilidad(rey, condicionReinoPersonaje(partida, rey));
+				partida.getReinos()[3].debilidad(rey);
 				break;
 			case 5:
-				partida.getReinos()[4].debilidad(rey, condicionReinoPersonaje(partida, rey));
+				partida.getReinos()[4].debilidad(rey);
 				break;
 			default:
 				break;
 			}
 			// Verifica si el rey actual ha sido derrotado y
 			//actualiza la variable combateReinos en consecuencia
-			if (partida.getReino().getRey().getVida() <= 0) {
-				partida.getReino().setRey(null);
-				combateReinos = true;
-			} else {
-				combateReinos = condicionVidaProtagonista(partida, rey);
-			}
+			combateReinos = condicionVidaProtagonista(partida, rey);
 
 		} while (!combateReinos);
-		return combateReinos;
-	}
+	
 
-	/** Define un método público que devuelve un valor booleano
-	 * y toma una instancia de la clase Partida y un Personaje como argumentos
-	 */
-	public boolean condicionReinoPersonaje(Partida partida, Personaje personaje) {
-		boolean condicionReinoPersonaje = false;
-		if (comprobarReino(partida, personaje)) {
-			condicionReinoPersonaje = true;
-		}
-		return condicionReinoPersonaje;
-	}
 
-	/**
-	 * Comentario que describe la función condicionVidaProtagonista, 
+
+		 * Comentario que describe la función condicionVidaProtagonista, 
 	 * que toma una instancia de Partida y una instancia de Personaje como parámetros.
 	 * @param partida
 	 * @param personaje
 	 * @return
 	 */
 	public boolean condicionVidaProtagonista(Partida partida, Personaje personaje) {
+		// Condicion para cuando el subdito no muere y se le ataca al protagonista
 		boolean condicionVida = false;
 		// Condicion para cuando el subdito no muere y se le ataca al protagonista
 		if (personaje.getVida() > 0) {
 			partida.getProtagonistaPartida().setAtaqueAProtagonista();
 			JOptionPane.showMessageDialog(null,
-					"¿" + personaje.getNombre()
-					+ " te ha quitado vida ten cuidado o moriras!");
+					"ï¿½" + personaje.getNombre() + " te ha quitado vida ten cuidado o moriras!");
 
+		} else {
+			partida.getReino().eliminarPersonaje(personaje);
 		}
-
+		//Condicion para cuando muere el rey de un reino pase al siguiente reino para 
+		//combatir con los subditos del siguiente reino
+		if (personaje.getNombreReino().equals("Reino vencido"))
+			condicionVida=true;
+		//Condicion para cuando muere el rey del último reino salga del bucle y acabe el juego 
+		if(partida.getReinos()[4].getNombreReino().equals("Reino vencido")) 
+			condicionVida=true;
+		
 		// Condicion para cuando el protagonista ha muerto
 		if (partida.getProtagonistaPartida().getVida() == 0) {
 			mensajeHasMuerto(partida, personaje);
 			partida.getReinos()[4].setRey(null);
 			condicionVida = true;
-
 		}
-		// Condicion para cuando el subdito o rey muere
-		if (personaje.getVida() == 0)
-			partida.getReino().eliminarPersonaje(personaje);
 
 		return condicionVida;
-	}
-
-	/**
-	 * Este método recibe un parámetro booleano llamado menuCombate 
-	 * y devuelve otro booleano llamado comprobarCondicion.
-	 * @param menuCombate
-	 * @return
-	 */
-	public boolean comprobarCondicion(boolean menuCombate) {
-		boolean comprobarCondicion = false;
-		if (menuCombate)
-			comprobarCondicion = menuCombate;
-		return comprobarCondicion;
-	}
-
-	/**
-	 * Con este metodo comprobamos que el personaje que le pasamos tiene
-	 * concordancia con el reino al que quiere atacar y si es asi que devuelva true
-	 * 
-	 * @param personaje
-	 * @return
-	 */
-	public boolean comprobarReino(Partida partida, Personaje personaje) {
-		boolean retorno = false;
-		if (partida.getReino().getNombreReino().equals(personaje.getNombreReino())) {
-			retorno = true;
-		}
-		return retorno;
 	}
 
 	/**
