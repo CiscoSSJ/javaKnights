@@ -1,59 +1,68 @@
 package Modelo.Personaje;
 
-
-
 public class Protagonista extends Personaje {
 
-	public Protagonista (String nombreProtagonista,String nombreReino, int fuerza, int vida, int velocidad) {
-		super(nombreProtagonista,nombreReino, fuerza, vida, velocidad);
-		
+	/**
+	 * Construtor de la clase personaje.
+	 */
+	public Protagonista() {
+		super();
+	}
+
+	public void setNombreReino(String nombreReino) {
+		this.nombre = this.nombre + " I del " + nombreReino;
+	}
+
+	public String getNombreProtagonista() {
+		return nombre;
+	}
+
+	public void setNombreProtagonista(String nombreProta) {
+		this.nombre = nombreProta;
 	}
 
 	public int getVida() {
-		// TODO Auto-generated method stub
 		return this.vida;
 	}
 
-	public int getFuerza() {
-		// TODO Auto-generated method stub
-		return this.fuerza;
+	/**
+	 * Modifica los valores del protagonista.
+	 * 
+	 * @param fuerza
+	 * @param vida
+	 * @param velocidad
+	 */
+	public void setAtributosProtagonista(int fuerza, int vida, int velocidad) {
+		this.fuerza = fuerza;
+		this.vida = vida;
+		this.velocidad = velocidad;
 	}
 
+	public void setAtaqueAProtagonista() {
 
+		this.vida--;
+
+	}
 
 	@Override
-	public void atacar() {
-		
+	public void hablar() {
+
 	}
 
-
+	@Override
+	public void esquivar() {
+	}
 
 	@Override
 	public void defender() {
-		
 	}
-
-
 
 	@Override
-	public void curar() {
-		
+	public void desgastar() {
 	}
-	
 
-
-
-
-
-
-	
-
-
-
-
-
-
-
-	
+	@Override
+	public void silencio() {
+	}
 
 }

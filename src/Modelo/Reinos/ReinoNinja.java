@@ -1,18 +1,27 @@
 package Modelo.Reinos;
 
-import Modelo.Personaje.Protagonista;
-import Modelo.Personaje.Rey;
-import Modelo.Personaje.Subdito;
-
+import Modelo.Personaje.Personaje;
 
 public class ReinoNinja extends Reino {
-	protected static Rey reyNinja;
-	protected static String nombreRey="NinjaGayden";
-	protected static Subdito []subditosNinjas;
-	protected static String []nombreSubditos= {"Hattori Hanzo", "Goemon Ishikawa", "Saizo Kirigakure"};
-	protected static Protagonista protagonistaNinja;
+
+	/**
+	 * Constructor para la clase ReinoNinja que llama al constructor de la
+	 * superclase Reino.
+	 */
 	public ReinoNinja() {
-		super(nombreRey,nombreSubditos,"Reino Dragon", 5, reyNinja, subditosNinjas);
+		super("Bruce Lee", new String[] { "Hattori Hanzo", "Goemon Ishikawa", "Saizo Kirigakure" }, "Reino Ninja", 5);
+	}
+
+	/**
+	 * Metodo que establece la debilidad de un personaje de acuerdo a un booleano
+	 * comprobar. Si el booleano es verdadero, se llama al metodo silencio() del
+	 * objeto Personaje recibido como parámetro.
+	 */
+	@Override
+	public void debilidad(Personaje personaje) {
+		if (personaje.getNombreReino().equals(getNombreReino()))
+			personaje.hablar();
+
 	}
 
 }

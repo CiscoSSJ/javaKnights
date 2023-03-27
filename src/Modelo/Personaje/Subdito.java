@@ -1,12 +1,18 @@
 package Modelo.Personaje;
-import Modelo.Personaje.Protagonista;
+
 public class Subdito extends Personaje {
 
-	protected Protagonista protagonista;
-	
-
+	/**
+	 * Constructor de la clase Subdito en la que te exige los siguientes parametros.
+	 * 
+	 * @param nombreSubdito
+	 * @param nombreReino
+	 * @param fuerza
+	 * @param vida
+	 * @param velocidad
+	 */
 	public Subdito(String nombreSubdito, String nombreReino, int fuerza, int vida, int velocidad) {
-		super(nombreSubdito, nombreReino, fuerza, vida, velocidad);
+		super(nombreSubdito + " del " + nombreReino, nombreReino, fuerza, vida, velocidad);
 
 	}
 
@@ -14,7 +20,7 @@ public class Subdito extends Personaje {
 		return this.nombre;
 
 	}
-	
+
 	public int getVidaSubditos() {
 		return this.vida;
 	}
@@ -23,21 +29,39 @@ public class Subdito extends Personaje {
 		return this.fuerza;
 	}
 
+	/**
+	 * Cuando aciertas la de debilidad del subdito se setea la vida a 0.
+	 */
+	public void debilidadSubdito() {
+		setVida(0);
+	}
+
+	/**
+	 * Metodos que se aplica se aciertas la debilidad.
+	 */
 	@Override
-	public void atacar() {
-		protagonista.vida -= this.fuerza;
+	public void hablar() {
+		debilidadSubdito();
+	}
+
+	@Override
+	public void esquivar() {
+		debilidadSubdito();
 	}
 
 	@Override
 	public void defender() {
-		// TODO Auto-generated method stub
-		
+		debilidadSubdito();
 	}
 
 	@Override
-	public void curar() {
-		// TODO Auto-generated method stub
-		
+	public void desgastar() {
+		debilidadSubdito();
+	}
+
+	@Override
+	public void silencio() {
+		debilidadSubdito();
 	}
 
 }

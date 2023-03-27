@@ -1,4 +1,5 @@
 
+
 package Gestion;
 
 import javax.swing.JOptionPane;
@@ -13,7 +14,11 @@ import Modelo.Reinos.ReinoGigante;
 import Modelo.Reinos.ReinoGuerrero;
 import Modelo.Reinos.ReinoHielo;
 import Modelo.Reinos.ReinoNinja;
+=======
+import Modelo.Partida.Partida;
+>>>>>>> branch 'main' of https://github.com/CiscoSSJ/javaKnights.git
 
+<<<<<<< HEAD
 /*
 Este código es un ejemplo básico de cómo crear una ventana de Java Swing y manejar eventos de botón en Java.
 La clase Main es la clase principal que extiende la clase JFrame, lo que significa que es una ventana.
@@ -115,6 +120,18 @@ class MenuPrincipal extends JFrame implements ActionListener {
             System.out.println("Abriendo configuración...");
         }
     }
+
+public class Main {
+
+	public static void main(String[] args) {
+		// Crea una nueva instancia de Partida
+		Partida partida1 = new Partida();
+		/**
+		 * Llama al método menuPrincipal() de la clase Menus de la
+		 * instancia de Partida creada anteriormente.
+		 */
+		partida1.getMenus().menuPrincipal(partida1);
+	}
 }
 
 class MenuIniciarPartida extends JFrame implements ActionListener {
